@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Hyprland Mod
+GenericName=Hyprland Settings
+Comment=Change every Hyprland setting and rice your desktop without config files
+Exec=hyprland-mod
+Icon=io.github.HyprlandMod
+Terminal=false
+Categories=Settings;DesktopSettings;GTK;
+Keywords=hyprland;settings;rice;config;wayland;theme;
+StartupNotify=true
+StartupWMClass=io.github.HyprlandMod

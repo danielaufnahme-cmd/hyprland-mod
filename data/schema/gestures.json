@@ -1,0 +1,143 @@
+{
+  "id": "gestures",
+  "title": "Gestures",
+  "icon": "input-touchpad-symbolic",
+  "order": 50,
+  "description": "Touchpad and touchscreen swipes between workspaces",
+  "groups": [
+    {
+      "title": "Workspace swipe",
+      "options": [
+        {
+          "key": "gestures:workspace_swipe_distance",
+          "label": "Swipe distance",
+          "description": "How far you need to swipe to change workspace",
+          "type": "int",
+          "default": 300,
+          "min": 0,
+          "max": 2000,
+          "step": 10,
+          "unit": "px"
+        },
+        {
+          "key": "gestures:workspace_swipe_invert",
+          "label": "Invert touchpad direction",
+          "description": "Reverse the swipe direction on the touchpad",
+          "type": "bool",
+          "default": true
+        },
+        {
+          "key": "gestures:workspace_swipe_touch",
+          "label": "Swipe from touchscreen edge",
+          "description": "Switch workspaces by swiping from the edge of a touchscreen",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "gestures:workspace_swipe_touch_invert",
+          "label": "Invert touchscreen direction",
+          "description": "Reverse the swipe direction on the touchscreen",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "gestures:workspace_swipe_cancel_ratio",
+          "label": "Cancel threshold",
+          "description": "How much of the swipe must be done to complete the switch. Lower means easier",
+          "type": "float",
+          "default": 0.5,
+          "min": 0.0,
+          "max": 1.0,
+          "step": 0.05,
+          "digits": 2
+        },
+        {
+          "key": "gestures:workspace_swipe_create_new",
+          "label": "Create new workspace",
+          "description": "Swiping past the last workspace creates a new one",
+          "type": "bool",
+          "default": true
+        },
+        {
+          "key": "gestures:workspace_swipe_forever",
+          "label": "Swipe without limit",
+          "description": "Do not stop at neighbouring workspaces while swiping",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        },
+        {
+          "key": "gestures:workspace_swipe_direction_lock",
+          "label": "Lock swipe direction",
+          "description": "Lock the swipe axis once you pass the threshold",
+          "type": "bool",
+          "default": true
+        },
+        {
+          "key": "gestures:workspace_swipe_direction_lock_threshold",
+          "label": "Direction lock threshold",
+          "description": "Distance to swipe before the direction locks",
+          "type": "int",
+          "default": 10,
+          "min": 0,
+          "max": 200,
+          "step": 1,
+          "unit": "px",
+          "advanced": true
+        },
+        {
+          "key": "gestures:workspace_swipe_min_speed_to_force",
+          "label": "Quick swipe speed",
+          "description": "Swipe speed that forces the switch regardless of distance",
+          "type": "int",
+          "default": 30,
+          "min": 0,
+          "max": 200,
+          "step": 1,
+          "advanced": true
+        },
+        {
+          "key": "gestures:workspace_swipe_use_r",
+          "label": "Use relative workspaces",
+          "description": "Swipe through existing workspaces only, using relative numbering",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        }
+      ]
+    },
+    {
+      "title": "Other gestures",
+      "options": [
+        {
+          "key": "gestures:close_max_timeout",
+          "label": "Close gesture timeout",
+          "description": "Maximum time a close gesture may take",
+          "type": "int",
+          "default": 1000,
+          "min": 10,
+          "max": 2000,
+          "step": 10,
+          "unit": "ms",
+          "advanced": true
+        },
+        {
+          "key": "gestures:scrolling:move_snap_to_grid",
+          "label": "Snap to column grid",
+          "description": "Snap windows to the column grid when you release a scrolling-layout move gesture",
+          "type": "bool",
+          "default": true,
+          "advanced": true
+        },
+        {
+          "key": "gestures:scrolling:move_snap_cursor",
+          "label": "Move cursor with snap",
+          "description": "Also move the cursor when the scrolling gesture snaps",
+          "type": "bool",
+          "default": true,
+          "advanced": true
+        }
+      ]
+    }
+  ]
+}

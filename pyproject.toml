@@ -1,0 +1,6 @@
+[project]
+name = "hyprland-mod"
+version = "0.1.0"
+description = "A native GTK4/libadwaita settings app for Hyprland"
+requires-python = ">=3.11"
+license = { text = "MIT" }

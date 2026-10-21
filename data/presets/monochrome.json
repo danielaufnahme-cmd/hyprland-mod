@@ -1,0 +1,62 @@
+{
+  "format": "hyprland-mod-preset",
+  "version": 1,
+  "id": "monochrome",
+  "name": "Monochrome",
+  "author": "Hyprland Mod",
+  "description": "Pure grayscale with a white focus line and strongly dimmed background windows.",
+  "tags": [
+    "minimal",
+    "dark",
+    "focus"
+  ],
+  "order": 8,
+  "settings": {
+    "general:gaps_in": "4",
+    "general:gaps_out": "8",
+    "general:border_size": "1",
+    "general:col.active_border": "rgba(e6e6e6ff)",
+    "general:col.inactive_border": "rgba(3a3a3aff)",
+    "decoration:rounding": "6",
+    "decoration:rounding_power": "2",
+    "decoration:active_opacity": "1.0",
+    "decoration:inactive_opacity": "1.0",
+    "decoration:blur:enabled": "false",
+    "decoration:blur:size": "6",
+    "decoration:blur:passes": "1",
+    "decoration:blur:vibrancy": "0.0",
+    "decoration:blur:noise": "0.0",
+    "decoration:shadow:enabled": "true",
+    "decoration:shadow:range": "10",
+    "decoration:shadow:render_power": "3",
+    "decoration:shadow:color": "rgba(000000aa)",
+    "decoration:shadow:offset": "0 2",
+    "decoration:shadow:sharp": "false",
+    "decoration:dim_inactive": "true",
+    "decoration:dim_strength": "0.35",
+    "animations:enabled": "true"
+  },
+  "lists": {
+    "bezier": [
+      "easeOutQuint, 0.23, 1, 0.32, 1",
+      "quick, 0.15, 0, 0.1, 1"
+    ],
+    "animation": [
+      "global, 1, 10, default",
+      "border, 1, 5, easeOutQuint",
+      "windows, 1, 4, easeOutQuint",
+      "windowsIn, 1, 4, easeOutQuint, popin 90%",
+      "windowsOut, 1, 2, quick, popin 90%",
+      "fade, 1, 3, quick",
+      "layers, 1, 3.5, easeOutQuint",
+      "workspaces, 1, 3, easeOutQuint, slide"
+    ]
+  },
+  "preview": {
+    "wallpaper": [
+      "#101010",
+      "#333333"
+    ],
+    "window": "#161616"
+  }
+}

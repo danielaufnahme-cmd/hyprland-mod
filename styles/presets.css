@@ -1,0 +1,174 @@
+/* Hyprland Mod — presets & import/export pages (loaded by presets_page.py) */
+
+/* ---------- page header ---------- */
+.presets-header .title-1 {
+  margin-bottom: 2px;
+}
+
+.presets-preview {
+  border-radius: var(--hm-radius, 14px);
+  box-shadow: 0 0 0 1px alpha(black, 0.06), 0 2px 6px alpha(black, 0.08), 0 10px 28px alpha(black, 0.10);
+}
+
+.presets-section-title {
+  font-weight: 700;
+  font-size: 1.05em;
+}
+
+.presets-section-count {
+  margin-left: 6px;
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-size: 0.8em;
+  font-weight: 600;
+  background-color: alpha(currentColor, 0.08);
+}
+
+/* ---------- filter chips ---------- */
+.preset-chip {
+  padding: 3px 14px;
+  min-height: 26px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.92em;
+  background-color: alpha(currentColor, 0.07);
+  transition: background-color 160ms ease-out, color 160ms ease-out;
+}
+
+.preset-chip:hover {
+  background-color: alpha(currentColor, 0.12);
+}
+
+.preset-chip:checked {
+  background-color: var(--accent-bg-color);
+  color: var(--accent-fg-color);
+}
+
+/* ---------- cards ---------- */
+flowbox.preset-grid > flowboxchild {
+  padding: 0;
+  margin: 0;
+  border-radius: 16px;
+  background: none;
+  outline: none;
+}
+
+.preset-card {
+  border-radius: 16px;
+  background-color: var(--card-bg-color);
+  box-shadow: 0 0 0 1px alpha(black, 0.07), 0 1px 3px alpha(black, 0.06);
+  transition: box-shadow 200ms ease-out, transform 200ms cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+
+flowbox.preset-grid > flowboxchild:hover .preset-card {
+  transform: translateY(-3px);
+  box-shadow: 0 0 0 1px alpha(black, 0.08), 0 6px 14px alpha(black, 0.10), 0 16px 32px alpha(black, 0.10);
+}
+
+flowbox.preset-grid > flowboxchild:active .preset-card {
+  transform: translateY(-1px);
+  transition-duration: 90ms;
+}
+
+flowbox.preset-grid > flowboxchild:focus-visible .preset-card {
+  box-shadow: 0 0 0 2px alpha(var(--accent-color), 0.7), 0 6px 14px alpha(black, 0.10);
+}
+
+.preset-card.current {
+  box-shadow: 0 0 0 2px var(--accent-bg-color), 0 4px 12px alpha(black, 0.10);
+}
+
+.preset-thumb {
+  margin: 8px 8px 0 8px;
+  border-radius: 10px;
+}
+
+.preset-name {
+  font-weight: 700;
+}
+
+.preset-desc {
+  font-size: 0.9em;
+  opacity: 0.68;
+}
+
+.preset-tag {
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-size: 0.78em;
+  font-weight: 600;
+  background-color: alpha(currentColor, 0.07);
+  opacity: 0.8;
+}
+
+.preset-badge {
+  margin: 8px;
+  padding: 2px 9px;
+  border-radius: 999px;
+  font-size: 0.78em;
+  font-weight: 700;
+  color: var(--accent-fg-color);
+  background-color: var(--accent-bg-color);
+  box-shadow: 0 1px 4px alpha(black, 0.25);
+}
+
+@keyframes hm-badge-in {
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: none; }
+}
+
+.preset-badge.pop {
+  animation: hm-badge-in 180ms ease-out;
+}
+
+.preset-menu-button {
+  min-width: 28px;
+  min-height: 28px;
+  padding: 0;
+}
+
+/* ---------- empty state ---------- */
+.preset-empty {
+  padding: 26px 18px;
+  border-radius: 16px;
+  border: 2px dashed alpha(currentColor, 0.13);
+}
+
+.preset-empty image {
+  opacity: 0.45;
+}
+
+.preset-empty .dim-label {
+  font-size: 0.92em;
+}
+
+/* ---------- import / export ---------- */
+.transfer-icon {
+  min-width: 36px;
+  min-height: 36px;
+  border-radius: 10px;
+  color: var(--accent-color);
+  background-color: alpha(var(--accent-bg-color), 0.12);
+}
+
+.change-list {
+  font-size: 0.92em;
+}
+
+.change-list row {
+  padding: 6px 12px;
+}
+
+.change-old {
+  opacity: 0.6;
+  text-decoration-line: line-through;
+}
+
+.change-new {
+  font-weight: 600;
+}
+
+.mono-value {
+  font-family: monospace;
+  font-size: 0.9em;
+}

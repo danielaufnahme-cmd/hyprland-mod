@@ -1,0 +1,772 @@
+{
+  "id": "input",
+  "title": "Input",
+  "icon": "input-keyboard-symbolic",
+  "order": 40,
+  "description": "Keyboard, mouse, touchpad, touchscreen, tablet and focus",
+  "groups": [
+    {
+      "title": "Keyboard",
+      "options": [
+        {
+          "key": "input:kb_layout",
+          "label": "Keyboard layout",
+          "description": "Layout codes separated by commas, for example us,de",
+          "type": "string",
+          "default": "us"
+        },
+        {
+          "key": "input:kb_variant",
+          "label": "Layout variant",
+          "description": "Variant for each layout, separated by commas, for example dvorak",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "key": "input:kb_options",
+          "label": "Keyboard options",
+          "description": "XKB options such as caps:escape or grp:alt_shift_toggle, separated by commas",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "key": "input:kb_model",
+          "label": "Keyboard model",
+          "description": "XKB keyboard model, such as pc105",
+          "type": "string",
+          "default": "",
+          "advanced": true
+        },
+        {
+          "key": "input:kb_rules",
+          "label": "XKB rules",
+          "description": "XKB rules file to use",
+          "type": "string",
+          "default": "",
+          "advanced": true
+        },
+        {
+          "key": "input:kb_file",
+          "label": "Keymap file",
+          "description": "Path to a custom .xkb keymap file. Overrides the other keyboard options",
+          "type": "string",
+          "default": "",
+          "advanced": true
+        },
+        {
+          "key": "input:repeat_rate",
+          "label": "Key repeat rate",
+          "description": "How many times per second a held key repeats",
+          "type": "int",
+          "default": 25,
+          "min": 0,
+          "max": 200,
+          "step": 1,
+          "unit": "/s"
+        },
+        {
+          "key": "input:repeat_delay",
+          "label": "Key repeat delay",
+          "description": "How long a key is held before it starts repeating",
+          "type": "int",
+          "default": 600,
+          "min": 0,
+          "max": 2000,
+          "step": 10,
+          "unit": "ms"
+        },
+        {
+          "key": "input:numlock_by_default",
+          "label": "Num Lock on at start",
+          "description": "Turn Num Lock on when Hyprland starts",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "input:resolve_binds_by_sym",
+          "label": "Match key binds by symbol",
+          "description": "Resolve key binds by the key symbol rather than the physical key position",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        }
+      ]
+    },
+    {
+      "title": "Mouse",
+      "options": [
+        {
+          "key": "input:sensitivity",
+          "label": "Pointer speed",
+          "description": "Pointer sensitivity from -1 (slowest) to 1 (fastest)",
+          "type": "float",
+          "default": 0.0,
+          "min": -1.0,
+          "max": 1.0,
+          "step": 0.05,
+          "digits": 2
+        },
+        {
+          "key": "input:accel_profile",
+          "label": "Acceleration profile",
+          "description": "How pointer movement is accelerated",
+          "type": "enum",
+          "default": "",
+          "choices": [
+            {
+              "value": "",
+              "label": "System default"
+            },
+            {
+              "value": "adaptive",
+              "label": "Adaptive"
+            },
+            {
+              "value": "flat",
+              "label": "Flat (no acceleration)"
+            },
+            {
+              "value": "custom",
+              "label": "Custom"
+            }
+          ]
+        },
+        {
+          "key": "input:force_no_accel",
+          "label": "Disable acceleration",
+          "description": "Force the pointer to move without any acceleration",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "input:natural_scroll",
+          "label": "Natural scrolling",
+          "description": "Reverse the scroll direction, like on a touchscreen",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "input:left_handed",
+          "label": "Left-handed mode",
+          "description": "Swap the left and right mouse buttons",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "input:scroll_factor",
+          "label": "Scroll speed",
+          "description": "Multiplier for scroll movement of external mice",
+          "type": "float",
+          "default": 1.0,
+          "min": 0.0,
+          "max": 2.0,
+          "step": 0.05,
+          "digits": 2
+        },
+        {
+          "key": "input:scroll_method",
+          "label": "Scroll method",
+          "description": "How scrolling is triggered",
+          "type": "enum",
+          "default": "",
+          "choices": [
+            {
+              "value": "",
+              "label": "System default"
+            },
+            {
+              "value": "2fg",
+              "label": "Two fingers"
+            },
+            {
+              "value": "edge",
+              "label": "Edge"
+            },
+            {
+              "value": "on_button_down",
+              "label": "While button held"
+            },
+            {
+              "value": "no_scroll",
+              "label": "Disabled"
+            }
+          ]
+        },
+        {
+          "key": "input:scroll_button",
+          "label": "Scroll button",
+          "description": "Button code used for on-button scrolling. 0 uses the default",
+          "type": "int",
+          "default": 0,
+          "min": 0,
+          "max": 300,
+          "step": 1,
+          "advanced": true
+        },
+        {
+          "key": "input:scroll_button_lock",
+          "label": "Scroll button lock",
+          "description": "Keep scrolling after the scroll button is released until it is pressed again",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        },
+        {
+          "key": "input:scroll_points",
+          "label": "Custom scroll curve",
+          "description": "Scroll acceleration points used with the custom profile",
+          "type": "string",
+          "default": "",
+          "advanced": true
+        },
+        {
+          "key": "input:rotation",
+          "label": "Device rotation",
+          "description": "Rotate the device input clockwise",
+          "type": "int",
+          "default": 0,
+          "min": 0,
+          "max": 359,
+          "step": 1,
+          "unit": "°",
+          "advanced": true
+        },
+        {
+          "key": "input:emulate_discrete_scroll",
+          "label": "Emulate discrete scrolling",
+          "description": "Turn smooth scroll events into notched scrolling",
+          "type": "enum",
+          "default": "1",
+          "choices": [
+            {
+              "value": "0",
+              "label": "Disable"
+            },
+            {
+              "value": "1",
+              "label": "Non standard"
+            },
+            {
+              "value": "2",
+              "label": "Force all"
+            }
+          ],
+          "advanced": true
+        },
+        {
+          "key": "input:off_window_axis_events",
+          "label": "Scroll outside windows",
+          "description": "How to handle scroll events just outside the focused window",
+          "type": "enum",
+          "default": "1",
+          "choices": [
+            {
+              "value": "0",
+              "label": "Ignore"
+            },
+            {
+              "value": "1",
+              "label": "Send"
+            },
+            {
+              "value": "2",
+              "label": "Clamp"
+            },
+            {
+              "value": "3",
+              "label": "Warp"
+            }
+          ],
+          "advanced": true
+        }
+      ]
+    },
+    {
+      "title": "Touchpad",
+      "options": [
+        {
+          "key": "input:touchpad:natural_scroll",
+          "label": "Natural scrolling",
+          "description": "Reverse the scroll direction on the touchpad",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "input:touchpad:tap-to-click",
+          "label": "Tap to click",
+          "description": "Tap with 1, 2 or 3 fingers for left, right and middle click",
+          "type": "bool",
+          "default": true
+        },
+        {
+          "key": "input:touchpad:tap-and-drag",
+          "label": "Tap and drag",
+          "description": "Tap, then drag your finger to move items",
+          "type": "bool",
+          "default": true
+        },
+        {
+          "key": "input:touchpad:drag_lock",
+          "label": "Drag lock",
+          "description": "Keep dragging after lifting the finger",
+          "type": "enum",
+          "default": "0",
+          "choices": [
+            {
+              "value": "0",
+              "label": "Off"
+            },
+            {
+              "value": "1",
+              "label": "After a timeout"
+            },
+            {
+              "value": "2",
+              "label": "Until tapped again"
+            }
+          ]
+        },
+        {
+          "key": "input:touchpad:disable_while_typing",
+          "label": "Disable while typing",
+          "description": "Ignore the touchpad while you are typing",
+          "type": "bool",
+          "default": true
+        },
+        {
+          "key": "input:touchpad:clickfinger_behavior",
+          "label": "Click by finger count",
+          "description": "Press with 1, 2 or 3 fingers for left, right and middle click instead of by button area",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "input:touchpad:middle_button_emulation",
+          "label": "Middle click emulation",
+          "description": "Pressing left and right together acts as middle click",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "input:touchpad:scroll_factor",
+          "label": "Scroll speed",
+          "description": "Multiplier for scroll movement on the touchpad",
+          "type": "float",
+          "default": 1.0,
+          "min": 0.0,
+          "max": 2.0,
+          "step": 0.05,
+          "digits": 2
+        },
+        {
+          "key": "input:touchpad:drag_3fg",
+          "label": "Three-finger drag",
+          "description": "Drag windows with three or four fingers",
+          "type": "enum",
+          "default": "0",
+          "choices": [
+            {
+              "value": "0",
+              "label": "Off"
+            },
+            {
+              "value": "1",
+              "label": "Three fingers"
+            },
+            {
+              "value": "2",
+              "label": "Four fingers"
+            }
+          ]
+        },
+        {
+          "key": "input:touchpad:tap_button_map",
+          "label": "Tap button order",
+          "description": "Which button taps with 1, 2 and 3 fingers represent",
+          "type": "enum",
+          "default": "",
+          "choices": [
+            {
+              "value": "",
+              "label": "System default"
+            },
+            {
+              "value": "lrm",
+              "label": "Left, right, middle"
+            },
+            {
+              "value": "lmr",
+              "label": "Left, middle, right"
+            }
+          ]
+        },
+        {
+          "key": "input:touchpad:flip_x",
+          "label": "Flip horizontally",
+          "description": "Invert horizontal movement",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        },
+        {
+          "key": "input:touchpad:flip_y",
+          "label": "Flip vertically",
+          "description": "Invert vertical movement",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        }
+      ]
+    },
+    {
+      "title": "Touchscreen",
+      "options": [
+        {
+          "key": "input:touchdevice:enabled",
+          "label": "Touchscreen input",
+          "description": "Allow input from touchscreens",
+          "type": "bool",
+          "default": true
+        },
+        {
+          "key": "input:touchdevice:output",
+          "label": "Touchscreen monitor",
+          "description": "Monitor the touchscreen is bound to, for example DP-1. Empty detects it automatically",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "key": "input:touchdevice:transform",
+          "label": "Touchscreen rotation",
+          "description": "Rotate the touch input to match the screen",
+          "type": "enum",
+          "default": "0",
+          "choices": [
+            {
+              "value": "0",
+              "label": "Normal"
+            },
+            {
+              "value": "1",
+              "label": "90 degrees"
+            },
+            {
+              "value": "2",
+              "label": "180 degrees"
+            },
+            {
+              "value": "3",
+              "label": "270 degrees"
+            },
+            {
+              "value": "4",
+              "label": "Flipped"
+            },
+            {
+              "value": "5",
+              "label": "Flipped, 90 degrees"
+            },
+            {
+              "value": "6",
+              "label": "Flipped, 180 degrees"
+            }
+          ],
+          "advanced": true
+        }
+      ]
+    },
+    {
+      "title": "Graphics tablet",
+      "options": [
+        {
+          "key": "input:tablet:output",
+          "label": "Tablet monitor",
+          "description": "Monitor the tablet is bound to, for example DP-1",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "key": "input:tablet:left_handed",
+          "label": "Left-handed mode",
+          "description": "Rotate the tablet by 180 degrees",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "input:tablet:transform",
+          "label": "Tablet rotation",
+          "description": "Rotate tablet input",
+          "type": "enum",
+          "default": "0",
+          "choices": [
+            {
+              "value": "0",
+              "label": "Normal"
+            },
+            {
+              "value": "1",
+              "label": "90 degrees"
+            },
+            {
+              "value": "2",
+              "label": "180 degrees"
+            },
+            {
+              "value": "3",
+              "label": "270 degrees"
+            },
+            {
+              "value": "4",
+              "label": "Flipped"
+            },
+            {
+              "value": "5",
+              "label": "Flipped, 90 degrees"
+            },
+            {
+              "value": "6",
+              "label": "Flipped, 180 degrees"
+            }
+          ],
+          "advanced": true
+        },
+        {
+          "key": "input:tablet:relative_input",
+          "label": "Relative input",
+          "description": "Move the pointer relative to the pen like a mouse",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "input:tablet:region_position",
+          "label": "Mapped region position",
+          "description": "Position of the mapped region on the monitor layout as x y",
+          "type": "vec2",
+          "default": "0 0",
+          "advanced": true
+        },
+        {
+          "key": "input:tablet:absolute_region_position",
+          "label": "Absolute region position",
+          "description": "Treat the region position as absolute across all monitors",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        },
+        {
+          "key": "input:tablet:region_size",
+          "label": "Mapped region size",
+          "description": "Size of the mapped region as width height",
+          "type": "vec2",
+          "default": "0 0",
+          "advanced": true
+        },
+        {
+          "key": "input:tablet:active_area_position",
+          "label": "Active area position",
+          "description": "Position of the tablet active area in millimetres as x y",
+          "type": "vec2",
+          "default": "0 0",
+          "advanced": true
+        },
+        {
+          "key": "input:tablet:active_area_size",
+          "label": "Active area size",
+          "description": "Size of the tablet active area in millimetres as width height",
+          "type": "vec2",
+          "default": "0 0",
+          "advanced": true
+        },
+        {
+          "key": "input:tablettool:eraser_button_mode",
+          "label": "Eraser button mode",
+          "description": "Behaviour of the pen eraser button",
+          "type": "int",
+          "default": 0,
+          "min": 0,
+          "max": 6,
+          "step": 1,
+          "advanced": true
+        },
+        {
+          "key": "input:tablettool:eraser_button_override",
+          "label": "Eraser button override",
+          "description": "Button emitted by the eraser when the mode is set to override",
+          "type": "int",
+          "default": 0,
+          "min": 0,
+          "advanced": true
+        },
+        {
+          "key": "input:tablettool:pressure_range_min",
+          "label": "Minimum pressure",
+          "description": "Lowest pen pressure that counts as input. Negative uses the device default",
+          "type": "float",
+          "default": -1.0,
+          "min": -1.0,
+          "max": 1.0,
+          "step": 0.01,
+          "digits": 2,
+          "advanced": true
+        },
+        {
+          "key": "input:tablettool:pressure_range_max",
+          "label": "Maximum pressure",
+          "description": "Highest pen pressure that counts as input. Negative uses the device default",
+          "type": "float",
+          "default": -1.0,
+          "min": -1.0,
+          "max": 1.0,
+          "step": 0.01,
+          "digits": 2,
+          "advanced": true
+        }
+      ]
+    },
+    {
+      "title": "Virtual keyboards",
+      "options": [
+        {
+          "key": "input:virtualkeyboard:share_states",
+          "label": "Share key states",
+          "description": "Share key and modifier states between virtual and real keyboards",
+          "type": "enum",
+          "default": "2",
+          "choices": [
+            {
+              "value": "0",
+              "label": "Disable"
+            },
+            {
+              "value": "1",
+              "label": "Enable"
+            },
+            {
+              "value": "2",
+              "label": "Only non ime"
+            }
+          ],
+          "advanced": true
+        },
+        {
+          "key": "input:virtualkeyboard:release_pressed_on_close",
+          "label": "Release keys on close",
+          "description": "Release held keys when a virtual keyboard closes",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        }
+      ]
+    },
+    {
+      "title": "Focus",
+      "description": "How the pointer and closing windows move focus",
+      "options": [
+        {
+          "key": "input:follow_mouse",
+          "label": "Focus follows pointer",
+          "description": "How moving the pointer changes the focused window",
+          "type": "enum",
+          "default": "1",
+          "choices": [
+            {
+              "value": "1",
+              "label": "Focus follows pointer"
+            },
+            {
+              "value": "0",
+              "label": "Click to focus"
+            },
+            {
+              "value": "2",
+              "label": "Pointer moves focus without raising input"
+            },
+            {
+              "value": "3",
+              "label": "Separate pointer and keyboard focus"
+            }
+          ]
+        },
+        {
+          "key": "input:follow_mouse_threshold",
+          "label": "Pointer focus threshold",
+          "description": "Distance the pointer must travel before focus follows it",
+          "type": "int",
+          "default": 0,
+          "min": 0,
+          "max": 500,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "key": "input:follow_mouse_shrink",
+          "label": "Shrink focus areas",
+          "description": "Shrink inactive window hit areas used for focus detection",
+          "type": "int",
+          "default": 0,
+          "min": 0,
+          "max": 300,
+          "unit": "px",
+          "advanced": true
+        },
+        {
+          "key": "input:mouse_refocus",
+          "label": "Refocus on pointer move",
+          "description": "Switch focus to the hovered window even if the pointer has not left the current one",
+          "type": "bool",
+          "default": true
+        },
+        {
+          "key": "input:focus_on_close",
+          "label": "Focus after closing",
+          "description": "Which window gets focus when one is closed",
+          "type": "enum",
+          "default": "0",
+          "choices": [
+            {
+              "value": "0",
+              "label": "Next window"
+            },
+            {
+              "value": "1",
+              "label": "Window under the pointer"
+            },
+            {
+              "value": "2",
+              "label": "Most recently used"
+            }
+          ]
+        },
+        {
+          "key": "input:float_switch_override_focus",
+          "label": "Floating focus switching",
+          "description": "Change focus when the pointer moves between floating and tiled windows",
+          "type": "enum",
+          "default": "1",
+          "choices": [
+            {
+              "value": "0",
+              "label": "Off"
+            },
+            {
+              "value": "1",
+              "label": "Floating to tiled"
+            },
+            {
+              "value": "2",
+              "label": "Both ways"
+            }
+          ]
+        },
+        {
+          "key": "input:special_fallthrough",
+          "label": "Special workspace pass-through",
+          "description": "Let floating windows in the special workspace not block focus below",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        }
+      ]
+    }
+  ]
+}

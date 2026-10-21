@@ -1,0 +1,281 @@
+{
+  "id": "cursor",
+  "title": "Cursor",
+  "icon": "input-mouse-symbolic",
+  "order": 60,
+  "description": "Pointer visibility, warping and zoom",
+  "groups": [
+    {
+      "title": "Visibility",
+      "options": [
+        {
+          "key": "cursor:hide_on_key_press",
+          "label": "Hide while typing",
+          "description": "Hide the cursor when you press a key until the mouse moves",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "cursor:inactive_timeout",
+          "label": "Hide after inactivity",
+          "description": "Hide the cursor after this many seconds without movement. 0 never hides",
+          "type": "int",
+          "default": 0,
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "unit": "s"
+        },
+        {
+          "key": "cursor:hide_on_touch",
+          "label": "Hide on touch",
+          "description": "Hide the cursor while you use the touchscreen",
+          "type": "bool",
+          "default": true
+        },
+        {
+          "key": "cursor:hide_on_tablet",
+          "label": "Hide on tablet",
+          "description": "Hide the cursor while you use a graphics tablet",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "cursor:invisible",
+          "label": "Invisible cursor",
+          "description": "Do not draw the cursor at all",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        }
+      ]
+    },
+    {
+      "title": "Warping",
+      "description": "Moving the cursor to follow focus",
+      "options": [
+        {
+          "key": "cursor:no_warps",
+          "label": "Disable warping",
+          "description": "Never move the cursor automatically",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "cursor:persistent_warps",
+          "label": "Remember position",
+          "description": "Return the cursor to its last position in a window when it is refocused",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "cursor:warp_on_change_workspace",
+          "label": "Warp on workspace change",
+          "description": "Move the cursor to the last focused window after switching workspace",
+          "type": "enum",
+          "default": "0",
+          "choices": [
+            {
+              "value": "0",
+              "label": "Disable"
+            },
+            {
+              "value": "1",
+              "label": "Enable"
+            },
+            {
+              "value": "2",
+              "label": "Force"
+            }
+          ]
+        },
+        {
+          "key": "cursor:warp_on_toggle_special",
+          "label": "Warp on special workspace",
+          "description": "Move the cursor to the last focused window when toggling the special workspace",
+          "type": "enum",
+          "default": "0",
+          "choices": [
+            {
+              "value": "0",
+              "label": "Disable"
+            },
+            {
+              "value": "1",
+              "label": "Enable"
+            },
+            {
+              "value": "2",
+              "label": "Force"
+            }
+          ]
+        },
+        {
+          "key": "cursor:warp_back_after_non_mouse_input",
+          "label": "Warp back after other input",
+          "description": "Return the cursor to where it was after touch or tablet input",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        },
+        {
+          "key": "cursor:default_monitor",
+          "label": "Default monitor",
+          "description": "Monitor the cursor starts on, for example DP-1",
+          "type": "string",
+          "default": "",
+          "advanced": true
+        },
+        {
+          "key": "cursor:hotspot_padding",
+          "label": "Edge padding",
+          "description": "Space kept between the screen edge and the cursor",
+          "type": "int",
+          "default": 0,
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "unit": "px",
+          "advanced": true
+        }
+      ]
+    },
+    {
+      "title": "Zoom",
+      "options": [
+        {
+          "key": "cursor:zoom_factor",
+          "label": "Zoom factor",
+          "description": "Magnification around the cursor. 1 means no zoom",
+          "type": "float",
+          "default": 1.0,
+          "min": 1.0,
+          "max": 10.0,
+          "step": 0.1,
+          "digits": 1
+        },
+        {
+          "key": "cursor:zoom_rigid",
+          "label": "Rigid zoom",
+          "description": "Make the zoomed view follow the cursor exactly",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "cursor:zoom_detached_camera",
+          "label": "Detached camera",
+          "description": "Let the cursor move within the zoomed view before the view follows",
+          "type": "bool",
+          "default": true,
+          "advanced": true
+        },
+        {
+          "key": "cursor:zoom_disable_aa",
+          "label": "Disable antialiasing",
+          "description": "Do not smooth the image when zoomed in",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        }
+      ]
+    },
+    {
+      "title": "Rendering",
+      "options": [
+        {
+          "key": "cursor:no_hardware_cursors",
+          "label": "Hardware cursors",
+          "description": "Use the display hardware to draw the cursor. Disable if it flickers",
+          "type": "enum",
+          "default": "2",
+          "choices": [
+            {
+              "value": "2",
+              "label": "Automatic"
+            },
+            {
+              "value": "0",
+              "label": "Always use hardware"
+            },
+            {
+              "value": "1",
+              "label": "Never use hardware"
+            }
+          ]
+        },
+        {
+          "key": "cursor:enable_hyprcursor",
+          "label": "Hyprcursor themes",
+          "description": "Support the hyprcursor theme format",
+          "type": "bool",
+          "default": true,
+          "advanced": true
+        },
+        {
+          "key": "cursor:sync_gsettings_theme",
+          "label": "Sync GNOME cursor theme",
+          "description": "Apply the cursor theme to gsettings as well",
+          "type": "bool",
+          "default": true,
+          "advanced": true
+        },
+        {
+          "key": "cursor:use_cpu_buffer",
+          "label": "CPU cursor buffer",
+          "description": "Make hardware cursors use a CPU buffer",
+          "type": "enum",
+          "default": "2",
+          "choices": [
+            {
+              "value": "0",
+              "label": "Disable"
+            },
+            {
+              "value": "1",
+              "label": "Enable"
+            },
+            {
+              "value": "2",
+              "label": "Auto"
+            }
+          ],
+          "advanced": true
+        },
+        {
+          "key": "cursor:no_break_fs_vrr",
+          "label": "Keep VRR in fullscreen",
+          "description": "Do not schedule extra frames on cursor movement in fullscreen adaptive-sync apps",
+          "type": "enum",
+          "default": "2",
+          "choices": [
+            {
+              "value": "0",
+              "label": "Disable"
+            },
+            {
+              "value": "1",
+              "label": "Enable"
+            },
+            {
+              "value": "2",
+              "label": "Auto"
+            }
+          ],
+          "advanced": true
+        },
+        {
+          "key": "cursor:min_refresh_rate",
+          "label": "Minimum refresh rate",
+          "description": "Lowest refresh rate used for cursor movement when VRR is kept in fullscreen",
+          "type": "int",
+          "default": 24,
+          "min": 10,
+          "max": 500,
+          "step": 1,
+          "unit": "Hz",
+          "advanced": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "format": "hyprland-mod-preset",
+  "version": 1,
+  "id": "retro",
+  "name": "Retro",
+  "author": "Hyprland Mod",
+  "description": "Square corners, thick solid amber borders, hard offset shadows and plain linear motion.",
+  "tags": [
+    "warm",
+    "sharp",
+    "dark"
+  ],
+  "order": 11,
+  "settings": {
+    "general:gaps_in": "3",
+    "general:gaps_out": "6",
+    "general:border_size": "4",
+    "general:col.active_border": "rgba(ffb000ff)",
+    "general:col.inactive_border": "rgba(5c4a2eff)",
+    "decoration:rounding": "0",
+    "decoration:rounding_power": "2",
+    "decoration:active_opacity": "1.0",
+    "decoration:inactive_opacity": "1.0",
+    "decoration:blur:enabled": "false",
+    "decoration:blur:size": "6",
+    "decoration:blur:passes": "1",
+    "decoration:blur:vibrancy": "0.0",
+    "decoration:blur:noise": "0.0",
+    "decoration:shadow:enabled": "true",
+    "decoration:shadow:range": "1",
+    "decoration:shadow:render_power": "4",
+    "decoration:shadow:color": "rgba(000000ff)",
+    "decoration:shadow:offset": "6 6",
+    "decoration:shadow:sharp": "true",
+    "decoration:dim_inactive": "false",
+    "decoration:dim_strength": "0.2",
+    "animations:enabled": "true"
+  },
+  "lists": {
+    "bezier": [
+      "linear, 0, 0, 1, 1"
+    ],
+    "animation": [
+      "global, 1, 10, default",
+      "windows, 1, 3, linear, slide",
+      "fade, 1, 2, linear",
+      "layers, 1, 2.5, linear, slide",
+      "workspaces, 1, 3, linear, slide",
+      "border, 1, 2, linear",
+      "borderangle, 0"
+    ]
+  },
+  "preview": {
+    "wallpaper": [
+      "#1b1a17",
+      "#3a3226"
+    ],
+    "window": "#1e1c18"
+  }
+}

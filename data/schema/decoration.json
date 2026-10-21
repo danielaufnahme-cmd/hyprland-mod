@@ -1,0 +1,440 @@
+{
+  "id": "decoration",
+  "title": "Decoration",
+  "icon": "preferences-desktop-appearance-symbolic",
+  "order": 20,
+  "description": "Rounding, blur, shadows, glow and opacity",
+  "groups": [
+    {
+      "title": "Corners and opacity",
+      "options": [
+        {
+          "key": "decoration:rounding",
+          "label": "Corner radius",
+          "description": "How round window corners are",
+          "type": "int",
+          "default": 0,
+          "min": 0,
+          "max": 50,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "key": "decoration:rounding_power",
+          "label": "Corner shape",
+          "description": "Curvature of the corners. 2 is a circle, higher values give a squarer look",
+          "type": "float",
+          "default": 2.0,
+          "min": 2.0,
+          "max": 10.0,
+          "step": 0.1,
+          "digits": 1,
+          "advanced": true
+        },
+        {
+          "key": "decoration:active_opacity",
+          "label": "Active window opacity",
+          "description": "Opacity of the focused window",
+          "type": "float",
+          "default": 1.0,
+          "min": 0.0,
+          "max": 1.0,
+          "step": 0.01,
+          "digits": 2
+        },
+        {
+          "key": "decoration:inactive_opacity",
+          "label": "Inactive window opacity",
+          "description": "Opacity of windows that are not focused",
+          "type": "float",
+          "default": 1.0,
+          "min": 0.0,
+          "max": 1.0,
+          "step": 0.01,
+          "digits": 2
+        },
+        {
+          "key": "decoration:fullscreen_opacity",
+          "label": "Fullscreen opacity",
+          "description": "Opacity of fullscreen windows",
+          "type": "float",
+          "default": 1.0,
+          "min": 0.0,
+          "max": 1.0,
+          "step": 0.01,
+          "digits": 2
+        }
+      ]
+    },
+    {
+      "title": "Blur",
+      "description": "Frosted-glass effect behind transparent windows",
+      "options": [
+        {
+          "key": "decoration:blur:enabled",
+          "label": "Blur",
+          "description": "Blur the background behind transparent windows",
+          "type": "bool",
+          "default": true
+        },
+        {
+          "key": "decoration:blur:size",
+          "label": "Blur radius",
+          "description": "Distance of the blur effect. Larger values are blurrier but slower",
+          "type": "int",
+          "default": 8,
+          "min": 1,
+          "max": 20,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "key": "decoration:blur:passes",
+          "label": "Blur passes",
+          "description": "Number of blur iterations. More passes look smoother but cost performance",
+          "type": "int",
+          "default": 1,
+          "min": 1,
+          "max": 6,
+          "step": 1
+        },
+        {
+          "key": "decoration:blur:noise",
+          "label": "Noise",
+          "description": "Amount of grain added to the blurred area",
+          "type": "float",
+          "default": 0.0117,
+          "min": 0.0,
+          "max": 1.0,
+          "step": 0.001,
+          "digits": 3
+        },
+        {
+          "key": "decoration:blur:contrast",
+          "label": "Contrast",
+          "description": "Contrast of the blurred area",
+          "type": "float",
+          "default": 0.8916,
+          "min": 0.0,
+          "max": 2.0,
+          "step": 0.01,
+          "digits": 2
+        },
+        {
+          "key": "decoration:blur:brightness",
+          "label": "Brightness",
+          "description": "Brightness of the blurred area",
+          "type": "float",
+          "default": 1.0,
+          "min": 0.0,
+          "max": 2.0,
+          "step": 0.01,
+          "digits": 2
+        },
+        {
+          "key": "decoration:blur:vibrancy",
+          "label": "Vibrancy",
+          "description": "Color saturation boost of the blurred area",
+          "type": "float",
+          "default": 0.1696,
+          "min": 0.0,
+          "max": 1.0,
+          "step": 0.01,
+          "digits": 2
+        },
+        {
+          "key": "decoration:blur:vibrancy_darkness",
+          "label": "Vibrancy darkness",
+          "description": "How strongly vibrancy applies to dark colors",
+          "type": "float",
+          "default": 0.0,
+          "min": 0.0,
+          "max": 1.0,
+          "step": 0.01,
+          "digits": 2,
+          "advanced": true
+        },
+        {
+          "key": "decoration:blur:xray",
+          "label": "X-ray blur",
+          "description": "Blur only the wallpaper, not windows behind the current one. Faster and uniform",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "decoration:blur:ignore_opacity",
+          "label": "Blur under translucent areas",
+          "description": "Make blur work with windows that use partial opacity",
+          "type": "bool",
+          "default": true
+        },
+        {
+          "key": "decoration:blur:new_optimizations",
+          "label": "Optimized blur",
+          "description": "Use faster blur shortcuts",
+          "type": "bool",
+          "default": true,
+          "advanced": true
+        },
+        {
+          "key": "decoration:blur:special",
+          "label": "Blur special workspace",
+          "description": "Blur behind the special workspace",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        },
+        {
+          "key": "decoration:blur:popups",
+          "label": "Blur popups",
+          "description": "Blur behind popups and context menus",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "decoration:blur:popups_ignorealpha",
+          "label": "Popup blur threshold",
+          "description": "Pixels below this opacity are not blurred in popups",
+          "type": "float",
+          "default": 0.2,
+          "min": 0.0,
+          "max": 1.0,
+          "step": 0.01,
+          "digits": 2,
+          "advanced": true
+        },
+        {
+          "key": "decoration:blur:input_methods",
+          "label": "Blur input methods",
+          "description": "Blur behind input method windows",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        },
+        {
+          "key": "decoration:blur:input_methods_ignorealpha",
+          "label": "Input method blur threshold",
+          "description": "Pixels below this opacity are not blurred in input method windows",
+          "type": "float",
+          "default": 0.2,
+          "min": 0.0,
+          "max": 1.0,
+          "step": 0.01,
+          "digits": 2,
+          "advanced": true
+        }
+      ]
+    },
+    {
+      "title": "Shadow",
+      "options": [
+        {
+          "key": "decoration:shadow:enabled",
+          "label": "Shadow",
+          "description": "Draw drop shadows behind windows",
+          "type": "bool",
+          "default": true
+        },
+        {
+          "key": "decoration:shadow:range",
+          "label": "Shadow size",
+          "description": "How far the shadow reaches from the window",
+          "type": "int",
+          "default": 4,
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "key": "decoration:shadow:color",
+          "label": "Shadow color",
+          "description": "Color of the shadow of the focused window",
+          "type": "color",
+          "default": "rgba(1a1a1aee)"
+        },
+        {
+          "key": "decoration:shadow:color_inactive",
+          "label": "Inactive shadow color",
+          "description": "Color of the shadow of unfocused windows. White means use the normal shadow color",
+          "type": "color",
+          "default": "rgba(ffffffff)"
+        },
+        {
+          "key": "decoration:shadow:offset",
+          "label": "Shadow offset",
+          "description": "Horizontal and vertical shift of the shadow as two numbers, for example 0 5",
+          "type": "vec2",
+          "default": "0 0"
+        },
+        {
+          "key": "decoration:shadow:render_power",
+          "label": "Shadow falloff",
+          "description": "How quickly the shadow fades out. Higher values fade faster",
+          "type": "int",
+          "default": 3,
+          "min": 1,
+          "max": 4,
+          "step": 1
+        },
+        {
+          "key": "decoration:shadow:scale",
+          "label": "Shadow scale",
+          "description": "Size of the shadow relative to the window",
+          "type": "float",
+          "default": 1.0,
+          "min": 0.0,
+          "max": 1.0,
+          "step": 0.01,
+          "digits": 2
+        },
+        {
+          "key": "decoration:shadow:sharp",
+          "label": "Sharp shadow",
+          "description": "Use a hard-edged shadow instead of a smooth one",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        }
+      ]
+    },
+    {
+      "title": "Glow",
+      "description": "Soft light around windows",
+      "options": [
+        {
+          "key": "decoration:glow:enabled",
+          "label": "Glow",
+          "description": "Draw a glow around windows",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "decoration:glow:range",
+          "label": "Glow size",
+          "description": "How far the glow reaches from the window",
+          "type": "int",
+          "default": 10,
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "key": "decoration:glow:color",
+          "label": "Glow color",
+          "description": "Color of the glow of the focused window",
+          "type": "color",
+          "default": "rgba(33ccffee)"
+        },
+        {
+          "key": "decoration:glow:color_inactive",
+          "label": "Inactive glow color",
+          "description": "Color of the glow of unfocused windows",
+          "type": "color",
+          "default": "rgba(ffffffff)"
+        },
+        {
+          "key": "decoration:glow:render_power",
+          "label": "Glow falloff",
+          "description": "How quickly the glow fades out. Higher values fade faster",
+          "type": "int",
+          "default": 3,
+          "min": 1,
+          "max": 4,
+          "step": 1,
+          "advanced": true
+        }
+      ]
+    },
+    {
+      "title": "Dimming",
+      "description": "Darken windows that are not the focus",
+      "options": [
+        {
+          "key": "decoration:dim_inactive",
+          "label": "Dim inactive windows",
+          "description": "Darken windows that are not focused",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "decoration:dim_strength",
+          "label": "Dim strength",
+          "description": "How dark inactive windows become",
+          "type": "float",
+          "default": 0.5,
+          "min": 0.0,
+          "max": 1.0,
+          "step": 0.01,
+          "digits": 2
+        },
+        {
+          "key": "decoration:dim_special",
+          "label": "Dim behind special workspace",
+          "description": "How much the screen is darkened behind the special workspace",
+          "type": "float",
+          "default": 0.2,
+          "min": 0.0,
+          "max": 1.0,
+          "step": 0.01,
+          "digits": 2
+        },
+        {
+          "key": "decoration:dim_around",
+          "label": "Dim around floating windows",
+          "description": "Darkening applied by the dim around window rule",
+          "type": "float",
+          "default": 0.4,
+          "min": 0.0,
+          "max": 1.0,
+          "step": 0.01,
+          "digits": 2
+        },
+        {
+          "key": "decoration:dim_modal",
+          "label": "Dim behind dialogs",
+          "description": "Darken the parent window while a modal dialog is open",
+          "type": "bool",
+          "default": true
+        }
+      ]
+    },
+    {
+      "title": "Motion blur",
+      "options": [
+        {
+          "key": "decoration:motion_blur:enabled",
+          "label": "Motion blur",
+          "description": "Blur fast-moving content to smooth animations",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "decoration:motion_blur:samples",
+          "label": "Motion blur samples",
+          "description": "Number of samples used for motion blur. More is smoother but heavier",
+          "type": "int",
+          "default": 7,
+          "min": 1,
+          "max": 64,
+          "step": 1,
+          "advanced": true
+        }
+      ]
+    },
+    {
+      "title": "Screen shader",
+      "options": [
+        {
+          "key": "decoration:screen_shader",
+          "label": "Screen shader",
+          "description": "Path to a GLSL fragment shader applied to the whole screen. Leave empty for none",
+          "type": "string",
+          "default": "",
+          "advanced": true
+        }
+      ]
+    }
+  ]
+}

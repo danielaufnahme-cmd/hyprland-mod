@@ -1,0 +1,142 @@
+/* Hyprland Mod — calm blue accent regardless of system accent */
+:root {
+  --accent-bg-color: #3584e4;
+  --hm-radius: 14px;
+  --hm-fast: 180ms;
+}
+
+/* ---------- sidebar ---------- */
+.sidebar-search {
+  min-height: 34px;
+}
+
+.navigation-sidebar .sidebar-row {
+  padding: 4px 8px;
+  min-height: 34px;
+  transition: background-color var(--hm-fast) ease-out;
+}
+
+.navigation-sidebar .sidebar-row image {
+  opacity: 0.8;
+}
+
+.navigation-sidebar .sidebar-row:selected image {
+  opacity: 1;
+}
+
+.sidebar-separator {
+  margin: 6px 12px;
+  background: alpha(currentColor, 0.1);
+}
+
+/* ---------- live preview ---------- */
+.preview-group {
+  margin-bottom: 4px;
+}
+
+.preview-card {
+  border-radius: var(--hm-radius);
+  box-shadow: 0 0 0 1px alpha(black, 0.06), 0 2px 6px alpha(black, 0.08), 0 10px 28px alpha(black, 0.10);
+}
+
+.preview-badge {
+  margin: 10px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.82em;
+  font-weight: 600;
+  color: white;
+  background-color: alpha(black, 0.38);
+}
+
+/* ---------- option rows ---------- */
+.reset-button {
+  min-width: 30px;
+  min-height: 30px;
+  padding: 0;
+  margin-left: 2px;
+  color: var(--accent-color);
+}
+
+.option-row.modified {
+  background-image: linear-gradient(to right, alpha(var(--accent-bg-color), 0.9) 3px, transparent 3px);
+}
+
+.color-swatch > button {
+  padding: 4px;
+  min-width: 28px;
+  min-height: 28px;
+}
+
+.gradient-swatch {
+  border-radius: 6px;
+  box-shadow: 0 0 0 1px alpha(currentColor, 0.12);
+  margin-right: 4px;
+}
+
+.small-icon-button {
+  min-width: 28px;
+  min-height: 28px;
+  padding: 0;
+}
+
+@keyframes hm-reveal {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.reveal-in {
+  animation: hm-reveal 220ms ease-out;
+}
+
+.advanced-toggle-group image {
+  opacity: 0.7;
+}
+
+.search-result {
+  transition: background-color var(--hm-fast) ease-out;
+}
+
+.open-page-button {
+  padding: 2px 10px;
+  min-height: 24px;
+  font-size: 0.9em;
+}
+
+/* ---------- apply bar ---------- */
+.apply-bar {
+  padding: 6px 6px 6px 16px;
+  border-radius: 999px;
+  background-color: var(--popover-bg-color);
+  color: var(--popover-fg-color);
+  box-shadow: 0 0 0 1px alpha(black, 0.08), 0 4px 12px alpha(black, 0.12), 0 14px 36px alpha(black, 0.16);
+}
+
+.apply-bar-icon {
+  color: var(--accent-color);
+  margin-right: 4px;
+}
+
+.apply-bar-label {
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+.apply-bar button {
+  border-radius: 999px;
+  padding: 5px 16px;
+  min-height: 26px;
+}
+
+.apply-bar button.suggested-action {
+  padding: 5px 20px;
+}
+
+/* ---------- backups ---------- */
+.backup-icon {
+  color: var(--accent-color);
+}
+
+.empty-row {
+  opacity: 0.75;
+}

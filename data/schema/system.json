@@ -1,0 +1,337 @@
+{
+  "id": "system",
+  "title": "System",
+  "icon": "video-display-symbolic",
+  "order": 110,
+  "description": "Rendering, color management, XWayland and update notices",
+  "groups": [
+    {
+      "title": "Rendering",
+      "options": [
+        {
+          "key": "render:direct_scanout",
+          "label": "Direct scanout",
+          "description": "Send fullscreen apps straight to the screen to cut latency",
+          "type": "enum",
+          "default": "0",
+          "choices": [
+            {
+              "value": "0",
+              "label": "Disable"
+            },
+            {
+              "value": "1",
+              "label": "Enable"
+            },
+            {
+              "value": "2",
+              "label": "Auto"
+            }
+          ]
+        },
+        {
+          "key": "render:new_render_scheduling",
+          "label": "New render scheduling",
+          "description": "Improve frame rates on slow GPUs",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        },
+        {
+          "key": "render:expand_undersized_textures",
+          "label": "Expand undersized textures",
+          "description": "Stretch windows that have not finished resizing",
+          "type": "bool",
+          "default": true,
+          "advanced": true
+        },
+        {
+          "key": "render:xp_mode",
+          "label": "Low-memory mode",
+          "description": "Disable the back buffer and bottom layer rendering",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        },
+        {
+          "key": "render:use_shader_blur_blend",
+          "label": "Shader blur blend",
+          "description": "Experimental blending of blurred backgrounds",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        },
+        {
+          "key": "render:use_fp16",
+          "label": "FP16 buffer",
+          "description": "Use an experimental 16-bit float buffer",
+          "type": "enum",
+          "default": "2",
+          "choices": [
+            {
+              "value": "0",
+              "label": "Disable"
+            },
+            {
+              "value": "1",
+              "label": "Enable"
+            },
+            {
+              "value": "2",
+              "label": "Auto"
+            }
+          ],
+          "advanced": true
+        },
+        {
+          "key": "render:keep_unmodified_copy",
+          "label": "Keep unmodified copy",
+          "description": "Keep an untouched SDR copy for screen sharing",
+          "type": "enum",
+          "default": "2",
+          "choices": [
+            {
+              "value": "0",
+              "label": "Disable"
+            },
+            {
+              "value": "1",
+              "label": "Enable"
+            },
+            {
+              "value": "2",
+              "label": "Auto"
+            }
+          ],
+          "advanced": true
+        },
+        {
+          "key": "render:fp16_sdr_tf",
+          "label": "SDR transfer function",
+          "description": "Transfer function used for the 16-bit buffer in SDR mode",
+          "type": "enum",
+          "default": "0",
+          "choices": [
+            {
+              "value": "0",
+              "label": "Monitor"
+            },
+            {
+              "value": "1",
+              "label": "Linear"
+            }
+          ],
+          "advanced": true
+        },
+        {
+          "key": "render:commit_timing_enabled",
+          "label": "Commit timing protocol",
+          "description": "Enable the commit timing protocol, needs a restart",
+          "type": "bool",
+          "default": true,
+          "advanced": true
+        }
+      ]
+    },
+    {
+      "title": "Color management",
+      "options": [
+        {
+          "key": "render:cm_enabled",
+          "label": "Color management",
+          "description": "Enable color management pipelines, needs a restart",
+          "type": "bool",
+          "default": true
+        },
+        {
+          "key": "render:cm_auto_hdr",
+          "label": "Automatic HDR",
+          "description": "Switch to HDR when a fullscreen app uses it",
+          "type": "enum",
+          "default": "1",
+          "choices": [
+            {
+              "value": "0",
+              "label": "Disable"
+            },
+            {
+              "value": "1",
+              "label": "Hdr"
+            },
+            {
+              "value": "2",
+              "label": "Hdredid"
+            }
+          ]
+        },
+        {
+          "key": "render:cm_sdr_eotf",
+          "label": "SDR transfer function",
+          "description": "Transfer function for showing SDR apps, such as default or srgb",
+          "type": "string",
+          "default": "default",
+          "advanced": true
+        },
+        {
+          "key": "render:send_content_type",
+          "label": "Report content type",
+          "description": "Tell monitors what kind of content is shown so they can switch profile",
+          "type": "bool",
+          "default": true
+        },
+        {
+          "key": "render:icc_vcgt_enabled",
+          "label": "Apply ICC gamma ramps",
+          "description": "Send gamma ramps from ICC profiles to the display",
+          "type": "bool",
+          "default": true,
+          "advanced": true
+        },
+        {
+          "key": "render:non_shader_cm",
+          "label": "Color management without shader",
+          "description": "Use hardware color management where possible",
+          "type": "enum",
+          "default": "3",
+          "choices": [
+            {
+              "value": "0",
+              "label": "Disable"
+            },
+            {
+              "value": "1",
+              "label": "Always"
+            },
+            {
+              "value": "2",
+              "label": "Ondemand"
+            },
+            {
+              "value": "3",
+              "label": "Ignore"
+            }
+          ],
+          "advanced": true
+        },
+        {
+          "key": "render:non_shader_cm_interop",
+          "label": "Hardware color interop",
+          "description": "How non-shader color management works with night light tools",
+          "type": "enum",
+          "default": "2",
+          "choices": [
+            {
+              "value": "0",
+              "label": "Disable"
+            },
+            {
+              "value": "1",
+              "label": "Enable"
+            },
+            {
+              "value": "2",
+              "label": "Auto"
+            }
+          ],
+          "advanced": true
+        },
+        {
+          "key": "render:ctm_animation",
+          "label": "Color transform animation",
+          "description": "Fade when the color transform changes",
+          "type": "enum",
+          "default": "2",
+          "choices": [
+            {
+              "value": "0",
+              "label": "Disable"
+            },
+            {
+              "value": "1",
+              "label": "Enable"
+            },
+            {
+              "value": "2",
+              "label": "Auto"
+            }
+          ],
+          "advanced": true
+        }
+      ]
+    },
+    {
+      "title": "XWayland",
+      "description": "Support for X11 apps",
+      "options": [
+        {
+          "key": "xwayland:enabled",
+          "label": "Enable XWayland",
+          "description": "Run X11 applications",
+          "type": "bool",
+          "default": true
+        },
+        {
+          "key": "xwayland:force_zero_scaling",
+          "label": "Disable scaling",
+          "description": "Render X11 apps unscaled on scaled monitors. They may look sharper but small",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "xwayland:use_nearest_neighbor",
+          "label": "Pixelated scaling",
+          "description": "Use nearest-neighbour filtering for scaled X11 apps",
+          "type": "bool",
+          "default": true,
+          "advanced": true
+        },
+        {
+          "key": "xwayland:create_abstract_socket",
+          "label": "Abstract socket",
+          "description": "Create the abstract Unix socket for XWayland",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        }
+      ]
+    },
+    {
+      "title": "Graphics driver",
+      "options": [
+        {
+          "key": "opengl:nvidia_anti_flicker",
+          "label": "NVIDIA anti-flicker",
+          "description": "Reduce flicker on NVIDIA GPUs, may drop frames at low frame rates",
+          "type": "bool",
+          "default": true
+        }
+      ]
+    },
+    {
+      "title": "Hyprland",
+      "options": [
+        {
+          "key": "ecosystem:no_update_news",
+          "label": "Hide update news",
+          "description": "Do not show news after an update",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "ecosystem:no_donation_nag",
+          "label": "Hide donation reminder",
+          "description": "Do not show donation reminders",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "ecosystem:enforce_permissions",
+          "label": "Enforce permissions",
+          "description": "Require permission rules for sensitive protocols like screen capture",
+          "type": "bool",
+          "default": false
+        }
+      ]
+    }
+  ]
+}

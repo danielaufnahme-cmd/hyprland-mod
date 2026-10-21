@@ -1,0 +1,62 @@
+{
+  "format": "hyprland-mod-preset",
+  "version": 1,
+  "id": "nord",
+  "name": "Nord",
+  "author": "Hyprland Mod",
+  "description": "Arctic frost blues on polar night with gently dimmed background windows.",
+  "tags": [
+    "dark",
+    "cool",
+    "theme"
+  ],
+  "order": 3,
+  "settings": {
+    "general:gaps_in": "5",
+    "general:gaps_out": "12",
+    "general:border_size": "2",
+    "general:col.active_border": "rgba(88c0d0ff) rgba(81a1c1ff) 45deg",
+    "general:col.inactive_border": "rgba(3b4252ff)",
+    "decoration:rounding": "8",
+    "decoration:rounding_power": "2",
+    "decoration:active_opacity": "1.0",
+    "decoration:inactive_opacity": "0.95",
+    "decoration:blur:enabled": "true",
+    "decoration:blur:size": "6",
+    "decoration:blur:passes": "2",
+    "decoration:blur:vibrancy": "0.17",
+    "decoration:blur:noise": "0.0117",
+    "decoration:shadow:enabled": "true",
+    "decoration:shadow:range": "14",
+    "decoration:shadow:render_power": "3",
+    "decoration:shadow:color": "rgba(2e3440aa)",
+    "decoration:shadow:offset": "0 3",
+    "decoration:shadow:sharp": "false",
+    "decoration:dim_inactive": "true",
+    "decoration:dim_strength": "0.15",
+    "animations:enabled": "true"
+  },
+  "lists": {
+    "bezier": [
+      "ease, 0.25, 0.1, 0.25, 1",
+      "easeOut, 0, 0, 0.58, 1"
+    ],
+    "animation": [
+      "global, 1, 10, default",
+      "border, 1, 6, ease",
+      "windows, 1, 4.5, easeOut",
+      "windowsIn, 1, 4.5, easeOut, popin 92%",
+      "windowsOut, 1, 3, ease, popin 92%",
+      "fade, 1, 3.5, ease",
+      "layers, 1, 4, easeOut, fade",
+      "workspaces, 1, 4, easeOut, slide"
+    ]
+  },
+  "preview": {
+    "wallpaper": [
+      "#2e3440",
+      "#4c566a"
+    ],
+    "window": "#2e3440"
+  }
+}

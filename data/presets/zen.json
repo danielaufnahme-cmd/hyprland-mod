@@ -1,0 +1,60 @@
+{
+  "format": "hyprland-mod-preset",
+  "version": 1,
+  "id": "zen",
+  "name": "Zen",
+  "author": "Hyprland Mod",
+  "description": "Nothing but your apps: edge to edge, no borders, no blur, no shadows, barely-there motion.",
+  "tags": [
+    "minimal",
+    "focus",
+    "fast"
+  ],
+  "order": 2,
+  "settings": {
+    "general:gaps_in": "0",
+    "general:gaps_out": "0",
+    "general:border_size": "0",
+    "general:col.active_border": "rgba(d8d8d8ff)",
+    "general:col.inactive_border": "rgba(00000000)",
+    "decoration:rounding": "0",
+    "decoration:rounding_power": "2",
+    "decoration:active_opacity": "1.0",
+    "decoration:inactive_opacity": "1.0",
+    "decoration:blur:enabled": "false",
+    "decoration:blur:size": "6",
+    "decoration:blur:passes": "1",
+    "decoration:blur:vibrancy": "0.0",
+    "decoration:blur:noise": "0.0",
+    "decoration:shadow:enabled": "false",
+    "decoration:shadow:range": "4",
+    "decoration:shadow:render_power": "3",
+    "decoration:shadow:color": "rgba(00000000)",
+    "decoration:shadow:offset": "0 0",
+    "decoration:shadow:sharp": "false",
+    "decoration:dim_inactive": "false",
+    "decoration:dim_strength": "0.2",
+    "animations:enabled": "true"
+  },
+  "lists": {
+    "bezier": [
+      "quick, 0.15, 0, 0.1, 1"
+    ],
+    "animation": [
+      "global, 1, 3, quick",
+      "windows, 1, 2.5, quick, popin 97%",
+      "fade, 1, 2, quick",
+      "layers, 1, 2, quick, fade",
+      "workspaces, 1, 2.5, quick, fade",
+      "border, 0",
+      "borderangle, 0"
+    ]
+  },
+  "preview": {
+    "wallpaper": [
+      "#202224",
+      "#2a2d30"
+    ],
+    "window": "#1b1c1e"
+  }
+}

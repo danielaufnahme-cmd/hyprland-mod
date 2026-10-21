@@ -1,0 +1,286 @@
+{
+  "id": "developer",
+  "title": "Developer",
+  "icon": "applications-engineering-symbolic",
+  "order": 120,
+  "description": "Debugging, experimental features and compatibility workarounds",
+  "groups": [
+    {
+      "title": "Debug overlay",
+      "options": [
+        {
+          "key": "debug:overlay",
+          "label": "Debug overlay",
+          "description": "Show frame time and render statistics",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        },
+        {
+          "key": "debug:damage_blink",
+          "label": "Damage blink",
+          "description": "Flash redrawn areas",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        },
+        {
+          "key": "debug:log_damage",
+          "label": "Log damage",
+          "description": "Log damaged regions",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        },
+        {
+          "key": "debug:damage_tracking",
+          "label": "Damage tracking",
+          "description": "Which parts of the screen are redrawn each frame",
+          "type": "enum",
+          "default": "2",
+          "choices": [
+            {
+              "value": "0",
+              "label": "Disable"
+            },
+            {
+              "value": "1",
+              "label": "Monitor"
+            },
+            {
+              "value": "2",
+              "label": "Full"
+            }
+          ],
+          "advanced": true
+        },
+        {
+          "key": "debug:vfr",
+          "label": "Variable frame rate",
+          "description": "Only redraw when something changes",
+          "type": "bool",
+          "default": true,
+          "advanced": true
+        }
+      ]
+    },
+    {
+      "title": "Logging",
+      "options": [
+        {
+          "key": "debug:disable_logs",
+          "label": "Disable logs",
+          "description": "Do not write the log file",
+          "type": "bool",
+          "default": true,
+          "advanced": true
+        },
+        {
+          "key": "debug:enable_stdout_logs",
+          "label": "Log to stdout",
+          "description": "Also print logs to standard output",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        },
+        {
+          "key": "debug:colored_stdout_logs",
+          "label": "Colored log output",
+          "description": "Use colors in standard output logs",
+          "type": "bool",
+          "default": true,
+          "advanced": true
+        },
+        {
+          "key": "debug:disable_time",
+          "label": "Hide log timestamps",
+          "description": "Omit timestamps from log lines",
+          "type": "bool",
+          "default": true,
+          "advanced": true
+        }
+      ]
+    },
+    {
+      "title": "Error handling",
+      "options": [
+        {
+          "key": "debug:suppress_errors",
+          "label": "Suppress errors",
+          "description": "Hide config error notices",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        },
+        {
+          "key": "debug:error_limit",
+          "label": "Error limit",
+          "description": "Maximum config errors shown",
+          "type": "int",
+          "default": 5,
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "advanced": true
+        },
+        {
+          "key": "debug:error_position",
+          "label": "Error position",
+          "description": "Where config errors appear on screen",
+          "type": "enum",
+          "default": "0",
+          "choices": [
+            {
+              "value": "0",
+              "label": "Top"
+            },
+            {
+              "value": "1",
+              "label": "Bottom"
+            }
+          ],
+          "advanced": true
+        },
+        {
+          "key": "debug:disable_scale_checks",
+          "label": "Skip scale checks",
+          "description": "Allow monitor scales that do not divide evenly",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        }
+      ]
+    },
+    {
+      "title": "Rendering workarounds",
+      "options": [
+        {
+          "key": "debug:full_cm_proto",
+          "label": "Full color management protocol",
+          "description": "Advertise all color management features",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        },
+        {
+          "key": "debug:ds_handle_same_buffer",
+          "label": "Direct scanout same buffer",
+          "description": "Handle clients that resend the same buffer",
+          "type": "bool",
+          "default": true,
+          "advanced": true
+        },
+        {
+          "key": "debug:ds_handle_same_buffer_fifo",
+          "label": "Same buffer with FIFO",
+          "description": "Same as above for FIFO presentation",
+          "type": "bool",
+          "default": true,
+          "advanced": true
+        },
+        {
+          "key": "debug:fifo_pending_workaround",
+          "label": "FIFO pending workaround",
+          "description": "Workaround for stuck FIFO commits",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        },
+        {
+          "key": "debug:render_solitary_wo_damage",
+          "label": "Render solitary without damage",
+          "description": "Redraw a lone window even without damage",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        },
+        {
+          "key": "debug:invalidate_fp16",
+          "label": "Invalidate FP16 buffer",
+          "description": "When to discard the 16-bit buffer",
+          "type": "enum",
+          "default": "1",
+          "choices": [
+            {
+              "value": "0",
+              "label": "Disable"
+            },
+            {
+              "value": "1",
+              "label": "Enable"
+            },
+            {
+              "value": "2",
+              "label": "Auto"
+            }
+          ],
+          "advanced": true
+        }
+      ]
+    },
+    {
+      "title": "Experimental",
+      "options": [
+        {
+          "key": "experimental:wp_cm_1_2",
+          "label": "Color management 1.2",
+          "description": "Enable version 1.2 of the Wayland color management protocol",
+          "type": "bool",
+          "default": true,
+          "advanced": true
+        },
+        {
+          "key": "input-capture:capture_modifiers",
+          "label": "Capture modifiers",
+          "description": "Include modifier keys in input capture",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        },
+        {
+          "key": "input-capture:enforce_barriers",
+          "label": "Enforce barriers",
+          "description": "Respect input capture barriers",
+          "type": "bool",
+          "default": true,
+          "advanced": true
+        }
+      ]
+    },
+    {
+      "title": "Compatibility",
+      "options": [
+        {
+          "key": "quirks:prefer_hdr",
+          "label": "Prefer HDR",
+          "description": "When to prefer HDR output",
+          "type": "enum",
+          "default": "0",
+          "choices": [
+            {
+              "value": "0",
+              "label": "Disable"
+            },
+            {
+              "value": "1",
+              "label": "Enable"
+            },
+            {
+              "value": "2",
+              "label": "Gamescope only"
+            }
+          ],
+          "advanced": true
+        },
+        {
+          "key": "quirks:skip_non_kms_dmabuf_formats",
+          "label": "Skip non-KMS dmabuf formats",
+          "description": "Skip buffer formats the display cannot use directly",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        }
+      ]
+    }
+  ]
+}

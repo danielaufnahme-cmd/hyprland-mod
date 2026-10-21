@@ -1,0 +1,62 @@
+{
+  "format": "hyprland-mod-preset",
+  "version": 1,
+  "id": "everforest",
+  "name": "Everforest",
+  "author": "Hyprland Mod",
+  "description": "Muted forest greens, generous corners and a cozy, low-contrast feel.",
+  "tags": [
+    "dark",
+    "green",
+    "theme"
+  ],
+  "order": 6,
+  "settings": {
+    "general:gaps_in": "6",
+    "general:gaps_out": "12",
+    "general:border_size": "2",
+    "general:col.active_border": "rgba(a7c080ff) rgba(83c092ff) 45deg",
+    "general:col.inactive_border": "rgba(475258ff)",
+    "decoration:rounding": "12",
+    "decoration:rounding_power": "2",
+    "decoration:active_opacity": "1.0",
+    "decoration:inactive_opacity": "0.96",
+    "decoration:blur:enabled": "true",
+    "decoration:blur:size": "5",
+    "decoration:blur:passes": "2",
+    "decoration:blur:vibrancy": "0.17",
+    "decoration:blur:noise": "0.0117",
+    "decoration:shadow:enabled": "true",
+    "decoration:shadow:range": "12",
+    "decoration:shadow:render_power": "3",
+    "decoration:shadow:color": "rgba(1e2326aa)",
+    "decoration:shadow:offset": "0 3",
+    "decoration:shadow:sharp": "false",
+    "decoration:dim_inactive": "false",
+    "decoration:dim_strength": "0.2",
+    "animations:enabled": "true"
+  },
+  "lists": {
+    "bezier": [
+      "ease, 0.25, 0.1, 0.25, 1",
+      "easeOut, 0, 0, 0.58, 1"
+    ],
+    "animation": [
+      "global, 1, 10, default",
+      "border, 1, 6, ease",
+      "windows, 1, 4.5, easeOut",
+      "windowsIn, 1, 4.5, easeOut, popin 92%",
+      "windowsOut, 1, 3, ease, popin 92%",
+      "fade, 1, 3.5, ease",
+      "layers, 1, 4, easeOut, fade",
+      "workspaces, 1, 4, easeOut, slide"
+    ]
+  },
+  "preview": {
+    "wallpaper": [
+      "#2d353b",
+      "#425047"
+    ],
+    "window": "#2d353b"
+  }
+}

@@ -1,0 +1,450 @@
+{
+  "id": "layouts",
+  "title": "Layouts",
+  "icon": "view-grid-symbolic",
+  "order": 70,
+  "description": "Dwindle, master and scrolling layout behaviour",
+  "groups": [
+    {
+      "title": "Dwindle",
+      "description": "Binary tree layout",
+      "options": [
+        {
+          "key": "dwindle:preserve_split",
+          "label": "Preserve split",
+          "description": "Keep the split direction when windows are added or removed",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "dwindle:smart_split",
+          "label": "Smart split",
+          "description": "Choose the split direction by the pointer position inside the window",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "dwindle:force_split",
+          "label": "Split side",
+          "description": "Which side new windows are placed on",
+          "type": "enum",
+          "default": "0",
+          "choices": [
+            {
+              "value": "0",
+              "label": "Follow the mouse"
+            },
+            {
+              "value": "1",
+              "label": "Left or top"
+            },
+            {
+              "value": "2",
+              "label": "Right or bottom"
+            }
+          ]
+        },
+        {
+          "key": "dwindle:default_split_ratio",
+          "label": "Default split ratio",
+          "description": "Initial size of the first window in a split. 1 means an even split",
+          "type": "float",
+          "default": 1.0,
+          "min": 0.1,
+          "max": 1.9,
+          "step": 0.05,
+          "digits": 2
+        },
+        {
+          "key": "dwindle:smart_resizing",
+          "label": "Smart resizing",
+          "description": "Resize the nearest edge to the pointer instead of the bottom right",
+          "type": "bool",
+          "default": true
+        },
+        {
+          "key": "dwindle:use_active_for_splits",
+          "label": "Split the active window",
+          "description": "Split the focused window rather than the one under the pointer",
+          "type": "bool",
+          "default": true
+        },
+        {
+          "key": "dwindle:split_width_multiplier",
+          "label": "Split width multiplier",
+          "description": "Width bias used when deciding the split direction",
+          "type": "float",
+          "default": 1.0,
+          "min": 0.1,
+          "max": 3.0,
+          "step": 0.1,
+          "digits": 1,
+          "advanced": true
+        },
+        {
+          "key": "dwindle:split_bias",
+          "label": "Split bias",
+          "description": "Which window of the split counts as first",
+          "type": "enum",
+          "default": "0",
+          "choices": [
+            {
+              "value": "0",
+              "label": "Directional"
+            },
+            {
+              "value": "1",
+              "label": "Current window"
+            }
+          ],
+          "advanced": true
+        },
+        {
+          "key": "dwindle:special_scale_factor",
+          "label": "Special workspace scale",
+          "description": "Size of windows on the special workspace",
+          "type": "float",
+          "default": 1.0,
+          "min": 0.0,
+          "max": 1.0,
+          "step": 0.05,
+          "digits": 2,
+          "advanced": true
+        },
+        {
+          "key": "dwindle:permanent_direction_override",
+          "label": "Permanent direction override",
+          "description": "Keep a manually chosen split direction instead of using it once",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        },
+        {
+          "key": "dwindle:precise_mouse_move",
+          "label": "Precise window dragging",
+          "description": "Drop dragged windows more precisely onto the hovered area",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        },
+        {
+          "key": "layout:single_window_aspect_ratio",
+          "label": "Single window aspect ratio",
+          "description": "Force a lone window into an aspect ratio, as two numbers like 16 9. 0 0 disables",
+          "type": "vec2",
+          "default": "0 0"
+        },
+        {
+          "key": "layout:single_window_aspect_ratio_tolerance",
+          "label": "Aspect ratio tolerance",
+          "description": "How much the window may differ from the aspect ratio before it is forced",
+          "type": "float",
+          "default": 0.1,
+          "min": 0.0,
+          "max": 1.0,
+          "step": 0.01,
+          "digits": 2,
+          "advanced": true
+        }
+      ]
+    },
+    {
+      "title": "Master",
+      "description": "One main window with a stack",
+      "options": [
+        {
+          "key": "master:mfact",
+          "label": "Main window size",
+          "description": "Share of the screen taken by the main window",
+          "type": "float",
+          "default": 0.55,
+          "min": 0.0,
+          "max": 1.0,
+          "step": 0.01,
+          "digits": 2
+        },
+        {
+          "key": "master:new_status",
+          "label": "New window position",
+          "description": "Where new windows are placed",
+          "type": "enum",
+          "default": "slave",
+          "choices": [
+            {
+              "value": "slave",
+              "label": "In the stack"
+            },
+            {
+              "value": "master",
+              "label": "As the main window"
+            },
+            {
+              "value": "inherit",
+              "label": "Same as the focused window"
+            }
+          ]
+        },
+        {
+          "key": "master:new_on_top",
+          "label": "New windows on top",
+          "description": "Add new windows at the start of the stack",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "master:new_on_active",
+          "label": "New window next to focus",
+          "description": "Place new windows before or after the focused one",
+          "type": "enum",
+          "default": "none",
+          "choices": [
+            {
+              "value": "none",
+              "label": "Off"
+            },
+            {
+              "value": "before",
+              "label": "Before the focused window"
+            },
+            {
+              "value": "after",
+              "label": "After the focused window"
+            }
+          ]
+        },
+        {
+          "key": "master:orientation",
+          "label": "Main window side",
+          "description": "Where the main window sits",
+          "type": "enum",
+          "default": "left",
+          "choices": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            },
+            {
+              "value": "top",
+              "label": "Top"
+            },
+            {
+              "value": "bottom",
+              "label": "Bottom"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            }
+          ]
+        },
+        {
+          "key": "master:smart_resizing",
+          "label": "Smart resizing",
+          "description": "Resize the nearest edge to the pointer",
+          "type": "bool",
+          "default": true
+        },
+        {
+          "key": "master:drop_at_cursor",
+          "label": "Drop at cursor",
+          "description": "Place dragged windows at the cursor position",
+          "type": "bool",
+          "default": true
+        },
+        {
+          "key": "master:always_keep_position",
+          "label": "Keep position",
+          "description": "Keep the main window in place when it is the only one",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        },
+        {
+          "key": "master:focus_master_on_close",
+          "label": "Focus main on close",
+          "description": "Focus the main window after closing a stack window",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        },
+        {
+          "key": "master:allow_small_split",
+          "label": "Allow small splits",
+          "description": "Allow splitting the stack into narrow columns",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        },
+        {
+          "key": "master:slave_count_for_center_master",
+          "label": "Center threshold",
+          "description": "Number of stack windows needed before the main window is centered",
+          "type": "int",
+          "default": 2,
+          "min": 0,
+          "max": 10,
+          "step": 1,
+          "advanced": true
+        },
+        {
+          "key": "master:center_master_fallback",
+          "label": "Fallback side",
+          "description": "Where the main window sits when center orientation has too few windows",
+          "type": "enum",
+          "default": "left",
+          "choices": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            },
+            {
+              "value": "top",
+              "label": "Top"
+            },
+            {
+              "value": "bottom",
+              "label": "Bottom"
+            }
+          ],
+          "advanced": true
+        },
+        {
+          "key": "master:center_ignores_reserved",
+          "label": "Center ignores bars",
+          "description": "Center the main window on the full screen instead of the free area",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        },
+        {
+          "key": "master:special_scale_factor",
+          "label": "Special workspace scale",
+          "description": "Size of windows on the special workspace",
+          "type": "float",
+          "default": 1.0,
+          "min": 0.0,
+          "max": 1.0,
+          "step": 0.05,
+          "digits": 2,
+          "advanced": true
+        }
+      ]
+    },
+    {
+      "title": "Scrolling",
+      "description": "Windows in a horizontal strip of columns",
+      "options": [
+        {
+          "key": "scrolling:column_width",
+          "label": "Column width",
+          "description": "Default width of a column as a share of the screen",
+          "type": "float",
+          "default": 0.5,
+          "min": 0.1,
+          "max": 1.0,
+          "step": 0.01,
+          "digits": 2
+        },
+        {
+          "key": "scrolling:direction",
+          "label": "Scroll direction",
+          "description": "The direction the strip of columns extends",
+          "type": "enum",
+          "default": "right",
+          "choices": [
+            {
+              "value": "right",
+              "label": "Right"
+            },
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "down",
+              "label": "Down"
+            },
+            {
+              "value": "up",
+              "label": "Up"
+            }
+          ]
+        },
+        {
+          "key": "scrolling:follow_focus",
+          "label": "Follow focus",
+          "description": "Scroll the view to the focused column",
+          "type": "bool",
+          "default": true
+        },
+        {
+          "key": "scrolling:focus_fit_method",
+          "label": "Focus fit method",
+          "description": "How the focused column is brought into view",
+          "type": "enum",
+          "default": "1",
+          "choices": [
+            {
+              "value": "1",
+              "label": "Fit into view"
+            },
+            {
+              "value": "0",
+              "label": "Center"
+            }
+          ]
+        },
+        {
+          "key": "scrolling:follow_min_visible",
+          "label": "Minimum visible part",
+          "description": "How much of a column must be visible before the view follows",
+          "type": "float",
+          "default": 0.4,
+          "min": 0.0,
+          "max": 1.0,
+          "step": 0.05,
+          "digits": 2,
+          "advanced": true
+        },
+        {
+          "key": "scrolling:fullscreen_on_one_column",
+          "label": "Fullscreen single column",
+          "description": "Let a lone column fill the whole screen",
+          "type": "bool",
+          "default": true
+        },
+        {
+          "key": "scrolling:wrap_focus",
+          "label": "Wrap focus",
+          "description": "Moving focus past the last column continues at the first",
+          "type": "bool",
+          "default": true
+        },
+        {
+          "key": "scrolling:wrap_swapcol",
+          "label": "Wrap column swapping",
+          "description": "Swapping columns past the end wraps around",
+          "type": "bool",
+          "default": true,
+          "advanced": true
+        },
+        {
+          "key": "scrolling:explicit_column_widths",
+          "label": "Column width presets",
+          "description": "Widths the resize binding cycles through, separated by commas",
+          "type": "string",
+          "default": "0.333, 0.5, 0.667, 1.0",
+          "advanced": true
+        }
+      ]
+    }
+  ]
+}

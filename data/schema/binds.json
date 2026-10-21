@@ -1,0 +1,154 @@
+{
+  "id": "binds",
+  "title": "Key bindings",
+  "icon": "preferences-desktop-keyboard-shortcuts-symbolic",
+  "order": 100,
+  "description": "How shortcuts and workspace switching behave",
+  "groups": [
+    {
+      "title": "Workspaces",
+      "options": [
+        {
+          "key": "binds:workspace_back_and_forth",
+          "label": "Back and forth",
+          "description": "Switching to the current workspace returns to the previous one",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "binds:allow_workspace_cycles",
+          "label": "Remember previous workspace",
+          "description": "Workspaces remember where you came from",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "binds:hide_special_on_workspace_change",
+          "label": "Hide special workspace",
+          "description": "Changing workspace also hides the special workspace",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "binds:workspace_center_on",
+          "label": "Center cursor on",
+          "description": "Where the cursor is placed when switching workspaces",
+          "type": "enum",
+          "default": "1",
+          "choices": [
+            {
+              "value": "0",
+              "label": "Active workspace"
+            },
+            {
+              "value": "1",
+              "label": "Last window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Focus and movement",
+      "options": [
+        {
+          "key": "binds:movefocus_cycles_fullscreen",
+          "label": "Cycle fullscreen windows",
+          "description": "Moving focus from a fullscreen window cycles through windows",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "binds:movefocus_cycles_groupfirst",
+          "label": "Cycle within group first",
+          "description": "Moving focus cycles through group tabs before leaving the group",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "binds:window_direction_monitor_fallback",
+          "label": "Cross monitors",
+          "description": "Moving a window or focus past a monitor edge continues on the next monitor",
+          "type": "bool",
+          "default": true
+        },
+        {
+          "key": "binds:focus_preferred_method",
+          "label": "Focus search method",
+          "description": "How the next window is picked when moving focus in a direction",
+          "type": "enum",
+          "default": "0",
+          "choices": [
+            {
+              "value": "0",
+              "label": "History"
+            },
+            {
+              "value": "1",
+              "label": "Length"
+            }
+          ]
+        },
+        {
+          "key": "binds:allow_pin_fullscreen",
+          "label": "Fullscreen pinned windows",
+          "description": "Allow pinned windows to be fullscreen",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        },
+        {
+          "key": "binds:ignore_group_lock",
+          "label": "Ignore group lock",
+          "description": "Group commands work even on locked groups",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        }
+      ]
+    },
+    {
+      "title": "Mouse binds",
+      "options": [
+        {
+          "key": "binds:pass_mouse_when_bound",
+          "label": "Pass clicks through binds",
+          "description": "Also send a bound mouse click to the app under the cursor",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "binds:scroll_event_delay",
+          "label": "Scroll delay",
+          "description": "How long to wait after a scroll event before passing the next one",
+          "type": "int",
+          "default": 300,
+          "min": 0,
+          "max": 2000,
+          "step": 10,
+          "unit": "ms"
+        },
+        {
+          "key": "binds:drag_threshold",
+          "label": "Drag threshold",
+          "description": "Pointer travel needed before a click turns into a drag. 0 disables",
+          "type": "int",
+          "default": 0,
+          "min": 0,
+          "max": 1000,
+          "step": 1,
+          "unit": "px",
+          "advanced": true
+        },
+        {
+          "key": "binds:disable_keybind_grabbing",
+          "label": "Block keybind grabbing",
+          "description": "Do not let apps disable your shortcuts",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        }
+      ]
+    }
+  ]
+}

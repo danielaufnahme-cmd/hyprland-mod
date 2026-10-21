@@ -1,0 +1,449 @@
+{
+  "id": "groups",
+  "title": "Groups",
+  "icon": "view-app-grid-symbolic",
+  "order": 80,
+  "description": "Tabbed window groups and their title bars",
+  "groups": [
+    {
+      "title": "Behaviour",
+      "options": [
+        {
+          "key": "group:auto_group",
+          "label": "Group automatically",
+          "description": "Put newly opened windows into the focused group",
+          "type": "bool",
+          "default": true
+        },
+        {
+          "key": "group:insert_after_current",
+          "label": "Insert after current",
+          "description": "Place new windows after the current tab instead of at the end",
+          "type": "bool",
+          "default": true
+        },
+        {
+          "key": "group:focus_removed_window",
+          "label": "Focus removed window",
+          "description": "Focus a window after it leaves a group",
+          "type": "bool",
+          "default": true
+        },
+        {
+          "key": "group:drag_into_group",
+          "label": "Drag into group",
+          "description": "Whether dragging a window onto a group merges it",
+          "type": "enum",
+          "default": "1",
+          "choices": [
+            {
+              "value": "0",
+              "label": "Off"
+            },
+            {
+              "value": "1",
+              "label": "Anywhere on the group"
+            },
+            {
+              "value": "2",
+              "label": "Only on the title bar"
+            }
+          ]
+        },
+        {
+          "key": "group:merge_groups_on_drag",
+          "label": "Merge groups by dragging",
+          "description": "Allow dragging one group into another",
+          "type": "bool",
+          "default": true
+        },
+        {
+          "key": "group:merge_groups_on_groupbar",
+          "label": "Merge groups on title bar",
+          "description": "Merge groups when one is dragged onto the other title bar",
+          "type": "bool",
+          "default": true
+        },
+        {
+          "key": "group:merge_floated_into_tiled_on_groupbar",
+          "label": "Merge floating into tiled",
+          "description": "Allow dragging a floating window into a tiled group title bar",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        },
+        {
+          "key": "group:group_on_movetoworkspace",
+          "label": "Group on move to workspace",
+          "description": "Merge windows into the target workspace group when moved there",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        }
+      ]
+    },
+    {
+      "title": "Group borders",
+      "options": [
+        {
+          "key": "group:col.border_active",
+          "label": "Active border",
+          "description": "Border color of the active group",
+          "type": "gradient",
+          "default": "rgba(ffff0066)"
+        },
+        {
+          "key": "group:col.border_inactive",
+          "label": "Inactive border",
+          "description": "Border color of inactive groups",
+          "type": "gradient",
+          "default": "rgba(77770066)"
+        },
+        {
+          "key": "group:col.border_locked_active",
+          "label": "Active locked border",
+          "description": "Border color of the active locked group",
+          "type": "gradient",
+          "default": "rgba(77550066)"
+        },
+        {
+          "key": "group:col.border_locked_inactive",
+          "label": "Inactive locked border",
+          "description": "Border color of inactive locked groups",
+          "type": "gradient",
+          "default": "rgba(ff550066)"
+        }
+      ]
+    },
+    {
+      "title": "Title bar",
+      "options": [
+        {
+          "key": "group:groupbar:enabled",
+          "label": "Show title bar",
+          "description": "Show a tab bar on each group",
+          "type": "bool",
+          "default": true
+        },
+        {
+          "key": "group:groupbar:render_titles",
+          "label": "Show window titles",
+          "description": "Draw window titles in the tab bar",
+          "type": "bool",
+          "default": true
+        },
+        {
+          "key": "group:groupbar:disable_when_only",
+          "label": "Hide for single windows",
+          "description": "Hide the tab bar when the group has one window",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "group:groupbar:height",
+          "label": "Bar height",
+          "description": "Height of the title bar",
+          "type": "int",
+          "default": 14,
+          "min": 1,
+          "max": 64,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "key": "group:groupbar:font_family",
+          "label": "Font",
+          "description": "Font for titles. Empty uses the default font",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "key": "group:groupbar:font_size",
+          "label": "Font size",
+          "description": "Size of the title text",
+          "type": "int",
+          "default": 8,
+          "min": 2,
+          "max": 64,
+          "step": 1,
+          "unit": "pt"
+        },
+        {
+          "key": "group:groupbar:font_weight_active",
+          "label": "Active font weight",
+          "description": "Weight of the active title text, such as normal or bold",
+          "type": "string",
+          "default": "400",
+          "advanced": true
+        },
+        {
+          "key": "group:groupbar:font_weight_inactive",
+          "label": "Inactive font weight",
+          "description": "Weight of inactive title text",
+          "type": "string",
+          "default": "400",
+          "advanced": true
+        },
+        {
+          "key": "group:groupbar:stacked",
+          "label": "Stacked bar",
+          "description": "Show the tabs as a vertical stack",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        },
+        {
+          "key": "group:groupbar:scrolling",
+          "label": "Scroll to switch tab",
+          "description": "Scrolling over the bar changes the active window",
+          "type": "bool",
+          "default": true
+        },
+        {
+          "key": "group:groupbar:middle_click_close",
+          "label": "Middle click to close",
+          "description": "Middle click a tab to close its window",
+          "type": "bool",
+          "default": true
+        },
+        {
+          "key": "group:groupbar:blur",
+          "label": "Blur background",
+          "description": "Blur behind the title bar",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        },
+        {
+          "key": "group:groupbar:priority",
+          "label": "Decoration priority",
+          "description": "Order of the bar among other window decorations",
+          "type": "int",
+          "default": 3,
+          "min": 0,
+          "max": 6,
+          "step": 1,
+          "advanced": true
+        }
+      ]
+    },
+    {
+      "title": "Title bar colors",
+      "options": [
+        {
+          "key": "group:groupbar:col.active",
+          "label": "Active tab",
+          "description": "Color of the active tab",
+          "type": "gradient",
+          "default": "rgba(ffff0066)"
+        },
+        {
+          "key": "group:groupbar:col.inactive",
+          "label": "Inactive tab",
+          "description": "Color of inactive tabs",
+          "type": "gradient",
+          "default": "rgba(77770066)"
+        },
+        {
+          "key": "group:groupbar:col.locked_active",
+          "label": "Active locked tab",
+          "description": "Color of the active tab in a locked group",
+          "type": "gradient",
+          "default": "rgba(ff550066)"
+        },
+        {
+          "key": "group:groupbar:col.locked_inactive",
+          "label": "Inactive locked tab",
+          "description": "Color of inactive tabs in a locked group",
+          "type": "gradient",
+          "default": "rgba(77550066)"
+        },
+        {
+          "key": "group:groupbar:text_color",
+          "label": "Text color",
+          "description": "Color of tab titles",
+          "type": "color",
+          "default": "rgba(ffffffff)"
+        },
+        {
+          "key": "group:groupbar:text_color_inactive",
+          "label": "Inactive text color",
+          "description": "Color of inactive tab titles. Empty uses the text color",
+          "type": "color",
+          "default": ""
+        },
+        {
+          "key": "group:groupbar:text_color_locked_active",
+          "label": "Active locked text color",
+          "description": "Color of the active title in a locked group. Empty uses the text color",
+          "type": "color",
+          "default": ""
+        },
+        {
+          "key": "group:groupbar:text_color_locked_inactive",
+          "label": "Inactive locked text color",
+          "description": "Color of inactive titles in a locked group. Empty uses the text color",
+          "type": "color",
+          "default": ""
+        }
+      ]
+    },
+    {
+      "title": "Title bar shape",
+      "options": [
+        {
+          "key": "group:groupbar:gradients",
+          "label": "Gradient tabs",
+          "description": "Draw tabs with gradients",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        },
+        {
+          "key": "group:groupbar:rounding",
+          "label": "Bar rounding",
+          "description": "Corner radius of the bar",
+          "type": "int",
+          "default": 1,
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "unit": "px",
+          "advanced": true
+        },
+        {
+          "key": "group:groupbar:rounding_power",
+          "label": "Bar corner shape",
+          "description": "Curvature of the bar corners. 2 is a circle",
+          "type": "float",
+          "default": 2.0,
+          "min": 2.0,
+          "max": 10.0,
+          "step": 0.1,
+          "digits": 1,
+          "advanced": true
+        },
+        {
+          "key": "group:groupbar:round_only_edges",
+          "label": "Round only outer edges",
+          "description": "Round just the outer edges of the bar",
+          "type": "bool",
+          "default": true,
+          "advanced": true
+        },
+        {
+          "key": "group:groupbar:gradient_rounding",
+          "label": "Tab rounding",
+          "description": "Corner radius of tab gradients",
+          "type": "int",
+          "default": 2,
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "unit": "px",
+          "advanced": true
+        },
+        {
+          "key": "group:groupbar:gradient_rounding_power",
+          "label": "Tab corner shape",
+          "description": "Curvature of tab gradient corners",
+          "type": "float",
+          "default": 2.0,
+          "min": 2.0,
+          "max": 10.0,
+          "step": 0.1,
+          "digits": 1,
+          "advanced": true
+        },
+        {
+          "key": "group:groupbar:gradient_round_only_edges",
+          "label": "Round only outer tab edges",
+          "description": "Round just the outer edges of tab gradients",
+          "type": "bool",
+          "default": true,
+          "advanced": true
+        },
+        {
+          "key": "group:groupbar:gaps_in",
+          "label": "Gap between tabs",
+          "description": "Space between tabs",
+          "type": "int",
+          "default": 2,
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "unit": "px",
+          "advanced": true
+        },
+        {
+          "key": "group:groupbar:gaps_out",
+          "label": "Gap to window",
+          "description": "Space between the tabs and the window",
+          "type": "int",
+          "default": 2,
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "unit": "px",
+          "advanced": true
+        },
+        {
+          "key": "group:groupbar:keep_upper_gap",
+          "label": "Keep upper gap",
+          "description": "Keep the gap above the tab bar",
+          "type": "bool",
+          "default": true,
+          "advanced": true
+        },
+        {
+          "key": "group:groupbar:indicator_height",
+          "label": "Indicator height",
+          "description": "Height of the colored tab indicator",
+          "type": "int",
+          "default": 3,
+          "min": 1,
+          "max": 64,
+          "step": 1,
+          "unit": "px",
+          "advanced": true
+        },
+        {
+          "key": "group:groupbar:indicator_gap",
+          "label": "Indicator gap",
+          "description": "Space between the indicator and the title",
+          "type": "int",
+          "default": 0,
+          "min": 0,
+          "max": 64,
+          "step": 1,
+          "unit": "px",
+          "advanced": true
+        },
+        {
+          "key": "group:groupbar:text_offset",
+          "label": "Text offset",
+          "description": "Vertical shift of the title text",
+          "type": "int",
+          "default": 0,
+          "min": -20,
+          "max": 20,
+          "step": 1,
+          "unit": "px",
+          "advanced": true
+        },
+        {
+          "key": "group:groupbar:text_padding",
+          "label": "Text padding",
+          "description": "Horizontal padding of the title text",
+          "type": "int",
+          "default": 0,
+          "min": 0,
+          "max": 22,
+          "step": 1,
+          "unit": "px",
+          "advanced": true
+        }
+      ]
+    }
+  ]
+}

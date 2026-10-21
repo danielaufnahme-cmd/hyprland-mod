@@ -1,0 +1,30 @@
+{
+  "id": "animations",
+  "title": "Animations",
+  "icon": "media-playback-start-symbolic",
+  "order": 30,
+  "description": "Turn animations on or off",
+  "groups": [
+    {
+      "title": "Animations",
+      "description": "Individual animation curves and speeds are defined with animation and bezier lines in the config",
+      "options": [
+        {
+          "key": "animations:enabled",
+          "label": "Enable animations",
+          "description": "Animate windows, workspaces and layers",
+          "type": "bool",
+          "default": true
+        },
+        {
+          "key": "animations:workspace_wraparound",
+          "label": "Wrap around workspaces",
+          "description": "Make switching past the last workspace in an animation wrap around to the first",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        }
+      ]
+    }
+  ]
+}

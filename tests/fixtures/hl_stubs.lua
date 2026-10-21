@@ -1,0 +1,14 @@
+-- Tiny excerpt in the format of /usr/share/hypr/stubs/hl.meta.lua (test fixture).
+---@class HL.ConfigValueTypes
+---@field ['animations.enabled'] boolean
+---@field ['decoration.blur.enabled'] boolean
+---@field ['decoration.blur.size'] integer|boolean
+---@field ['decoration.blur.vibrancy'] number|boolean
+---@field ['decoration.rounding'] integer|boolean
+---@field ['decoration.shadow.color'] string|HL.Gradient
+---@field ['decoration.shadow.offset'] HL.Vec2Like
+---@field ['general.col.active_border'] string|HL.Gradient
+---@field ['general.gaps_out'] integer|HL.CssGap
+---@field ['general.layout'] string
+---@field ['input.kb_layout'] string
+---@field ['misc.vfr'] boolean

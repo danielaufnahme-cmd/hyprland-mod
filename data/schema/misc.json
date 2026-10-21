@@ -1,0 +1,412 @@
+{
+  "id": "misc",
+  "title": "Miscellaneous",
+  "icon": "preferences-other-symbolic",
+  "order": 90,
+  "description": "Wallpaper, power saving, window swallowing and other behaviour",
+  "groups": [
+    {
+      "title": "Appearance",
+      "options": [
+        {
+          "key": "misc:disable_hyprland_logo",
+          "label": "Hide logo",
+          "description": "Hide the Hyprland logo on the empty background",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "misc:force_default_wallpaper",
+          "label": "Default wallpaper",
+          "description": "Choose one of the built-in wallpapers when no wallpaper is set",
+          "type": "enum",
+          "default": "-1",
+          "choices": [
+            {
+              "value": "-1",
+              "label": "Random"
+            },
+            {
+              "value": "0",
+              "label": "Wallpaper 1"
+            },
+            {
+              "value": "1",
+              "label": "Wallpaper 2"
+            },
+            {
+              "value": "2",
+              "label": "Wallpaper 3"
+            }
+          ]
+        },
+        {
+          "key": "misc:background_color",
+          "label": "Background color",
+          "description": "Color shown when no wallpaper is set",
+          "type": "color",
+          "default": "rgba(111111ff)"
+        },
+        {
+          "key": "misc:font_family",
+          "label": "Interface font",
+          "description": "Font used for Hyprland own text",
+          "type": "string",
+          "default": "Sans"
+        },
+        {
+          "key": "misc:disable_splash_rendering",
+          "label": "Hide splash text",
+          "description": "Hide the splash text on the background",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "misc:splash_font_family",
+          "label": "Splash font",
+          "description": "Font used for the splash text",
+          "type": "string",
+          "default": "",
+          "advanced": true
+        },
+        {
+          "key": "misc:col.splash",
+          "label": "Splash color",
+          "description": "Color of the splash text",
+          "type": "color",
+          "default": "rgba(ffffff55)",
+          "advanced": true
+        }
+      ]
+    },
+    {
+      "title": "Display and power",
+      "options": [
+        {
+          "key": "misc:vrr",
+          "label": "Adaptive sync",
+          "description": "Variable refresh rate for your monitors",
+          "type": "enum",
+          "default": "0",
+          "choices": [
+            {
+              "value": "0",
+              "label": "Off"
+            },
+            {
+              "value": "1",
+              "label": "Always on"
+            },
+            {
+              "value": "2",
+              "label": "Fullscreen only"
+            },
+            {
+              "value": "3",
+              "label": "Fullscreen games only"
+            }
+          ]
+        },
+        {
+          "key": "misc:mouse_move_enables_dpms",
+          "label": "Wake on mouse move",
+          "description": "Turn displays back on when the mouse moves",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "misc:key_press_enables_dpms",
+          "label": "Wake on key press",
+          "description": "Turn displays back on when a key is pressed",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "misc:render_unfocused_fps",
+          "label": "Unfocused frame rate",
+          "description": "Maximum frame rate of windows in the background",
+          "type": "int",
+          "default": 15,
+          "min": 1,
+          "max": 120,
+          "step": 1,
+          "unit": "fps",
+          "advanced": true
+        }
+      ]
+    },
+    {
+      "title": "Windows",
+      "description": "Opening, focusing and fullscreen",
+      "options": [
+        {
+          "key": "misc:enable_swallow",
+          "label": "Swallow windows",
+          "description": "Hide a terminal while a program it launched is running",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "misc:swallow_regex",
+          "label": "Swallow class pattern",
+          "description": "Regular expression matching classes of windows that swallow their parent",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "key": "misc:swallow_exception_regex",
+          "label": "Swallow title exceptions",
+          "description": "Regular expression matching titles of windows that must not be swallowed",
+          "type": "string",
+          "default": "",
+          "advanced": true
+        },
+        {
+          "key": "misc:focus_on_activate",
+          "label": "Focus requested windows",
+          "description": "Focus windows that ask to be focused",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "misc:initial_workspace_tracking",
+          "label": "Open on invoking workspace",
+          "description": "Open windows on the workspace they were launched from",
+          "type": "enum",
+          "default": "1",
+          "choices": [
+            {
+              "value": "0",
+              "label": "Off"
+            },
+            {
+              "value": "1",
+              "label": "Single window"
+            },
+            {
+              "value": "2",
+              "label": "Persistent"
+            }
+          ]
+        },
+        {
+          "key": "misc:initial_workspace_token_timeout",
+          "label": "Launch tracking timeout",
+          "description": "How long a launched window may take to open on its workspace",
+          "type": "int",
+          "default": 10,
+          "min": 1,
+          "max": 3600,
+          "step": 1,
+          "unit": "s",
+          "advanced": true
+        },
+        {
+          "key": "misc:on_focus_under_fullscreen",
+          "label": "Focus behind fullscreen",
+          "description": "What happens when a window behind a fullscreen window gets focus",
+          "type": "enum",
+          "default": "2",
+          "choices": [
+            {
+              "value": "0",
+              "label": "Ignore"
+            },
+            {
+              "value": "1",
+              "label": "Take over fullscreen"
+            },
+            {
+              "value": "2",
+              "label": "Leave fullscreen"
+            }
+          ]
+        },
+        {
+          "key": "misc:exit_window_retains_fullscreen",
+          "label": "Keep fullscreen on close",
+          "description": "Fullscreen the next window when a fullscreen window closes",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "misc:close_special_on_empty",
+          "label": "Close empty special workspace",
+          "description": "Close the special workspace when its last window closes",
+          "type": "bool",
+          "default": true
+        },
+        {
+          "key": "misc:mouse_move_focuses_monitor",
+          "label": "Pointer switches monitor focus",
+          "description": "Focus a monitor when the pointer moves onto it",
+          "type": "bool",
+          "default": true
+        },
+        {
+          "key": "misc:size_limits_tiled",
+          "label": "Size limits for tiled windows",
+          "description": "Apply minimum and maximum size rules to tiled windows",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        },
+        {
+          "key": "misc:always_follow_on_dnd",
+          "label": "Follow pointer while dragging",
+          "description": "Move focus with the pointer during drag and drop",
+          "type": "bool",
+          "default": true,
+          "advanced": true
+        },
+        {
+          "key": "misc:layers_hog_keyboard_focus",
+          "label": "Panels keep keyboard focus",
+          "description": "Keep keyboard-interactive panels focused until they release it",
+          "type": "bool",
+          "default": true,
+          "advanced": true
+        },
+        {
+          "key": "misc:animate_manual_resizes",
+          "label": "Animate manual resizes",
+          "description": "Animate windows being resized by hand",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "misc:animate_mouse_windowdragging",
+          "label": "Animate window dragging",
+          "description": "Animate windows dragged with the mouse",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "misc:middle_click_paste",
+          "label": "Middle click paste",
+          "description": "Paste the primary selection with middle click",
+          "type": "bool",
+          "default": true
+        }
+      ]
+    },
+    {
+      "title": "Lock screen",
+      "options": [
+        {
+          "key": "misc:allow_session_lock_restore",
+          "label": "Allow lock screen restart",
+          "description": "Allow restarting a lock screen app after it crashes",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "misc:session_lock_xray",
+          "label": "Show workspaces behind lock",
+          "description": "Keep rendering workspaces below the lock screen",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        },
+        {
+          "key": "misc:session_lock_blur",
+          "label": "Blur lock screen",
+          "description": "Blur the lock screen, requires the lock layer to be blurred",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        },
+        {
+          "key": "misc:lockdead_screen_delay",
+          "label": "Lock fallback delay",
+          "description": "Delay before the fallback screen appears if the lock app dies",
+          "type": "int",
+          "default": 1000,
+          "min": 0,
+          "max": 5000,
+          "step": 100,
+          "unit": "ms",
+          "advanced": true
+        }
+      ]
+    },
+    {
+      "title": "Notifications and warnings",
+      "options": [
+        {
+          "key": "misc:enable_anr_dialog",
+          "label": "Unresponsive app dialog",
+          "description": "Offer to close apps that stop responding",
+          "type": "bool",
+          "default": true
+        },
+        {
+          "key": "misc:anr_missed_pings",
+          "label": "Unresponsive threshold",
+          "description": "Missed pings before an app is declared unresponsive",
+          "type": "int",
+          "default": 5,
+          "min": 1,
+          "max": 20,
+          "step": 1,
+          "advanced": true
+        },
+        {
+          "key": "misc:disable_autoreload",
+          "label": "Disable auto reload",
+          "description": "Do not reload the config automatically when it changes",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "misc:disable_scale_notification",
+          "label": "Hide scale warnings",
+          "description": "Do not warn when a monitor scale cannot be applied",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        },
+        {
+          "key": "misc:disable_xdg_env_checks",
+          "label": "Skip XDG environment check",
+          "description": "Do not warn if the XDG environment is managed externally",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        },
+        {
+          "key": "misc:disable_hyprland_guiutils_check",
+          "label": "Skip guiutils check",
+          "description": "Do not warn if hyprland-guiutils is missing",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        },
+        {
+          "key": "misc:disable_watchdog_warning",
+          "label": "Skip watchdog warning",
+          "description": "Do not warn about not starting through start-hyprland",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        },
+        {
+          "key": "misc:name_vk_after_proc",
+          "label": "Name virtual keyboards",
+          "description": "Name virtual keyboards after the process that made them",
+          "type": "bool",
+          "default": true,
+          "advanced": true
+        },
+        {
+          "key": "misc:screencopy_force_8b",
+          "label": "Force 8-bit screencopy",
+          "description": "Force 8-bit color for screen capture",
+          "type": "bool",
+          "default": true,
+          "advanced": true
+        }
+      ]
+    }
+  ]
+}

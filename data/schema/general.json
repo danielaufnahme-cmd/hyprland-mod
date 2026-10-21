@@ -1,0 +1,282 @@
+{
+  "id": "general",
+  "title": "General",
+  "icon": "preferences-system-symbolic",
+  "order": 10,
+  "description": "Layout, gaps, borders and window resizing",
+  "groups": [
+    {
+      "title": "Layout",
+      "options": [
+        {
+          "key": "general:layout",
+          "label": "Tiling layout",
+          "description": "How new windows are arranged on a workspace",
+          "type": "enum",
+          "default": "dwindle",
+          "choices": [
+            {
+              "value": "dwindle",
+              "label": "Dwindle (binary tree)"
+            },
+            {
+              "value": "master",
+              "label": "Master (main and stack)"
+            },
+            {
+              "value": "scrolling",
+              "label": "Scrolling (columns)"
+            }
+          ]
+        },
+        {
+          "key": "general:no_focus_fallback",
+          "label": "Stay on last window",
+          "description": "Do not move focus to a neighbouring window when no window exists in the requested direction",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        },
+        {
+          "key": "general:modal_parent_blocking",
+          "label": "Block parent of dialogs",
+          "description": "Prevent interacting with a window while one of its modal dialogs is open",
+          "type": "bool",
+          "default": true
+        },
+        {
+          "key": "general:locale",
+          "label": "Locale override",
+          "description": "Locale used by Hyprland for its own messages, such as en_US. Leave empty for the system default",
+          "type": "string",
+          "default": "",
+          "advanced": true
+        }
+      ]
+    },
+    {
+      "title": "Gaps",
+      "description": "Spacing between windows and screen edges",
+      "options": [
+        {
+          "key": "general:gaps_in",
+          "label": "Gap between windows",
+          "description": "Space between neighbouring windows",
+          "type": "int",
+          "default": 5,
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "key": "general:gaps_out",
+          "label": "Gap to screen edges",
+          "description": "Space between windows and the edges of the screen",
+          "type": "int",
+          "default": 20,
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "key": "general:gaps_workspaces",
+          "label": "Gap between workspaces",
+          "description": "Extra space between workspaces while switching, useful for workspace animations",
+          "type": "int",
+          "default": 0,
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "key": "general:float_gaps",
+          "label": "Gap for floating windows",
+          "description": "Outer gap for floating windows. Use 0 to use none",
+          "type": "int",
+          "default": 0,
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "advanced": true
+        }
+      ]
+    },
+    {
+      "title": "Borders",
+      "options": [
+        {
+          "key": "general:border_size",
+          "label": "Border width",
+          "description": "Thickness of the border around windows",
+          "type": "int",
+          "default": 1,
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "key": "general:col.active_border",
+          "label": "Active border color",
+          "description": "Border color of the focused window",
+          "type": "gradient",
+          "default": "rgba(ffffffff)"
+        },
+        {
+          "key": "general:col.inactive_border",
+          "label": "Inactive border color",
+          "description": "Border color of windows that are not focused",
+          "type": "gradient",
+          "default": "rgba(444444ff)"
+        },
+        {
+          "key": "general:col.nogroup_border",
+          "label": "No-group border color",
+          "description": "Border color of windows that cannot be grouped",
+          "type": "gradient",
+          "default": "rgba(ffaaffff)",
+          "advanced": true
+        },
+        {
+          "key": "general:col.nogroup_border_active",
+          "label": "Active no-group border color",
+          "description": "Border color of the focused window that cannot be grouped",
+          "type": "gradient",
+          "default": "rgba(ff00ffff)",
+          "advanced": true
+        },
+        {
+          "key": "decoration:border_part_of_window",
+          "label": "Border counts as window",
+          "description": "Treat the border as part of the window, so that rounding and opacity apply to it",
+          "type": "bool",
+          "default": true,
+          "advanced": true
+        }
+      ]
+    },
+    {
+      "title": "Resizing",
+      "description": "Dragging window edges and snapping",
+      "options": [
+        {
+          "key": "general:resize_on_border",
+          "label": "Resize by dragging borders",
+          "description": "Drag the border of a window with the mouse to resize it",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "general:extend_border_grab_area",
+          "label": "Border grab area",
+          "description": "How far outside the border the pointer can grab a window to resize it",
+          "type": "int",
+          "default": 15,
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "key": "general:hover_icon_on_border",
+          "label": "Resize cursor on borders",
+          "description": "Show a resize cursor when hovering over a window border",
+          "type": "bool",
+          "default": true
+        },
+        {
+          "key": "general:resize_corner",
+          "label": "Resize corner for floating windows",
+          "description": "Force a corner when resizing floating windows with the keyboard or a tiled layout. Disabled picks the nearest corner",
+          "type": "enum",
+          "default": "0",
+          "choices": [
+            {
+              "value": "0",
+              "label": "Disable"
+            },
+            {
+              "value": "1",
+              "label": "Top left"
+            },
+            {
+              "value": "2",
+              "label": "Top right"
+            },
+            {
+              "value": "3",
+              "label": "Bottom right"
+            },
+            {
+              "value": "4",
+              "label": "Bottom left"
+            }
+          ]
+        },
+        {
+          "key": "general:allow_tearing",
+          "label": "Allow tearing",
+          "description": "Let fullscreen games lower input latency by presenting frames without vsync. Requires a matching window rule",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        }
+      ]
+    },
+    {
+      "title": "Window snapping",
+      "description": "Snap floating windows to each other and to screen edges",
+      "options": [
+        {
+          "key": "general:snap:enabled",
+          "label": "Snap floating windows",
+          "description": "Snap floating windows to other windows and monitor edges while moving them",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "general:snap:window_gap",
+          "label": "Window snap distance",
+          "description": "How close a window must get to another window before it snaps",
+          "type": "int",
+          "default": 10,
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "key": "general:snap:monitor_gap",
+          "label": "Screen edge snap distance",
+          "description": "How close a window must get to a screen edge before it snaps",
+          "type": "int",
+          "default": 10,
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "key": "general:snap:border_overlap",
+          "label": "Overlap borders when snapping",
+          "description": "Let the borders of snapped windows overlap instead of sitting side by side",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        },
+        {
+          "key": "general:snap:respect_gaps",
+          "label": "Respect gaps when snapping",
+          "description": "Keep the configured gaps when windows snap to each other or to screen edges",
+          "type": "bool",
+          "default": false,
+          "advanced": true
+        }
+      ]
+    }
+  ]
+}
