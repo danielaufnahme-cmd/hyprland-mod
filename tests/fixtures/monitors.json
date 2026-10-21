@@ -1,0 +1,9 @@
+[
+ {"id": 0, "name": "DP-1", "description": "Example Monitor Co. Panel 27 0001", "make": "Example Monitor Co.",
+  "model": "Panel 27", "width": 2560, "height": 1440, "refreshRate": 239.97, "x": 0, "y": 0,
+  "scale": 1, "transform": 0, "focused": true, "disabled": false, "vrr": false,
+  "availableModes": ["2560x1440@239.97Hz", "2560x1440@120.00Hz", "1920x1080@60.00Hz"]},
+ {"id": 1, "name": "HDMI-A-1", "description": "Other Display 24", "make": "Other", "model": "Display 24",
+  "width": 1920, "height": 1080, "refreshRate": 60.0, "x": 2560, "y": 0, "scale": 1.25, "transform": 0,
+  "focused": false, "disabled": false, "availableModes": ["1920x1080@60.00Hz"]}
+]

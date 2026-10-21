@@ -17,10 +17,11 @@ def _haystack(page, group, opt):
 
 
 class SearchPage(Adw.Bin):
-    def __init__(self, cm, pages, on_open_page):
+    def __init__(self, cm, pages, on_open_page, extra_pages=()):
         super().__init__()
         self.cm = cm
         self.pages = pages
+        self.extra_pages = list(extra_pages)
         self.on_open_page = on_open_page
         self.rows = []
         self._stack = Gtk.Stack(transition_type=Gtk.StackTransitionType.CROSSFADE, transition_duration=150)
@@ -37,6 +38,20 @@ class SearchPage(Adw.Bin):
         self.rows = []
         prefs = Adw.PreferencesPage()
         count = 0
+        # whole pages (shortcuts, displays...) matched by name or keyword
+        page_hits = [p for p in self.extra_pages
+                     if all(t in " ".join(p[1:2] + p[3:]).lower() for t in tokens)]
+        if page_hits:
+            group = Adw.PreferencesGroup(title="Pages")
+            for pid, title, icon, desc, _kw in page_hits:
+                row = Adw.ActionRow(title=GLib.markup_escape_text(title), subtitle=GLib.markup_escape_text(desc),
+                                    activatable=True)
+                row.add_prefix(Gtk.Image(icon_name=icon))
+                row.add_suffix(Gtk.Image(icon_name="go-next-symbolic"))
+                row.add_css_class("search-result")
+                row.connect("activated", lambda _r, p=pid: self.on_open_page(p))
+                group.add(row)
+            prefs.add(group)
         for page in self.pages:
             matches = []
             for g in page.get("groups", []):
@@ -59,9 +74,10 @@ class SearchPage(Adw.Bin):
                 self.rows.append(row)
                 count += 1
             prefs.add(group)
-        if count:
+        if count or page_hits:
             prefs.add(bottom_spacer())
-            prefs.set_description(f"{count} matching setting{'s' if count != 1 else ''}")
+            if count:
+                prefs.set_description(f"{count} matching setting{'s' if count != 1 else ''}")
             self._results_holder.set_child(prefs)
             self._stack.set_visible_child_name("results")
         else:

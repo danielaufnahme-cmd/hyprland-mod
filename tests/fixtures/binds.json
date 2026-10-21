@@ -1,0 +1,14 @@
+[
+ {"locked": false, "mouse": false, "release": false, "repeat": false, "longPress": false,
+  "non_consuming": false, "has_description": false, "modmask": 64, "submap": "", "key": "Q",
+  "keycode": 0, "catch_all": false, "description": "", "dispatcher": "__lua", "arg": "3"},
+ {"locked": true, "mouse": false, "release": false, "repeat": true, "longPress": false,
+  "non_consuming": false, "has_description": true, "modmask": 65, "submap": "", "key": "C",
+  "keycode": 0, "catch_all": false, "description": "Close it", "dispatcher": "killactive", "arg": ""},
+ {"locked": false, "mouse": false, "release": false, "repeat": false, "longPress": false,
+  "non_consuming": false, "has_description": false, "modmask": 64, "submap": "", "key": "left",
+  "keycode": 0, "catch_all": false, "description": "", "dispatcher": "movefocus", "arg": "l"},
+ {"locked": false, "mouse": false, "release": false, "repeat": false, "longPress": false,
+  "non_consuming": false, "has_description": false, "modmask": 0, "submap": "resize", "key": "Escape",
+  "keycode": 0, "catch_all": false, "description": "", "dispatcher": "submap", "arg": "reset"}
+]

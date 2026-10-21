@@ -1,0 +1,71 @@
+{
+  "format": "hyprland-mod-bar",
+  "version": 1,
+  "id": "gruvbox",
+  "name": "Gruvbox",
+  "description": "Warm retro capsules with an orange accent.",
+  "tags": [
+    "dark",
+    "colorful",
+    "retro"
+  ],
+  "order": 7,
+  "bar": {
+    "position": "top",
+    "style": "pills",
+    "floating": false,
+    "height": 34,
+    "radius": 8,
+    "spacing": 6,
+    "padding": 10,
+    "border": 2,
+    "font": "FantasqueSansM Nerd Font",
+    "font_size": 14,
+    "font_weight": "bold",
+    "background": "#282828",
+    "foreground": "#ebdbb2",
+    "accent": "#fe8019",
+    "opacity": 1.0,
+    "icons": true,
+    "modules": {
+      "left": [
+        {
+          "type": "workspaces",
+          "options": {}
+        }
+      ],
+      "center": [
+        {
+          "type": "window",
+          "options": {}
+        }
+      ],
+      "right": [
+        {
+          "type": "cpu",
+          "options": {}
+        },
+        {
+          "type": "memory",
+          "options": {}
+        },
+        {
+          "type": "temperature",
+          "options": {}
+        },
+        {
+          "type": "pulseaudio",
+          "options": {}
+        },
+        {
+          "type": "battery",
+          "options": {}
+        },
+        {
+          "type": "clock",
+          "options": {}
+        }
+      ]
+    }
+  }
+}

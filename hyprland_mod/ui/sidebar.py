@@ -4,9 +4,28 @@ from gi.repository import Adw, Gdk, Gtk
 
 FIXED_PAGES = [
     ("presets", "Presets", "starred-symbolic"),
+    ("bar", "Bar", "view-continuous-symbolic"),
+    ("keybinds", "Keyboard Shortcuts", "preferences-desktop-keyboard-symbolic"),
+    ("rules", "Window Rules", "focus-windows-symbolic"),
+    ("monitors", "Displays", "view-dual-symbolic"),
     ("transfer", "Import & Export", "document-send-symbolic"),
     ("backups", "Backups", "document-open-recent-symbolic"),
 ]
+
+# Extra words global search matches for the fixed pages: (id, title, icon, description, keywords)
+_KEYWORDS = {
+    "presets": ("Ready-made looks and your saved presets", "theme look style gallery"),
+    "bar": ("Design and run your top bar", "waybar panel status clock tray widgets modules"),
+    "keybinds": ("Add shortcuts that launch apps, switch workspaces and more",
+                 "keybind keybinding bind hotkey key shortcut keyboard launch"),
+    "rules": ("Make apps open floating, sized or on a workspace",
+              "window rule windowrule float size workspace opacity app class"),
+    "monitors": ("Arrange screens, resolution, refresh rate and scale",
+                 "display monitor screen resolution refresh rate hz scale scaling rotation arrange"),
+    "transfer": ("Move your setup to another computer", "import export share file"),
+    "backups": ("Snapshots of your configuration", "backup restore snapshot undo"),
+}
+PAGE_INFO = [(pid, title, icon, *_KEYWORDS.get(pid, ("", ""))) for pid, title, icon in FIXED_PAGES]
 
 
 def _icon(name):
@@ -45,7 +64,7 @@ class Sidebar(Adw.NavigationPage):
         self.list.set_header_func(self._header)
         self.list.connect("row-selected", self._selected)
 
-        scroller = Gtk.ScrolledWindow(hscrollbar_policy=Gtk.PolicyType.NEVER, vexpand=True, child=self.list)
+        self.scroller = scroller = Gtk.ScrolledWindow(hscrollbar_policy=Gtk.PolicyType.NEVER, vexpand=True, child=self.list)
         tv = Adw.ToolbarView()
         tv.add_top_bar(header)
         tv.add_top_bar(search_box)
@@ -83,3 +102,7 @@ class Sidebar(Adw.NavigationPage):
                 self.list.unselect_all()
         finally:
             self._silent = False
+
+    def scroll_to_end(self):
+        adj = self.scroller.get_vadjustment()
+        adj.set_value(adj.get_upper() - adj.get_page_size())

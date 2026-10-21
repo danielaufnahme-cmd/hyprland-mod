@@ -1,0 +1,72 @@
+{
+  "format": "hyprland-mod-bar",
+  "version": 1,
+  "id": "nord",
+  "name": "Nord",
+  "description": "Cool arctic blues on a slate floating bar.",
+  "tags": [
+    "dark",
+    "colorful"
+  ],
+  "order": 6,
+  "bar": {
+    "position": "top",
+    "style": "solid",
+    "floating": true,
+    "margin": 6,
+    "height": 32,
+    "radius": 10,
+    "spacing": 6,
+    "padding": 12,
+    "font": "JetBrainsMono Nerd Font",
+    "font_size": 13,
+    "font_weight": "medium",
+    "background": "#2e3440",
+    "foreground": "#d8dee9",
+    "accent": "#88c0d0",
+    "opacity": 0.95,
+    "icons": true,
+    "modules": {
+      "left": [
+        {
+          "type": "workspaces",
+          "options": {
+            "style": "roman"
+          }
+        },
+        {
+          "type": "window",
+          "options": {}
+        }
+      ],
+      "center": [
+        {
+          "type": "clock",
+          "options": {}
+        }
+      ],
+      "right": [
+        {
+          "type": "pulseaudio",
+          "options": {}
+        },
+        {
+          "type": "network",
+          "options": {}
+        },
+        {
+          "type": "bluetooth",
+          "options": {}
+        },
+        {
+          "type": "battery",
+          "options": {}
+        },
+        {
+          "type": "tray",
+          "options": {}
+        }
+      ]
+    }
+  }
+}

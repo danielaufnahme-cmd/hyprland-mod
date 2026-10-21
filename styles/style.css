@@ -140,3 +140,93 @@
 .empty-row {
   opacity: 0.75;
 }
+
+/* ---------- keyboard shortcuts ---------- */
+.keycap {
+  padding: 1px 7px;
+  min-width: 12px;
+  min-height: 20px;
+  border-radius: 6px;
+  font-size: 0.85em;
+  font-weight: 600;
+  background-color: alpha(currentColor, 0.07);
+  box-shadow: inset 0 0 0 1px alpha(currentColor, 0.12), inset 0 -2px alpha(currentColor, 0.10);
+}
+
+.keycap-plus {
+  font-size: 0.8em;
+  opacity: 0.45;
+}
+
+.keycaps.large .keycap {
+  padding: 5px 14px;
+  min-height: 30px;
+  min-width: 22px;
+  border-radius: 9px;
+  font-size: 1.15em;
+}
+
+.keycaps.large .keycap-plus {
+  font-size: 1em;
+}
+
+.shortcut-recorder {
+  min-height: 120px;
+  border-radius: 12px;
+  background-color: var(--card-bg-color);
+  box-shadow: 0 0 0 1px alpha(currentColor, 0.08);
+  transition: box-shadow var(--hm-fast) ease-out, background-color var(--hm-fast) ease-out;
+}
+
+.shortcut-recorder:hover {
+  background-color: alpha(var(--card-bg-color), 0.6);
+  box-shadow: 0 0 0 1px alpha(currentColor, 0.14);
+}
+
+.shortcut-recorder.recording {
+  box-shadow: 0 0 0 2px var(--accent-bg-color);
+  animation: hm-listen 1.4s ease-in-out infinite;
+}
+
+@keyframes hm-listen {
+  0%, 100% { box-shadow: 0 0 0 2px alpha(#3584e4, 0.9); }
+  50%      { box-shadow: 0 0 0 2px alpha(#3584e4, 0.45), 0 0 0 6px alpha(#3584e4, 0.12); }
+}
+
+.bind-row.readonly .keycap {
+  background-color: alpha(currentColor, 0.05);
+}
+
+/* ---------- window rules ---------- */
+.rule-summary {
+  padding: 14px 16px;
+  border-radius: 12px;
+  background-color: alpha(var(--accent-bg-color), 0.10);
+  font-weight: 600;
+}
+
+.rule-summary-icon,
+.rule-icon {
+  color: var(--accent-color);
+}
+
+.dim-row > box {
+  opacity: 0.6;
+}
+
+/* ---------- displays ---------- */
+.monitor-canvas-card {
+  border-radius: var(--hm-radius);
+  background-color: var(--card-bg-color);
+  box-shadow: 0 0 0 1px alpha(black, 0.06), 0 1px 3px alpha(black, 0.06);
+}
+
+.pill-small {
+  border-radius: 999px;
+  padding: 5px 18px;
+}
+
+.rule-icon {
+  border-radius: 9px;
+  background-color: alpha(var(--accent-bg-color), 0.12);
+}

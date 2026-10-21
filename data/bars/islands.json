@@ -1,0 +1,72 @@
+{
+  "format": "hyprland-mod-bar",
+  "version": 1,
+  "id": "islands",
+  "name": "Islands",
+  "description": "Separate floating islands for each side.",
+  "tags": [
+    "dark",
+    "floating"
+  ],
+  "order": 2,
+  "bar": {
+    "position": "top",
+    "style": "islands",
+    "floating": true,
+    "margin": 8,
+    "height": 34,
+    "radius": 12,
+    "spacing": 8,
+    "padding": 12,
+    "font": "JetBrainsMono Nerd Font",
+    "font_size": 13,
+    "font_weight": "bold",
+    "background": "#15171c",
+    "foreground": "#e6e8ec",
+    "accent": "#33c7de",
+    "opacity": 0.88,
+    "icons": true,
+    "modules": {
+      "left": [
+        {
+          "type": "workspaces",
+          "options": {}
+        }
+      ],
+      "center": [
+        {
+          "type": "clock",
+          "options": {
+            "format": "day-24h"
+          }
+        }
+      ],
+      "right": [
+        {
+          "type": "cpu",
+          "options": {}
+        },
+        {
+          "type": "memory",
+          "options": {}
+        },
+        {
+          "type": "network",
+          "options": {}
+        },
+        {
+          "type": "pulseaudio",
+          "options": {}
+        },
+        {
+          "type": "battery",
+          "options": {}
+        },
+        {
+          "type": "tray",
+          "options": {}
+        }
+      ]
+    }
+  }
+}

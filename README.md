@@ -29,9 +29,14 @@
 
 - **350 settings in 12 pages** - General, Decoration, Animations, Input, Gestures, Cursor, Layouts, Groups, Miscellaneous, Key bindings, System and Developer - with global search.
 - **Live animated preview** of gaps, borders, rounding, blur, shadows and animations.
-- **Presets** - 12 built-in looks: Clean, Glass, Zen, Nord, Gruvbox, Tokyo Night, Everforest, Rosé Pine Dawn, Monochrome, Neon, Bubbly and Retro. Save your own, share them, import others. Imported presets are safety-checked: they can only change look-only settings and never run commands.
+- **Presets** - 33 built-in looks: Clean, Glass, Zen, Nord, Gruvbox, Tokyo Night, Everforest, Rosé Pine Dawn, Monochrome, Neon, Bubbly and Retro. Save your own, share them, import others. Imported presets are safety-checked: they can only change look-only settings and never run commands.
 - **Whole-setup export / import** - move your entire configuration to another machine.
 - **Safe writes** - only its own `hyprland-mod.lua` / `hyprland-mod.conf` plus a single include line.
+- **Bar builder for Waybar** - 10 bar presets, 18 modules, drag and drop, live preview, start-on-login switch. Writes only `~/.config/waybar/hyprland-mod/` and warns if another bar such as Caelestia is running.
+- **Keyboard shortcuts editor** - key recorder, 40 actions, app picker, conflict warnings, and a read-only view of the shortcuts already in your config.
+- **Window rules builder** - match by app or title; float, size, center, opacity, workspace, pin and more, with a plain-English summary.
+- **Displays** - drag to arrange monitors, set resolution, refresh rate, scale and rotation, with a 15 second "Keep these settings?" auto-revert.
+- **Autostart** - choose what launches with your session.
 - **Automatic backups, undo / redo and one-click restore.**
 - **Lua and classic `.conf`** Hyprland configs are both supported.
 
@@ -67,7 +72,32 @@
   </tr>
 </table>
 
-<img src="docs/screenshots/general-light.png" width="600" alt="General page with live preview">
+<table>
+  <tr>
+    <td><img src="docs/screenshots/presets-gallery.png" alt="33 built-in presets"></td>
+    <td><img src="docs/screenshots/bar-builder.png" alt="Waybar bar builder"></td>
+  </tr>
+  <tr>
+    <td align="center"><sub>33 built-in presets</sub></td>
+    <td align="center"><sub>Bar builder with live preview</sub></td>
+  </tr>
+  <tr>
+    <td><img src="docs/screenshots/keybind-editor.png" alt="Keyboard shortcut editor"></td>
+    <td><img src="docs/screenshots/window-rules.png" alt="Window rules builder"></td>
+  </tr>
+  <tr>
+    <td align="center"><sub>Keyboard shortcuts with a key recorder</sub></td>
+    <td align="center"><sub>Window rules in plain English</sub></td>
+  </tr>
+  <tr>
+    <td><img src="docs/screenshots/displays.png" alt="Displays arrangement"></td>
+    <td><img src="docs/screenshots/displays-revert.png" alt="Keep these settings prompt"></td>
+  </tr>
+  <tr>
+    <td align="center"><sub>Drag to arrange displays</sub></td>
+    <td align="center"><sub>15 s auto-revert safety net</sub></td>
+  </tr>
+</table>
 
 ## Install
 
@@ -135,11 +165,10 @@ Yes: undo/redo inside the app, restore any backup, or uninstall and remove the i
 
 ## Roadmap
 
-- Bar builder
-- Keybind editor
-- Monitor layout
-- Window rules
-- More presets
+- Community preset gallery
+- Per-side gaps
+- Plugin manager
+- More bar backends
 
 ## Contributing
 

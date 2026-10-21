@@ -1,0 +1,62 @@
+{
+  "format": "hyprland-mod-preset",
+  "version": 1,
+  "id": "dracula-teal",
+  "name": "Dracula Teal",
+  "author": "Hyprland Mod",
+  "description": "Dracula's dark base, but with cyan and green accents instead of purple.",
+  "tags": [
+    "dark",
+    "colorful",
+    "theme"
+  ],
+  "order": 15,
+  "settings": {
+    "general:gaps_in": "5",
+    "general:gaps_out": "14",
+    "general:border_size": "2",
+    "general:col.active_border": "rgba(8be9fdff) rgba(50fa7bff) 45deg",
+    "general:col.inactive_border": "rgba(44475aff)",
+    "decoration:rounding": "10",
+    "decoration:rounding_power": "2",
+    "decoration:active_opacity": "1.0",
+    "decoration:inactive_opacity": "0.96",
+    "decoration:blur:enabled": "true",
+    "decoration:blur:size": "6",
+    "decoration:blur:passes": "2",
+    "decoration:blur:vibrancy": "0.17",
+    "decoration:blur:noise": "0.0117",
+    "decoration:shadow:enabled": "true",
+    "decoration:shadow:range": "20",
+    "decoration:shadow:render_power": "3",
+    "decoration:shadow:color": "rgba(1a1b26cc)",
+    "decoration:shadow:offset": "0 3",
+    "decoration:shadow:sharp": "false",
+    "decoration:dim_inactive": "false",
+    "decoration:dim_strength": "0.2",
+    "animations:enabled": "true"
+  },
+  "lists": {
+    "bezier": [
+      "ease, 0.25, 0.1, 0.25, 1",
+      "easeOut, 0, 0, 0.58, 1"
+    ],
+    "animation": [
+      "global, 1, 10, default",
+      "border, 1, 6, ease",
+      "windows, 1, 4.5, easeOut",
+      "windowsIn, 1, 4.5, easeOut, popin 92%",
+      "windowsOut, 1, 3, ease, popin 92%",
+      "fade, 1, 3.5, ease",
+      "layers, 1, 4, easeOut, fade",
+      "workspaces, 1, 4, easeOut, slide"
+    ]
+  },
+  "preview": {
+    "wallpaper": [
+      "#282a36",
+      "#44475a"
+    ],
+    "window": "#282a36"
+  }
+}

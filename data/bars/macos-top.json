@@ -1,0 +1,71 @@
+{
+  "format": "hyprland-mod-bar",
+  "version": 1,
+  "id": "macos-top",
+  "name": "macOS-like Top",
+  "description": "A frosted light menu bar with the clock on the right.",
+  "tags": [
+    "light",
+    "minimal"
+  ],
+  "order": 4,
+  "bar": {
+    "position": "top",
+    "style": "solid",
+    "floating": false,
+    "height": 26,
+    "radius": 0,
+    "spacing": 6,
+    "padding": 12,
+    "border": 0,
+    "font": "Adwaita Sans",
+    "font_size": 13,
+    "font_weight": "medium",
+    "background": "#f6f6f8",
+    "foreground": "#1d1d1f",
+    "accent": "#007aff",
+    "opacity": 0.78,
+    "icons": true,
+    "modules": {
+      "left": [
+        {
+          "type": "power",
+          "options": {}
+        },
+        {
+          "type": "window",
+          "options": {}
+        }
+      ],
+      "center": [],
+      "right": [
+        {
+          "type": "tray",
+          "options": {}
+        },
+        {
+          "type": "bluetooth",
+          "options": {}
+        },
+        {
+          "type": "network",
+          "options": {}
+        },
+        {
+          "type": "pulseaudio",
+          "options": {}
+        },
+        {
+          "type": "battery",
+          "options": {}
+        },
+        {
+          "type": "clock",
+          "options": {
+            "format": "full"
+          }
+        }
+      ]
+    }
+  }
+}

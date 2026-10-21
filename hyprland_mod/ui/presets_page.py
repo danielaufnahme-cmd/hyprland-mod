@@ -15,7 +15,7 @@ CSS_PATH = Path(__file__).resolve().parent.parent.parent / "styles" / "presets.c
 _css_loaded = False
 
 FILTERS = [("all", "All"), ("dark", "Dark"), ("light", "Light"), ("minimal", "Minimal"),
-           ("colorful", "Colorful"), ("animated", "Animated")]
+           ("colorful", "Colorful"), ("animated", "Animated"), ("fast", "Fast")]
 
 
 def load_css():
@@ -98,15 +98,26 @@ class PresetThumbnail(Gtk.DrawingArea):
         self.set_overflow(Gtk.Overflow.HIDDEN)
         self.set_can_target(False)
         self.preset = preset
-        self.set_draw_func(self._draw)
+        self._cache = None  # (w, h, surface): drawn once, then replayed (hover redraws stay cheap)
+        self.set_draw_func(self._draw_cached)
 
     def _val(self, key, default):
         v = self.preset.settings.get(key)
         return default if v is None else v
 
-    def _draw(self, _area, cr, w, h):
+    def _draw_cached(self, _area, cr, w, h):
         if w <= 0 or h <= 0:
             return
+        if self._cache is None or self._cache[:2] != (w, h):
+            scale = self.get_scale_factor()
+            surf = cairo.ImageSurface(cairo.FORMAT_ARGB32, w * scale, h * scale)
+            surf.set_device_scale(scale, scale)
+            self._draw(cairo.Context(surf), w, h)
+            self._cache = (w, h, surf)
+        cr.set_source_surface(self._cache[2], 0, 0)
+        cr.paint()
+
+    def _draw(self, cr, w, h):
         get = self._val
         meta = self.preset.preview or {}
         wall = [_hex(c) for c in meta.get("wallpaper") or ["#26384a", "#3b6074"]]
@@ -272,9 +283,13 @@ class PresetCard(Gtk.FlowBoxChild):
                              natural_wrap_mode=Gtk.NaturalWrapMode.WORD, width_chars=12, max_width_chars=12)
             desc.add_css_class("preset-desc")
             body.append(desc)
-        tags = list(preset.tags[:4]) or ([] if preset.builtin else ["mine"])
-        if tags:
+        tags = list(preset.tags[:4]) or ([] if preset.builtin or preset.original else ["mine"])
+        if tags or preset.original:
             wrap = Adw.WrapBox(child_spacing=4, line_spacing=4, margin_top=4, natural_line_length=160)
+            if preset.original:
+                orig = Gtk.Label(label="Original")
+                orig.add_css_class("preset-original-tag")
+                wrap.append(orig)
             for t in tags:
                 lbl = Gtk.Label(label=t)
                 lbl.add_css_class("preset-tag")
@@ -298,6 +313,8 @@ class PresetCard(Gtk.FlowBoxChild):
 
     def matches_filter(self, tag, query):
         p = self.preset
+        if p.original:  # pinned: always reachable
+            return True
         if tag != "all" and tag not in p.tags:
             return False
         if query:
@@ -361,6 +378,10 @@ class PresetsPage(Adw.Bin):
         head.append(sub)
         outer.append(head)
 
+        # the way back: shown whenever Hyprland Mod overrides the user's own look
+        self.back_banner = self._back_banner()
+        outer.append(self.back_banner)
+
         # live preview
         self.preview = LivePreview(cm)
         self.preview.set_options(self.options)
@@ -395,6 +416,16 @@ class PresetsPage(Adw.Bin):
             chip.connect("toggled", lambda b, t=tag: b.get_active() and self._set_tag(t))
             bar.append(chip)
         outer.append(bar)
+
+        # pinned original look (first on the page, outside the filters)
+        self.original_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10, visible=False)
+        self.original_box.append(section_header("Your Original Look"))
+        self.original_grid = _grid()
+        self.original_grid.set_halign(Gtk.Align.START)  # one card: keep it card-sized
+        self.original_grid.connect("child-activated", lambda _fb, child: self.go_back_to_original())
+        self.original_box.append(self.original_grid)
+        outer.insert_child_after(self.original_box, frame)
+        self.original_card = None
 
         # built-in section
         self.builtin_count = Gtk.Label()
@@ -434,12 +465,32 @@ class PresetsPage(Adw.Bin):
         self.user_empty = self._empty_state()
         outer.append(self.user_empty)
         self.user_cards = []
+        presets.ensure_original(cm, self.options)  # first launch: remember the user's own look
         self.reload_user()
 
         cm.subscribe(self._on_cm_event)
         self.connect("map", lambda *_: (self.preview.update(animate=False), self._refresh_state()))
 
     # -- building blocks -------------------------------------------------
+
+    def _back_banner(self):
+        box = Gtk.Box(spacing=12, visible=False)
+        box.add_css_class("original-banner")
+        text = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=2, hexpand=True, valign=Gtk.Align.CENTER)
+        t = Gtk.Label(label="Want your own look back?", xalign=0)
+        t.add_css_class("heading")
+        d = Gtk.Label(label="Removes Hyprland Mod's look overrides so your own config takes effect again.",
+                      xalign=0, wrap=True)
+        d.add_css_class("dim-label")
+        text.append(t)
+        text.append(d)
+        box.append(text)
+        btn = Gtk.Button(child=Adw.ButtonContent(icon_name="edit-undo-symbolic", label="Back to my original look"),
+                         valign=Gtk.Align.CENTER, tooltip_text="Stage your own setup again (Apply to keep it)")
+        btn.add_css_class("suggested-action")
+        btn.connect("clicked", lambda *_: self.go_back_to_original())
+        box.append(btn)
+        return box
 
     def _empty_state(self):
         box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6, halign=Gtk.Align.FILL)
@@ -459,9 +510,10 @@ class PresetsPage(Adw.Bin):
         menu = Gio.Menu()
         menu.append("Export / Share…", "card.export")
         menu.append("Rename…", "card.rename")
-        section = Gio.Menu()
-        section.append("Delete", "card.delete")
-        menu.append_section(None, section)
+        if not preset.original:
+            section = Gio.Menu()
+            section.append("Delete", "card.delete")
+            menu.append_section(None, section)
         btn = Gtk.MenuButton(icon_name="view-more-symbolic", menu_model=menu, valign=Gtk.Align.CENTER,
                              tooltip_text="More")
         btn.add_css_class("flat")
@@ -481,6 +533,14 @@ class PresetsPage(Adw.Bin):
             self.user_grid.remove(c)
         self.user_cards = []
         user, problems = presets.load_user(self.cm)
+        if self.original_card is not None:
+            self.original_grid.remove(self.original_card)
+            self.original_card = None
+        for p in [p for p in user if p.original]:
+            self.original_card = PresetCard(p, self)
+            self.original_grid.append(self.original_card)
+        self.original_box.set_visible(self.original_card is not None)
+        user = [p for p in user if not p.original]
         for p in user:
             card = PresetCard(p, self)
             self.user_cards.append(card)
@@ -511,7 +571,7 @@ class PresetsPage(Adw.Bin):
         self.builtin_grid.invalidate_filter()
         self.user_grid.invalidate_filter()
         shown = sum(1 for c in self.cards if c.matches_filter(self._tag, self._query))
-        self.builtin_count.set_label(str(shown) if shown != len(self.cards) else str(len(self.cards)))
+        self.builtin_count.set_label(str(shown) if shown == len(self.cards) else f"{shown} of {len(self.cards)}")
         self.builtin_grid.set_visible(shown > 0)
         self.no_match.set_visible(shown == 0)
 
@@ -533,7 +593,11 @@ class PresetsPage(Adw.Bin):
             pending = set(self.cm.pending()) | set(getattr(self.cm, "pending_resets", lambda: [])())
         except Exception:
             pending = set()
-        for card in self.cards + self.user_cards:
+        try:
+            self.back_banner.set_visible(self.original_card is not None and presets.has_overrides(self.cm))
+        except Exception:
+            self.back_banner.set_visible(False)
+        for card in self.cards + self.user_cards + ([self.original_card] if self.original_card else []):
             try:
                 match = card.preset.matches(self.cm, self.options)
             except Exception:
@@ -545,7 +609,25 @@ class PresetsPage(Adw.Bin):
 
     # -- actions ---------------------------------------------------------
 
+    def go_back_to_original(self):
+        """Stage the user's own look again by dropping every look override."""
+        before = self.cm.export_state()
+        try:
+            presets.restore_original(self.cm)
+        except Exception as e:
+            try:
+                self.cm.import_state(before)
+            except Exception:
+                pass
+            toast(self.toast_overlay, f"Couldn't go back: {e}", 5)
+            return
+        toast(self.toast_overlay, "Your original look is staged — Apply to keep it", 4,
+              "Undo", lambda: self.cm.import_state(before))
+
     def try_preset(self, preset):
+        if preset.original:
+            self.go_back_to_original()
+            return
         if preset.matches(self.cm, self.options):
             toast(self.toast_overlay, f"“{preset.name}” is already your look", 2)
             return

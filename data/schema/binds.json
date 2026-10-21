@@ -1,9 +1,9 @@
 {
   "id": "binds",
-  "title": "Key bindings",
-  "icon": "preferences-desktop-keyboard-shortcuts-symbolic",
+  "title": "Shortcut behavior",
+  "icon": "input-dialpad-symbolic",
   "order": 100,
-  "description": "How shortcuts and workspace switching behave",
+  "description": "How keyboard and mouse shortcuts behave",
   "groups": [
     {
       "title": "Workspaces",

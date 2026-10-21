@@ -17,11 +17,13 @@ def _doc(**over):
 
 
 class BuiltinPresetsTest(TempConfigTest):
-    def test_twelve_distinct_valid_presets(self):
+    def test_distinct_valid_presets(self):
         builtin = presets.load_builtin()
-        self.assertEqual(len(builtin), 12)
-        self.assertEqual(len({p.id for p in builtin}), 12)
-        self.assertEqual(len({json.dumps(p.settings, sort_keys=True) for p in builtin}), 12)
+        n = len(builtin)
+        self.assertGreaterEqual(n, 32)
+        self.assertEqual(len({p.id for p in builtin}), n)
+        self.assertEqual(len({p.name for p in builtin}), n)
+        self.assertEqual(len({json.dumps(p.settings, sort_keys=True) for p in builtin}), n)
         options = presets.schema_options()
         for p in builtin:
             with self.subTest(p.id):
@@ -69,6 +71,96 @@ class BuiltinPresetsTest(TempConfigTest):
         self.assertIn("border_size = 4", text)
         self.assertIn("bezier = linear, 0, 0, 1, 1", text)
         self.assertTrue(retro.matches(cm))
+
+
+class OriginalLookTest(TempConfigTest):
+    def test_snapshot_created_once_on_first_launch(self):
+        cm = self.make()
+        marker = presets.user_dir(cm).parent / presets.ORIGINAL_MARKER
+        self.assertFalse(marker.exists())
+        orig = presets.ensure_original(cm)
+        self.assertTrue(marker.exists())
+        self.assertTrue(orig.original)
+        self.assertEqual((orig.name, orig.description), ("My original look", "Your setup from before Hyprland Mod"))
+        self.assertEqual(orig.settings["general:gaps_out"], "10")
+        # a second launch, even after the look changed, keeps the first snapshot
+        cm.set("general:gaps_out", "40")
+        again = presets.ensure_original(cm)
+        self.assertEqual(again.settings["general:gaps_out"], "10")
+        self.assertEqual(len(list(presets.user_dir(cm).glob("my-original-look*.json"))), 1)
+        user, _ = presets.load_user(cm)
+        self.assertEqual([p.id for p in user if p.original], ["my-original-look"])
+
+    def test_staging_a_preset_makes_sure_snapshot_exists_first(self):
+        cm = self.make()
+        nord = next(p for p in presets.load_builtin() if p.id == "nord")
+        presets.stage_preset(cm, nord)
+        orig = presets.load_original(cm)
+        self.assertIsNotNone(orig)
+        self.assertEqual(orig.settings["general:gaps_out"], "10")  # not nord's 12
+
+    def test_snapshot_ignores_hyprland_mod_overrides(self):
+        cm = self.make()
+        presets.stage_preset(cm, next(p for p in presets.load_builtin() if p.id == "retro"))
+        self.assertTrue(cm.apply().ok)
+        shutil_marker = presets.user_dir(cm).parent / presets.ORIGINAL_MARKER
+        shutil_marker.unlink()
+        for f in presets.user_dir(cm).glob("my-original-look*.json"):
+            f.unlink()
+        orig = presets.ensure_original(cm)
+        self.assertEqual(orig.settings["general:gaps_out"], "10")
+
+    def test_not_deletable_but_renamable(self):
+        cm = self.make()
+        orig = presets.ensure_original(cm)
+        with self.assertRaises(presets.PresetError):
+            presets.delete_user(orig, cm)
+        self.assertTrue(os.path.exists(orig.path))
+        presets.rename_user(orig, "Home setup", cm)
+        again = presets.load_original(cm)
+        self.assertEqual(again.name, "Home setup")
+        self.assertTrue(again.original)
+
+    def test_imports_cannot_take_the_original_id(self):
+        cm = self.make()
+        presets.ensure_original(cm)
+        src = self.tmp / "x.hyprmod-preset"
+        src.write_text(json.dumps(_doc(id="my-original-look")))
+        imported = presets.import_preset(str(src), cm)
+        self.assertFalse(imported.original)
+
+    def test_back_to_original_resets_all_preset_managed_keys(self):
+        cm = self.make()
+        presets.ensure_original(cm)
+        for pid in ("retro", "bubbly"):
+            presets.stage_preset(cm, next(p for p in presets.load_builtin() if p.id == pid))
+        self.assertTrue(cm.apply().ok)
+        self.assertTrue(presets.has_overrides(cm))
+        presets.restore_original(cm)
+        self.assertTrue(cm.apply().ok)
+        self.assertFalse(presets.has_overrides(cm))
+        for key in presets.managed_look_keys():
+            self.assertFalse(cm.is_modified(key), key)
+        for kw in presets.LIST_KEYWORDS:
+            self.assertFalse(cm.is_list_modified(kw))
+        self.assertEqual(cm.get("general:gaps_out"), "10")
+        self.assertTrue(presets.load_original(cm).matches(cm))
+
+    def test_page_init_work_stages_nothing(self):
+        cm = self.make()
+        presets.ensure_original(cm)
+        presets.load_user(cm)
+        self.assertFalse(presets.has_overrides(cm))
+        self.assertEqual(cm.pending(), {})
+        self.assertFalse(cm.is_dirty)
+
+    def test_every_builtin_validates_and_stages(self):
+        cm = self.make()
+        for p in presets.load_builtin():
+            with self.subTest(p.id):
+                presets.stage_preset(cm, p)
+                self.assertTrue(p.matches(cm))
+        cm.discard()
 
 
 class ValidationTest(TempConfigTest):

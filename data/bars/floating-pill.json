@@ -1,0 +1,68 @@
+{
+  "format": "hyprland-mod-bar",
+  "version": 1,
+  "id": "floating-pill",
+  "name": "Floating Pill",
+  "description": "A bright rounded capsule floating above your windows.",
+  "tags": [
+    "light",
+    "floating"
+  ],
+  "order": 1,
+  "bar": {
+    "position": "top",
+    "style": "solid",
+    "floating": true,
+    "margin": 10,
+    "height": 36,
+    "radius": 18,
+    "spacing": 6,
+    "padding": 16,
+    "font": "Adwaita Sans",
+    "font_size": 13,
+    "font_weight": "medium",
+    "background": "#fafafb",
+    "foreground": "#1d1d20",
+    "accent": "#1c71d8",
+    "opacity": 0.94,
+    "icons": true,
+    "modules": {
+      "left": [
+        {
+          "type": "workspaces",
+          "options": {}
+        },
+        {
+          "type": "window",
+          "options": {}
+        }
+      ],
+      "center": [
+        {
+          "type": "clock",
+          "options": {
+            "format": "day-24h"
+          }
+        }
+      ],
+      "right": [
+        {
+          "type": "network",
+          "options": {}
+        },
+        {
+          "type": "pulseaudio",
+          "options": {}
+        },
+        {
+          "type": "battery",
+          "options": {}
+        },
+        {
+          "type": "power",
+          "options": {}
+        }
+      ]
+    }
+  }
+}

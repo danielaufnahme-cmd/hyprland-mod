@@ -18,8 +18,11 @@ class BackupStore:
     def __init__(self, data_dir: str | os.PathLike[str]) -> None:
         self.root = Path(data_dir) / "backups"
 
-    def create(self, label: str, files: list[str]) -> str:
-        """Copy every existing file in ``files``; returns the new backup id."""
+    def create(self, label: str, files: list[str], texts: dict[str, str] | None = None) -> str:
+        """Copy every existing file in ``files``; returns the new backup id.
+
+        ``texts`` maps a path to the content to store instead of the file's current one.
+        """
         now = datetime.now()
         base = now.strftime("%Y%m%d-%H%M%S-%f")
         backup_id, n = base, 1
@@ -32,7 +35,11 @@ class BackupStore:
             if not os.path.isfile(path):
                 continue
             name = f"{i:03d}-{os.path.basename(path)}"
-            shutil.copy2(os.path.realpath(path), folder / "files" / name)
+            override = {os.path.abspath(k): v for k, v in (texts or {}).items()}.get(path)
+            if override is None:
+                shutil.copy2(os.path.realpath(path), folder / "files" / name)
+            else:
+                atomic_write(folder / "files" / name, override)
             saved.append({"path": path, "copy": name})
         manifest = {
             "id": backup_id,

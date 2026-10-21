@@ -1,0 +1,59 @@
+{
+  "format": "hyprland-mod-preset",
+  "version": 1,
+  "id": "coffee",
+  "name": "Coffee",
+  "author": "Hyprland Mod",
+  "description": "Warm browns and cream with cosy, rounded windows.",
+  "tags": [
+    "dark",
+    "warm"
+  ],
+  "order": 30,
+  "settings": {
+    "general:gaps_in": "6",
+    "general:gaps_out": "14",
+    "general:border_size": "2",
+    "general:col.active_border": "rgba(d9a066ff) rgba(c97b4aff) 45deg",
+    "general:col.inactive_border": "rgba(4a3828ff)",
+    "decoration:rounding": "14",
+    "decoration:rounding_power": "2",
+    "decoration:active_opacity": "1.0",
+    "decoration:inactive_opacity": "1.0",
+    "decoration:blur:enabled": "true",
+    "decoration:blur:size": "6",
+    "decoration:blur:passes": "2",
+    "decoration:blur:vibrancy": "0.17",
+    "decoration:blur:noise": "0.0117",
+    "decoration:shadow:enabled": "true",
+    "decoration:shadow:range": "20",
+    "decoration:shadow:render_power": "3",
+    "decoration:shadow:color": "rgba(1a0f08cc)",
+    "decoration:shadow:offset": "0 3",
+    "decoration:shadow:sharp": "false",
+    "decoration:dim_inactive": "true",
+    "decoration:dim_strength": "0.12",
+    "animations:enabled": "true"
+  },
+  "lists": {
+    "bezier": [
+      "gentle, 0.3, 0, 0.2, 1"
+    ],
+    "animation": [
+      "global, 1, 10, default",
+      "windows, 1, 6, gentle, popin 88%",
+      "fade, 1, 5, gentle",
+      "layers, 1, 5, gentle, fade",
+      "workspaces, 1, 6, gentle, slidefade 15%",
+      "border, 1, 8, gentle"
+    ]
+  },
+  "preview": {
+    "wallpaper": [
+      "#2a1d15",
+      "#4a3426",
+      "#7a5a40"
+    ],
+    "window": "#2a2019"
+  }
+}

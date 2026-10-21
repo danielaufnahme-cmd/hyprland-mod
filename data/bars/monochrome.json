@@ -1,0 +1,67 @@
+{
+  "format": "hyprland-mod-bar",
+  "version": 1,
+  "id": "monochrome",
+  "name": "Monochrome",
+  "description": "Pure black and white, text only — no icons.",
+  "tags": [
+    "dark",
+    "minimal"
+  ],
+  "order": 9,
+  "bar": {
+    "position": "top",
+    "style": "solid",
+    "floating": false,
+    "height": 26,
+    "radius": 0,
+    "spacing": 0,
+    "padding": 10,
+    "border": 1,
+    "font": "Adwaita Mono",
+    "font_size": 12,
+    "font_weight": "bold",
+    "background": "#000000",
+    "foreground": "#ffffff",
+    "accent": "#ffffff",
+    "opacity": 1.0,
+    "icons": false,
+    "modules": {
+      "left": [
+        {
+          "type": "workspaces",
+          "options": {}
+        },
+        {
+          "type": "window",
+          "options": {}
+        }
+      ],
+      "center": [],
+      "right": [
+        {
+          "type": "cpu",
+          "options": {}
+        },
+        {
+          "type": "memory",
+          "options": {}
+        },
+        {
+          "type": "pulseaudio",
+          "options": {}
+        },
+        {
+          "type": "battery",
+          "options": {}
+        },
+        {
+          "type": "clock",
+          "options": {
+            "format": "iso"
+          }
+        }
+      ]
+    }
+  }
+}

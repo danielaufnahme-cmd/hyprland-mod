@@ -1,0 +1,59 @@
+{
+  "format": "hyprland-mod-preset",
+  "version": 1,
+  "id": "solarized-light",
+  "name": "Solarized Light",
+  "author": "Hyprland Mod",
+  "description": "Warm parchment tones with teal and orange accents for bright rooms.",
+  "tags": [
+    "light",
+    "warm",
+    "theme"
+  ],
+  "order": 14,
+  "settings": {
+    "general:gaps_in": "5",
+    "general:gaps_out": "12",
+    "general:border_size": "2",
+    "general:col.active_border": "rgba(268bd2ff) rgba(2aa198ff) 45deg",
+    "general:col.inactive_border": "rgba(eee8d5ff)",
+    "decoration:rounding": "6",
+    "decoration:rounding_power": "2",
+    "decoration:active_opacity": "1.0",
+    "decoration:inactive_opacity": "1.0",
+    "decoration:blur:enabled": "false",
+    "decoration:blur:size": "6",
+    "decoration:blur:passes": "2",
+    "decoration:blur:vibrancy": "0.17",
+    "decoration:blur:noise": "0.0117",
+    "decoration:shadow:enabled": "true",
+    "decoration:shadow:range": "14",
+    "decoration:shadow:render_power": "3",
+    "decoration:shadow:color": "rgba(586e7533)",
+    "decoration:shadow:offset": "0 3",
+    "decoration:shadow:sharp": "false",
+    "decoration:dim_inactive": "false",
+    "decoration:dim_strength": "0.2",
+    "animations:enabled": "true"
+  },
+  "lists": {
+    "bezier": [
+      "gentle, 0.3, 0, 0.2, 1"
+    ],
+    "animation": [
+      "global, 1, 10, default",
+      "windows, 1, 6, gentle, popin 88%",
+      "fade, 1, 5, gentle",
+      "layers, 1, 5, gentle, fade",
+      "workspaces, 1, 6, gentle, slidefade 15%",
+      "border, 1, 8, gentle"
+    ]
+  },
+  "preview": {
+    "wallpaper": [
+      "#fdf6e3",
+      "#eee8d5"
+    ],
+    "window": "#fdf6e3"
+  }
+}

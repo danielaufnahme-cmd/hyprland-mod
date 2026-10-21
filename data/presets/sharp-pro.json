@@ -1,0 +1,61 @@
+{
+  "format": "hyprland-mod-preset",
+  "version": 1,
+  "id": "sharp-pro",
+  "name": "Sharp Pro",
+  "author": "Hyprland Mod",
+  "description": "Square corners, 1px borders, tight gaps and near-instant animations.",
+  "tags": [
+    "dark",
+    "minimal",
+    "sharp",
+    "fast"
+  ],
+  "order": 25,
+  "settings": {
+    "general:gaps_in": "2",
+    "general:gaps_out": "4",
+    "general:border_size": "1",
+    "general:col.active_border": "rgba(c8ccd2ff)",
+    "general:col.inactive_border": "rgba(2e333aff)",
+    "decoration:rounding": "0",
+    "decoration:rounding_power": "2",
+    "decoration:active_opacity": "1.0",
+    "decoration:inactive_opacity": "1.0",
+    "decoration:blur:enabled": "false",
+    "decoration:blur:size": "6",
+    "decoration:blur:passes": "2",
+    "decoration:blur:vibrancy": "0.17",
+    "decoration:blur:noise": "0.0117",
+    "decoration:shadow:enabled": "false",
+    "decoration:shadow:range": "14",
+    "decoration:shadow:render_power": "3",
+    "decoration:shadow:color": "rgba(00000066)",
+    "decoration:shadow:offset": "0 3",
+    "decoration:shadow:sharp": "false",
+    "decoration:dim_inactive": "false",
+    "decoration:dim_strength": "0.2",
+    "animations:enabled": "true"
+  },
+  "lists": {
+    "bezier": [
+      "linear, 0, 0, 1, 1"
+    ],
+    "animation": [
+      "global, 1, 10, default",
+      "windows, 1, 1, linear",
+      "fade, 1, 1, linear",
+      "layers, 1, 1, linear",
+      "workspaces, 1, 1, linear",
+      "border, 0",
+      "borderangle, 0"
+    ]
+  },
+  "preview": {
+    "wallpaper": [
+      "#1a1d21",
+      "#2a2f36"
+    ],
+    "window": "#16181c"
+  }
+}

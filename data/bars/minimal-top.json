@@ -1,0 +1,61 @@
+{
+  "format": "hyprland-mod-bar",
+  "version": 1,
+  "id": "minimal-top",
+  "name": "Minimal Top",
+  "description": "A thin, quiet strip with only what matters.",
+  "tags": [
+    "dark",
+    "minimal"
+  ],
+  "order": 0,
+  "bar": {
+    "position": "top",
+    "style": "solid",
+    "floating": false,
+    "height": 28,
+    "radius": 0,
+    "spacing": 2,
+    "padding": 10,
+    "border": 0,
+    "font": "Adwaita Sans",
+    "font_size": 12,
+    "font_weight": "medium",
+    "background": "#101114",
+    "foreground": "#d6d7db",
+    "accent": "#62a0ea",
+    "opacity": 0.92,
+    "icons": true,
+    "modules": {
+      "left": [
+        {
+          "type": "workspaces",
+          "options": {
+            "style": "dots",
+            "persistent": 5
+          }
+        }
+      ],
+      "center": [
+        {
+          "type": "clock",
+          "options": {}
+        }
+      ],
+      "right": [
+        {
+          "type": "tray",
+          "options": {}
+        },
+        {
+          "type": "pulseaudio",
+          "options": {}
+        },
+        {
+          "type": "battery",
+          "options": {}
+        }
+      ]
+    }
+  }
+}

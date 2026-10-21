@@ -1,0 +1,60 @@
+{
+  "format": "hyprland-mod-preset",
+  "version": 1,
+  "id": "speedrun",
+  "name": "Speedrun",
+  "author": "Hyprland Mod",
+  "description": "The fastest animations that still look like animations. Snappy, trimmed, tight.",
+  "tags": [
+    "fast",
+    "dark",
+    "animated",
+    "minimal"
+  ],
+  "order": 32,
+  "settings": {
+    "general:gaps_in": "3",
+    "general:gaps_out": "6",
+    "general:border_size": "2",
+    "general:col.active_border": "rgba(ffd23fff) rgba(ff9f1cff) 45deg",
+    "general:col.inactive_border": "rgba(2a323bff)",
+    "decoration:rounding": "6",
+    "decoration:rounding_power": "2",
+    "decoration:active_opacity": "1.0",
+    "decoration:inactive_opacity": "1.0",
+    "decoration:blur:enabled": "true",
+    "decoration:blur:size": "6",
+    "decoration:blur:passes": "1",
+    "decoration:blur:vibrancy": "0.17",
+    "decoration:blur:noise": "0.0117",
+    "decoration:shadow:enabled": "true",
+    "decoration:shadow:range": "8",
+    "decoration:shadow:render_power": "3",
+    "decoration:shadow:color": "rgba(00000066)",
+    "decoration:shadow:offset": "0 3",
+    "decoration:shadow:sharp": "false",
+    "decoration:dim_inactive": "false",
+    "decoration:dim_strength": "0.2",
+    "animations:enabled": "true"
+  },
+  "lists": {
+    "bezier": [
+      "rush, 0.1, 1, 0.2, 1"
+    ],
+    "animation": [
+      "global, 1, 10, default",
+      "windows, 1, 1.4, rush, popin 95%",
+      "fade, 1, 1.2, rush",
+      "layers, 1, 1.2, rush, fade",
+      "workspaces, 1, 1.4, rush, slide",
+      "border, 1, 1.5, rush"
+    ]
+  },
+  "preview": {
+    "wallpaper": [
+      "#101418",
+      "#1c2530"
+    ],
+    "window": "#13181d"
+  }
+}

@@ -26,6 +26,8 @@ class DevOptions:
         self.advanced = False
         self.size = None
         self.scale = 1.0
+        self.dialog = None
+        self.seed = False
 
 
 def parse_dev_args(argv):
@@ -43,6 +45,10 @@ def parse_dev_args(argv):
         elif a == "--set":
             k, _, v = next(it).partition("=")
             dev.sets.append((k, v))
+        elif a == "--dialog":
+            dev.dialog = next(it)
+        elif a == "--seed":
+            dev.seed = True
         elif a == "--advanced":
             dev.advanced = True
         elif a == "--size":
@@ -53,6 +59,21 @@ def parse_dev_args(argv):
         else:
             rest.append(a)
     return dev, rest
+
+
+def _settle_dialogs(widget):
+    """Broadway without a browser never ticks the frame clock, so a dialog's open
+    animation never runs: show its (still hidden) sheet as if it had finished."""
+    child = widget.get_first_child()
+    while child is not None:
+        if type(child).__name__ in ("AdwFloatingSheet", "AdwBottomSheet"):
+            sheet_child = child.get_first_child()
+            while sheet_child is not None:
+                sheet_child.set_child_visible(True)
+                sheet_child.set_opacity(1.0)
+                sheet_child = sheet_child.get_next_sibling()
+        _settle_dialogs(child)
+        child = child.get_next_sibling()
 
 
 class HyprlandModApp(Adw.Application):
@@ -108,7 +129,8 @@ class HyprlandModApp(Adw.Application):
         self.window.present()
         if self.dev.screenshot:
             if self.window.ready:
-                self.window.dev_prepare(self.dev.page, self.dev.search, self.dev.sets, self.dev.advanced)
+                self.window.dev_prepare(self.dev.page, self.dev.search, self.dev.sets, self.dev.advanced,
+                                       self.dev.dialog, self.dev.seed)
             GLib.timeout_add(1400, self._start_screenshot)
 
     def _about(self, *_):
@@ -127,7 +149,16 @@ class HyprlandModApp(Adw.Application):
         if win.ready:
             win.apply_bar.settle()
         target = win.get_content()
+        if self.dev.dialog and target is not None:
+            # dialogs live in libadwaita's dialog host above the content: capture that instead
+            while target.get_parent() is not None and target.get_parent() is not win:
+                target = target.get_parent()
+            _settle_dialogs(target)
         w, h = target.get_width(), target.get_height()
+        if win.get_mapped() and w > 0:
+            # layout only runs on frame-clock ticks, which broadway rarely sends:
+            # lay out late changes (dialogs, scrolled sidebar) ourselves at the same size
+            target.allocate(w, h, -1, None)
         if not win.get_mapped() or w <= 0:
             print("screenshot: window not mapped", file=sys.stderr)
             self.quit()

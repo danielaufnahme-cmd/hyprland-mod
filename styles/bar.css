@@ -1,0 +1,233 @@
+/* Hyprland Mod — bar builder page (loaded by bar_page.py) */
+
+/* ---------- header & status ---------- */
+.bar-status {
+  padding: 2px 10px 2px 22px;
+  border-radius: 999px;
+  font-size: 0.85em;
+  font-weight: 600;
+  background-color: alpha(currentColor, 0.07);
+  background-image: radial-gradient(circle, currentColor 3px, transparent 3.5px);
+  background-size: 8px 8px;
+  background-repeat: no-repeat;
+  background-position: 9px center;
+  transition: color 180ms ease-out, background-color 180ms ease-out;
+}
+
+.bar-status.running {
+  color: #26a269;
+  background-color: alpha(#26a269, 0.12);
+}
+
+.bar-status.pending {
+  color: #c88800;
+  background-color: alpha(#e5a50a, 0.14);
+}
+
+.bar-status.stopped {
+  color: alpha(currentColor, 0.6);
+}
+
+/* ---------- preview ---------- */
+.bar-preview-frame {
+  border-radius: var(--hm-radius, 14px);
+  box-shadow: 0 0 0 1px alpha(black, 0.06), 0 2px 6px alpha(black, 0.08), 0 10px 28px alpha(black, 0.10);
+}
+
+/* ---------- section titles ---------- */
+.bar-section-title {
+  font-weight: 700;
+  font-size: 1.05em;
+}
+
+.bar-section-sub {
+  font-size: 0.92em;
+}
+
+/* ---------- preset cards ---------- */
+flowbox.bar-preset-grid > flowboxchild {
+  padding: 0;
+  margin: 0;
+  border-radius: 14px;
+  background: none;
+  outline: none;
+}
+
+.bar-preset-card {
+  border-radius: 14px;
+  background-color: var(--card-bg-color);
+  box-shadow: 0 0 0 1px alpha(black, 0.07), 0 1px 3px alpha(black, 0.06);
+  transition: box-shadow 180ms ease-out, transform 180ms cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+
+flowbox.bar-preset-grid > flowboxchild:hover .bar-preset-card {
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 1px alpha(black, 0.08), 0 6px 14px alpha(black, 0.10), 0 14px 28px alpha(black, 0.08);
+}
+
+flowbox.bar-preset-grid > flowboxchild:active .bar-preset-card {
+  transform: translateY(0);
+  transition-duration: 90ms;
+}
+
+flowbox.bar-preset-grid > flowboxchild:focus-visible .bar-preset-card {
+  box-shadow: 0 0 0 2px alpha(var(--accent-color), 0.7), 0 6px 14px alpha(black, 0.10);
+}
+
+.bar-preset-card.current {
+  box-shadow: 0 0 0 2px var(--accent-bg-color), 0 4px 12px alpha(black, 0.10);
+}
+
+.bar-thumb {
+  margin: 6px 6px 0 6px;
+  border-radius: 9px;
+}
+
+.bar-preset-name {
+  font-weight: 600;
+  font-size: 0.93em;
+}
+
+/* ---------- module zones ---------- */
+.bar-zone {
+  padding: 12px 10px 8px 10px;
+  border-radius: 14px;
+  background-color: var(--card-bg-color);
+  box-shadow: 0 0 0 1px alpha(black, 0.07), 0 1px 3px alpha(black, 0.05);
+  transition: box-shadow 150ms ease-out, background-color 150ms ease-out;
+}
+
+.bar-zone.drop-target {
+  box-shadow: 0 0 0 2px alpha(var(--accent-bg-color), 0.8);
+}
+
+.bar-zone-title {
+  font-weight: 700;
+  font-size: 0.92em;
+}
+
+.bar-zone-count {
+  padding: 0 7px;
+  border-radius: 999px;
+  font-size: 0.78em;
+  font-weight: 600;
+  background-color: alpha(currentColor, 0.08);
+}
+
+.bar-zone-count:backdrop,
+.bar-zone-count:disabled {
+  opacity: 0.7;
+}
+
+list.bar-zone-list {
+  background: none;
+}
+
+list.bar-zone-list > row.module-row {
+  padding: 0;
+  margin: 2px 0;
+  border-radius: 10px;
+  background-color: alpha(currentColor, 0.04);
+  transition: background-color 150ms ease-out, box-shadow 150ms ease-out, opacity 150ms ease-out;
+}
+
+list.bar-zone-list > row.module-row:hover {
+  background-color: alpha(currentColor, 0.08);
+}
+
+list.bar-zone-list > row.module-row:selected {
+  background-color: alpha(var(--accent-bg-color), 0.14);
+  box-shadow: inset 0 0 0 1px alpha(var(--accent-bg-color), 0.55);
+}
+
+list.bar-zone-list > row.module-row.dragging {
+  opacity: 0.4;
+}
+
+list.bar-zone-list > row.module-row.drop-before {
+  box-shadow: inset 0 2px 0 0 var(--accent-bg-color);
+}
+
+list.bar-zone-list > row.module-row.drop-after {
+  box-shadow: inset 0 -2px 0 0 var(--accent-bg-color);
+}
+
+.module-handle {
+  opacity: 0.35;
+}
+
+row.module-row:hover .module-handle {
+  opacity: 0.7;
+}
+
+.module-icon {
+  color: var(--accent-color);
+}
+
+.module-title {
+  font-weight: 600;
+}
+
+.module-subtitle {
+  font-size: 0.82em;
+  opacity: 0.65;
+}
+
+.module-remove,
+.module-menu > button {
+  min-width: 26px;
+  min-height: 26px;
+  padding: 0;
+}
+
+.module-remove {
+  opacity: 0;
+  transition: opacity 120ms ease-out;
+}
+
+row.module-row:hover .module-remove,
+row.module-row:selected .module-remove,
+.module-remove:focus-visible {
+  opacity: 0.75;
+}
+
+.bar-zone-empty {
+  padding: 16px 8px;
+  border-radius: 10px;
+  border: 2px dashed alpha(currentColor, 0.13);
+  font-size: 0.9em;
+  opacity: 0.6;
+}
+
+.bar-zone-add > button {
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 0.92em;
+}
+
+.module-picker-list {
+  background: none;
+}
+
+.module-used {
+  font-size: 0.8em;
+  opacity: 0.7;
+}
+
+/* ---------- options ---------- */
+.bar-options-hint {
+  padding: 8px 4px;
+}
+
+.bar-toggle {
+  min-width: 0;
+}
+
+.bar-files-row .subtitle {
+  font-family: monospace;
+  font-size: 0.88em;
+}
+
+.install-row .subtitle {
+  font-family: monospace;
+}

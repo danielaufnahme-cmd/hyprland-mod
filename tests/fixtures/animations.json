@@ -1,0 +1,9 @@
+[[
+ {"name": "global", "overridden": true, "bezier": "default", "enabled": true, "speed": 10.00, "style": ""},
+ {"name": "windowsIn", "overridden": true, "bezier": "easeOutQuint", "enabled": true, "speed": 4.10, "style": "popin 87%"},
+ {"name": "fade", "overridden": true, "bezier": "", "enabled": false, "speed": 1.00, "style": ""},
+ {"name": "workspacesIn", "overridden": false, "bezier": "", "enabled": true, "speed": 0.00, "style": ""}
+],[
+ {"name": "default", "X0": 0.0, "Y0": 0.75, "X1": 0.15, "Y1": 1.0},
+ {"name": "easeOutQuint", "X0": 0.23, "Y0": 1.0, "X1": 0.32, "Y1": 1.0}
+]]

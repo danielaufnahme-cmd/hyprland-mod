@@ -1,0 +1,68 @@
+{
+  "format": "hyprland-mod-bar",
+  "version": 1,
+  "id": "dock-bottom",
+  "name": "Bottom Dock",
+  "description": "A roomy dock-style bar centered at the bottom.",
+  "tags": [
+    "dark",
+    "floating"
+  ],
+  "order": 5,
+  "bar": {
+    "position": "bottom",
+    "style": "solid",
+    "floating": true,
+    "margin": 10,
+    "height": 48,
+    "radius": 18,
+    "spacing": 12,
+    "padding": 18,
+    "font": "Adwaita Sans",
+    "font_size": 14,
+    "font_weight": "medium",
+    "background": "#1e2024",
+    "foreground": "#f0f1f3",
+    "accent": "#4fb3ff",
+    "opacity": 0.82,
+    "icons": true,
+    "modules": {
+      "left": [
+        {
+          "type": "power",
+          "options": {}
+        }
+      ],
+      "center": [
+        {
+          "type": "workspaces",
+          "options": {
+            "persistent": 6
+          }
+        },
+        {
+          "type": "mpris",
+          "options": {}
+        },
+        {
+          "type": "clock",
+          "options": {}
+        }
+      ],
+      "right": [
+        {
+          "type": "pulseaudio",
+          "options": {}
+        },
+        {
+          "type": "network",
+          "options": {}
+        },
+        {
+          "type": "battery",
+          "options": {}
+        }
+      ]
+    }
+  }
+}

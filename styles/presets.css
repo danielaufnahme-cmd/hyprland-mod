@@ -172,3 +172,22 @@ flowbox.preset-grid > flowboxchild:focus-visible .preset-card {
   font-family: monospace;
   font-size: 0.9em;
 }
+
+/* ---------- original look ---------- */
+.original-banner {
+  padding: 12px 14px 12px 16px;
+  border-radius: 14px;
+  background-color: alpha(var(--accent-bg-color), 0.12);
+  box-shadow: inset 0 0 0 1px alpha(var(--accent-bg-color), 0.3);
+}
+
+.preset-original-tag {
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-size: 0.72em;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent-color);
+  background-color: alpha(var(--accent-bg-color), 0.14);
+}

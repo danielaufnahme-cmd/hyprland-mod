@@ -1,0 +1,57 @@
+{
+  "format": "hyprland-mod-preset",
+  "version": 1,
+  "id": "minimal-zero",
+  "name": "Minimal Zero",
+  "author": "Hyprland Mod",
+  "description": "Nothing but windows: no borders, no gaps, no shadow, no animation.",
+  "tags": [
+    "minimal",
+    "dark",
+    "fast"
+  ],
+  "order": 31,
+  "settings": {
+    "general:gaps_in": "0",
+    "general:gaps_out": "0",
+    "general:border_size": "0",
+    "general:col.active_border": "rgba(ffffffff)",
+    "general:col.inactive_border": "rgba(00000000)",
+    "decoration:rounding": "0",
+    "decoration:rounding_power": "2",
+    "decoration:active_opacity": "1.0",
+    "decoration:inactive_opacity": "1.0",
+    "decoration:blur:enabled": "false",
+    "decoration:blur:size": "6",
+    "decoration:blur:passes": "2",
+    "decoration:blur:vibrancy": "0.17",
+    "decoration:blur:noise": "0.0117",
+    "decoration:shadow:enabled": "false",
+    "decoration:shadow:range": "14",
+    "decoration:shadow:render_power": "3",
+    "decoration:shadow:color": "rgba(00000000)",
+    "decoration:shadow:offset": "0 3",
+    "decoration:shadow:sharp": "false",
+    "decoration:dim_inactive": "false",
+    "decoration:dim_strength": "0.2",
+    "animations:enabled": "false"
+  },
+  "lists": {
+    "animation": [
+      "global, 0",
+      "windows, 0",
+      "fade, 0",
+      "layers, 0",
+      "workspaces, 0",
+      "border, 0",
+      "borderangle, 0"
+    ]
+  },
+  "preview": {
+    "wallpaper": [
+      "#17181a",
+      "#1e2022"
+    ],
+    "window": "#141516"
+  }
+}

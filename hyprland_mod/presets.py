@@ -47,6 +47,11 @@ LOOK_KEYS = (
 PRESET_SECTIONS = ("general:", "decoration:", "animations:", "group:", "dwindle:", "master:")
 PRESET_DENY = {"decoration:screen_shader", "general:locale", "general:layout"}
 LIST_KEYWORDS = ("bezier", "animation")
+# The protected snapshot of the user's own look, taken once before Hyprland Mod changes anything.
+ORIGINAL_ID = "my-original-look"
+ORIGINAL_NAME = "My original look"
+ORIGINAL_DESC = "Your setup from before Hyprland Mod"
+ORIGINAL_MARKER = "original-look-captured"
 
 ANIMATION_LEAVES = {
     "global", "windows", "windowsIn", "windowsOut", "windowsMove", "layers", "layersIn",
@@ -82,6 +87,11 @@ class Preset:
     preview: dict = field(default_factory=dict)
     builtin: bool = False
     path: str | None = None
+
+    @property
+    def original(self) -> bool:
+        """True for the protected "My original look" snapshot (can't be deleted)."""
+        return not self.builtin and self.id == ORIGINAL_ID
 
     def to_dict(self) -> dict:
         data = {"format": PRESET_FORMAT, "version": FORMAT_VERSION, "id": self.id, "name": self.name,
@@ -397,7 +407,7 @@ def save_user(preset: Preset, cm=None, builtin_ids: set[str] | None = None) -> P
     folder = user_dir(cm)
     folder.mkdir(parents=True, exist_ok=True)
     if not preset.path:
-        taken = {p.stem for p in folder.glob("*.json")} | set(builtin_ids or ())
+        taken = {p.stem for p in folder.glob("*.json")} | set(builtin_ids or ()) | {ORIGINAL_ID}
         if builtin_ids is None:
             taken |= {p.stem for p in BUILTIN_DIR.glob("*.json")}
         preset.id = _unique_id(slugify(preset.id or preset.name), taken)
@@ -411,6 +421,8 @@ def delete_user(preset: Preset, cm=None) -> None:
     """Remove a user preset file; refuses anything outside the user preset folder."""
     if preset.builtin or not preset.path:
         raise PresetError("Built-in presets can't be deleted.")
+    if preset.original:
+        raise PresetError("“My original look” is your safety net and can't be deleted.")
     path = Path(preset.path).resolve()
     if path.parent != user_dir(cm).resolve():
         raise PresetError("Only your own presets can be deleted.")
@@ -461,8 +473,99 @@ def capture(cm, name: str, description: str = "", author: str = "", options: dic
         return validate_preset(data, options)
 
 
+def _snapshot(cm, options: dict) -> tuple[dict[str, str], dict[str, list[str]]]:
+    """The user's own look: what the config says without Hyprland Mod's overrides."""
+    keys = [k for k in LOOK_KEYS if k in options]
+    settings: dict[str, str] = {}
+    if hasattr(cm, "snapshot_current_look"):
+        settings = {k: v for k, v in cm.snapshot_current_look(keys).items() if v is not None}
+    else:
+        for key in keys:
+            # a managed override is not the user's value: read their own config instead
+            value = cm.user_value(key) if cm.is_modified(key) else cm.get(key)
+            if value is None:  # unset in the user's config: Hyprland's own default
+                try:
+                    value = format_value(options[key], parse_value(options[key], None))
+                except (ValueError, TypeError):
+                    continue
+            settings[key] = value
+    lists: dict[str, list[str]] = {}
+    if hasattr(cm, "current_animations"):
+        lists = {kw: list(v) for kw, v in cm.current_animations().items() if v}
+    return settings, lists
+
+
+def original_captured(cm=None) -> bool:
+    return (user_dir(cm).parent / ORIGINAL_MARKER).exists()
+
+
+def load_original(cm=None) -> Preset | None:
+    path = user_dir(cm) / f"{ORIGINAL_ID}.json"
+    if not path.is_file():
+        return None
+    try:
+        preset = validate_preset(_read_json(path))
+    except PresetError:
+        return None
+    preset.id, preset.path = ORIGINAL_ID, str(path)
+    return preset
+
+
+def ensure_original(cm, options: dict | None = None) -> Preset | None:
+    """Capture "My original look" once (first launch); later calls just return it."""
+    if original_captured(cm):
+        return load_original(cm)
+    options = options if options is not None else schema_options()
+    settings, lists = _snapshot(cm, options)
+    data = {"format": PRESET_FORMAT, "version": FORMAT_VERSION, "id": ORIGINAL_ID, "name": ORIGINAL_NAME,
+            "description": ORIGINAL_DESC, "author": "", "tags": [], "settings": settings, "lists": lists}
+    try:
+        try:
+            preset = validate_preset(data, options)
+        except PresetError:  # e.g. animation lines using curves we can't see: keep the look only
+            data["lists"] = {}
+            preset = validate_preset(data, options)
+        preset.id = ORIGINAL_ID
+        folder = user_dir(cm)
+        folder.mkdir(parents=True, exist_ok=True)
+        preset.path = str(folder / f"{ORIGINAL_ID}.json")
+        save_user(preset, cm)
+        atomic_write(str(folder.parent / ORIGINAL_MARKER), "1\n")
+    except (PresetError, OSError):
+        return None
+    return preset
+
+
+def managed_look_keys() -> list[str]:
+    """Every setting a preset can own: the look keys plus anything built-in presets set."""
+    keys = list(LOOK_KEYS)
+    try:
+        for p in load_builtin():
+            keys += [k for k in p.settings if k not in keys]
+    except PresetError:
+        pass
+    return keys
+
+
+def has_overrides(cm) -> bool:
+    """True when Hyprland Mod currently overrides (or has staged) any preset-managed look setting."""
+    keys = managed_look_keys()
+    return any(cm.is_modified(k) for k in keys) or any(cm.is_list_modified(kw) for kw in LIST_KEYWORDS)
+
+
+def restore_original(cm) -> None:
+    """Remove Hyprland Mod's look overrides so the user's own config takes effect again (staged)."""
+    for key in managed_look_keys():
+        cm.reset(key)
+    for kw in LIST_KEYWORDS:
+        if hasattr(cm, "reset_list"):
+            cm.reset_list(kw)
+
+
 def stage_preset(cm, preset: Preset) -> None:
     """Stage every setting and list of ``preset`` (nothing is written until Apply)."""
+    if not preset.original:
+        ensure_original(cm)  # the way back must exist before the first change
     for key, value in preset.settings.items():
         cm.set(key, value)
     for kw in LIST_KEYWORDS:

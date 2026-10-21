@@ -1,0 +1,104 @@
+{
+  "format": "hyprland-mod-bar",
+  "version": 1,
+  "id": "full-classic",
+  "name": "Full Classic",
+  "description": "Everything at a glance, edge to edge.",
+  "tags": [
+    "dark",
+    "busy"
+  ],
+  "order": 3,
+  "bar": {
+    "position": "top",
+    "style": "solid",
+    "floating": false,
+    "height": 30,
+    "radius": 0,
+    "spacing": 4,
+    "padding": 8,
+    "border": 0,
+    "font": "Adwaita Sans",
+    "font_size": 12,
+    "font_weight": "normal",
+    "background": "#242424",
+    "foreground": "#ffffff",
+    "accent": "#3584e4",
+    "opacity": 1.0,
+    "icons": true,
+    "modules": {
+      "left": [
+        {
+          "type": "workspaces",
+          "options": {}
+        },
+        {
+          "type": "window",
+          "options": {}
+        }
+      ],
+      "center": [
+        {
+          "type": "clock",
+          "options": {
+            "format": "full"
+          }
+        }
+      ],
+      "right": [
+        {
+          "type": "mpris",
+          "options": {}
+        },
+        {
+          "type": "idle_inhibitor",
+          "options": {}
+        },
+        {
+          "type": "pulseaudio",
+          "options": {}
+        },
+        {
+          "type": "network",
+          "options": {}
+        },
+        {
+          "type": "bluetooth",
+          "options": {}
+        },
+        {
+          "type": "cpu",
+          "options": {}
+        },
+        {
+          "type": "memory",
+          "options": {}
+        },
+        {
+          "type": "temperature",
+          "options": {}
+        },
+        {
+          "type": "backlight",
+          "options": {}
+        },
+        {
+          "type": "language",
+          "options": {}
+        },
+        {
+          "type": "battery",
+          "options": {}
+        },
+        {
+          "type": "tray",
+          "options": {}
+        },
+        {
+          "type": "power",
+          "options": {}
+        }
+      ]
+    }
+  }
+}

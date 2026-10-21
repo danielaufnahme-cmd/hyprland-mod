@@ -1,0 +1,60 @@
+{
+  "format": "hyprland-mod-preset",
+  "version": 1,
+  "id": "kanagawa",
+  "name": "Kanagawa",
+  "author": "Hyprland Mod",
+  "description": "Muted ink-wash colours inspired by Hokusai, with a golden border glow.",
+  "tags": [
+    "dark",
+    "warm",
+    "theme"
+  ],
+  "order": 17,
+  "settings": {
+    "general:gaps_in": "6",
+    "general:gaps_out": "16",
+    "general:border_size": "2",
+    "general:col.active_border": "rgba(e6c384ff) rgba(7e9cd8ff) 45deg",
+    "general:col.inactive_border": "rgba(363646ff)",
+    "decoration:rounding": "10",
+    "decoration:rounding_power": "2",
+    "decoration:active_opacity": "1.0",
+    "decoration:inactive_opacity": "0.95",
+    "decoration:blur:enabled": "true",
+    "decoration:blur:size": "6",
+    "decoration:blur:passes": "2",
+    "decoration:blur:vibrancy": "0.17",
+    "decoration:blur:noise": "0.0117",
+    "decoration:shadow:enabled": "true",
+    "decoration:shadow:range": "22",
+    "decoration:shadow:render_power": "3",
+    "decoration:shadow:color": "rgba(16161dcc)",
+    "decoration:shadow:offset": "0 3",
+    "decoration:shadow:sharp": "false",
+    "decoration:dim_inactive": "false",
+    "decoration:dim_strength": "0.2",
+    "animations:enabled": "true"
+  },
+  "lists": {
+    "bezier": [
+      "gentle, 0.3, 0, 0.2, 1"
+    ],
+    "animation": [
+      "global, 1, 10, default",
+      "windows, 1, 6, gentle, popin 88%",
+      "fade, 1, 5, gentle",
+      "layers, 1, 5, gentle, fade",
+      "workspaces, 1, 6, gentle, slidefade 15%",
+      "border, 1, 8, gentle"
+    ]
+  },
+  "preview": {
+    "wallpaper": [
+      "#1f1f28",
+      "#2a2a37",
+      "#363646"
+    ],
+    "window": "#1f1f28"
+  }
+}

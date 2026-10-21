@@ -1,15 +1,18 @@
 """Main application window."""
 
-from gi.repository import Adw, Gio, GLib, Gtk
+from gi.repository import Adw, Gio, GLib, Graphene, Gtk
 
 from .apply_bar import ApplyBar
 from .backend import is_dry_run, pending_count
 from .backups_page import BackupsPage
+from .keybinds_page import KeybindsPage
+from .monitors_page import MonitorsPage
 from .presets_page import PresetsPage
 from .search_page import SearchPage
 from .settings_page import SettingsPage
-from .sidebar import FIXED_PAGES, Sidebar
+from .sidebar import FIXED_PAGES, PAGE_INFO, Sidebar
 from .transfer_page import TransferPage
+from .window_rules_page import WindowRulesPage
 
 
 def _status_window_content(title, description, icon):
@@ -51,12 +54,16 @@ class MainWindow(Adw.ApplicationWindow):
                                vexpand=True, hexpand=True)
         self.settings_pages = []
         self._page_specs = {p["id"]: p for p in self.schema}
-        self.search_page = SearchPage(cm, self.schema, self.open_page)
+        self.search_page = SearchPage(cm, self.schema, self.open_page, extra_pages=PAGE_INFO)
         self.stack.add_named(self.search_page, "search")
         self.stack.add_named(PresetsPage(cm, self.toasts), "presets")
         self.stack.add_named(TransferPage(cm, self.toasts), "transfer")
         self.backups_page = BackupsPage(cm, self.toasts)
         self.stack.add_named(self.backups_page, "backups")
+        # built on first visit (the bar page manages a process, displays read the monitors)
+        self._lazy = {"bar": self._make_bar_page, "keybinds": KeybindsPage, "rules": WindowRulesPage,
+                      "monitors": MonitorsPage}
+        self._item_pages = {}
 
         self.apply_bar = ApplyBar(self.discard, self.apply)
         self.apply_bar.set_margin_bottom(18)
@@ -148,7 +155,26 @@ class MainWindow(Adw.ApplicationWindow):
 
     # -- navigation ------------------------------------------------------
 
+    def _make_bar_page(self, cm, toasts):
+        from .bar_page import BarPage
+        page = BarPage(cm, toasts)
+        if hasattr(cm, "set_autostart") and hasattr(cm, "get_autostart"):
+            page.set_autostart_handler(lambda: bool(cm.get_autostart("bar")),
+                                       lambda on, command: cm.set_autostart("bar", command if on else None))
+        return page
+
     def _ensure_page(self, pid):
+        if pid in self._lazy and pid not in self._item_pages:
+            try:
+                page = self._lazy[pid](self.cm, self.toasts)
+            except Exception as e:  # one broken page must not take the window down
+                import traceback
+                traceback.print_exc()
+                page = Adw.StatusPage(icon_name="dialog-error-symbolic", title="This Page Couldn't Load",
+                                      description=GLib.markup_escape_text(str(e)))
+            self._item_pages[pid] = page
+            self.stack.add_named(page, pid)
+            return
         spec = self._page_specs.get(pid)
         if spec is not None and self.stack.get_child_by_name(pid) is None:
             sp = SettingsPage(self.cm, spec, self.all_opts)
@@ -214,6 +240,12 @@ class MainWindow(Adw.ApplicationWindow):
                 sp.preview.update()
         if event in ("backups", "backup_created", "restored", "backup_restored") or key is None:
             self.backups_page.refresh()
+        for pid, field in (("keybinds", "binds"), ("rules", "window_rules"), ("monitors", None)):
+            page = self._item_pages.get(pid)
+            if page is None or not hasattr(page, "refresh"):
+                continue
+            if key is None and (pid != "monitors" or event != "changed") or (field and key == field):
+                page.refresh()
         self._sync_state()
 
     def _sync_state(self):
@@ -265,9 +297,28 @@ class MainWindow(Adw.ApplicationWindow):
 
     # -- dev helpers -------------------------------------------------------
 
-    def dev_prepare(self, page=None, search=None, sets=(), advanced=False):
+    def _dev_scroll_to(self, widget):
+        scroller = widget.get_ancestor(Gtk.ScrolledWindow)
+        if scroller is not None:
+            ok, pt = widget.compute_point(scroller.get_child(), Graphene.Point().init(0, 0))
+            if ok:
+                adj = scroller.get_vadjustment()
+                adj.set_value(min(pt.y - 160, adj.get_upper() - adj.get_page_size()))
+        return GLib.SOURCE_REMOVE
+
+    def dev_prepare(self, page=None, search=None, sets=(), advanced=False, dialog=False, seed=False):
         if page:
             self.open_page(page)
+        target = self._item_pages.get(page)
+        if page in self._lazy:
+            GLib.idle_add(lambda: self.sidebar.scroll_to_end() and False)
+        if seed and hasattr(target, "dev_seed"):
+            target.dev_seed()
+        if page == "bar" and dialog == "autostart" and hasattr(target, "autostart_row"):
+            target.autostart_row.set_active(True)
+            GLib.timeout_add(400, self._dev_scroll_to, target.autostart_row)
+        elif dialog and hasattr(target, "dev_open"):
+            GLib.idle_add(lambda: target.dev_open(dialog) and False)
         for k, v in sets:
             self.cm.set(k, v)
         if advanced:

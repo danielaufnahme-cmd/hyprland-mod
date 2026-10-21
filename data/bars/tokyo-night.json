@@ -1,0 +1,72 @@
+{
+  "format": "hyprland-mod-bar",
+  "version": 1,
+  "id": "tokyo-night",
+  "name": "Tokyo Night",
+  "description": "Deep navy islands, neon-blue accent and kanji workspaces.",
+  "tags": [
+    "dark",
+    "colorful"
+  ],
+  "order": 8,
+  "bar": {
+    "position": "top",
+    "style": "islands",
+    "floating": true,
+    "margin": 8,
+    "height": 34,
+    "radius": 10,
+    "spacing": 8,
+    "padding": 12,
+    "font": "JetBrainsMono Nerd Font",
+    "font_size": 13,
+    "font_weight": "bold",
+    "background": "#1a1b26",
+    "foreground": "#c0caf5",
+    "accent": "#7aa2f7",
+    "opacity": 0.92,
+    "icons": true,
+    "modules": {
+      "left": [
+        {
+          "type": "workspaces",
+          "options": {
+            "style": "kanji"
+          }
+        },
+        {
+          "type": "mpris",
+          "options": {}
+        }
+      ],
+      "center": [
+        {
+          "type": "clock",
+          "options": {}
+        }
+      ],
+      "right": [
+        {
+          "type": "network",
+          "options": {}
+        },
+        {
+          "type": "pulseaudio",
+          "options": {}
+        },
+        {
+          "type": "backlight",
+          "options": {}
+        },
+        {
+          "type": "battery",
+          "options": {}
+        },
+        {
+          "type": "power",
+          "options": {}
+        }
+      ]
+    }
+  }
+}

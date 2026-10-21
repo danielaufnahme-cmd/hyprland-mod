@@ -1,0 +1,58 @@
+{
+  "format": "hyprland-mod-preset",
+  "version": 1,
+  "id": "midnight",
+  "name": "Midnight",
+  "author": "Hyprland Mod",
+  "description": "True OLED black with a whisper of blue: no shadows, no blur, no distractions.",
+  "tags": [
+    "dark",
+    "minimal"
+  ],
+  "order": 27,
+  "settings": {
+    "general:gaps_in": "4",
+    "general:gaps_out": "8",
+    "general:border_size": "1",
+    "general:col.active_border": "rgba(4c6fffff)",
+    "general:col.inactive_border": "rgba(14161aff)",
+    "decoration:rounding": "10",
+    "decoration:rounding_power": "2",
+    "decoration:active_opacity": "1.0",
+    "decoration:inactive_opacity": "1.0",
+    "decoration:blur:enabled": "false",
+    "decoration:blur:size": "6",
+    "decoration:blur:passes": "2",
+    "decoration:blur:vibrancy": "0.17",
+    "decoration:blur:noise": "0.0117",
+    "decoration:shadow:enabled": "false",
+    "decoration:shadow:range": "14",
+    "decoration:shadow:render_power": "3",
+    "decoration:shadow:color": "rgba(00000066)",
+    "decoration:shadow:offset": "0 3",
+    "decoration:shadow:sharp": "false",
+    "decoration:dim_inactive": "false",
+    "decoration:dim_strength": "0.2",
+    "animations:enabled": "true"
+  },
+  "lists": {
+    "bezier": [
+      "soft, 0.4, 0, 0.2, 1"
+    ],
+    "animation": [
+      "global, 1, 10, default",
+      "windows, 1, 4, soft, popin 96%",
+      "fade, 1, 4, soft",
+      "layers, 1, 4, soft, fade",
+      "workspaces, 1, 4, soft, fade",
+      "border, 1, 5, soft"
+    ]
+  },
+  "preview": {
+    "wallpaper": [
+      "#000000",
+      "#05070b"
+    ],
+    "window": "#000000"
+  }
+}

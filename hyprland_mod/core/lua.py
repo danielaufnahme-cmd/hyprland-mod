@@ -12,7 +12,7 @@ import re
 from pathlib import Path
 
 from .fsutil import read_text
-from .managed import LIST_ORDER, ManagedState
+from .managed import LIST_ORDER, ManagedState, strip_loader
 from .values import FALSE_WORDS, TRUE_WORDS, format_float, normalize_gradient, parse_color
 
 LUA_HEADER = (
@@ -235,8 +235,11 @@ def list_calls(keyword: str, values: list[str]) -> list[str]:
     raise ValueError(f"list '{keyword}' is not supported in Lua configs")
 
 
-def render_lua(state: ManagedState, types: dict[str, str]) -> str:
-    """The managed Lua file; the exact state is kept in a JSON comment for reading back."""
+def render_lua(state: ManagedState, types: dict[str, str], item_calls: list[str] | None = None) -> str:
+    """The managed Lua file; the exact state is kept in a JSON comment for reading back.
+
+    ``item_calls`` are the rendered binds/rules/monitors (see ``core.items.lua_calls``).
+    """
     out = [LUA_HEADER, STATE_PREFIX + json.dumps(state.to_dict(), sort_keys=True) + "\n"]
     tree = settings_tree(state.settings, types)
     if tree:
@@ -245,6 +248,8 @@ def render_lua(state: ManagedState, types: dict[str, str]) -> str:
         calls = list_calls(kw, state.lists.get(kw, []))
         if calls:
             out.append("\n" + "\n".join(calls) + "\n")
+    if item_calls:
+        out.append("\n" + "\n".join(item_calls) + "\n")
     return "".join(out)
 
 
@@ -343,6 +348,14 @@ def with_require_line(text: str, config_path: str, managed_path: str) -> str | N
     if body and not body.endswith("\n\n"):
         body += "\n"
     return f"{body}{REQUIRE_MARKER}\n{require_line(config_path, managed_path)}\n"
+
+
+def without_require_line(text: str, config_path: str, managed_path: str) -> str | None:
+    """Config text with our loader line removed, or None if it has none."""
+    lines = text.splitlines(keepends=True)
+    code = _strip_lua_comments(text)
+    ours = [i for i, c in enumerate(code) if c and _loads_managed(c, config_path, managed_path)]
+    return strip_loader(lines, ours, REQUIRE_MARKER)
 
 
 # ---------------------------------------------------------------- user lists (light scan)
