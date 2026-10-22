@@ -179,5 +179,3 @@ Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md).
 [MIT](LICENSE)
 
 ---
-
-<sub>Credits: built with help from Claude (AI).</sub>
