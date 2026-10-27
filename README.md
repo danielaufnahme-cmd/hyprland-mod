@@ -7,9 +7,9 @@
 **Every Hyprland setting and a whole rice, one click away. No config files. No terminal.**
 
 ![Hyprland 0.56+](https://img.shields.io/badge/Hyprland-0.56%2B-3b82f6?style=flat-square)
+![Rust 2021](https://img.shields.io/badge/Rust-1.75%2B-dea584?style=flat-square&logo=rust)
 ![GTK4 / libadwaita](https://img.shields.io/badge/GTK4-libadwaita-14b8a6?style=flat-square)
 ![License MIT](https://img.shields.io/badge/license-MIT-lightgrey?style=flat-square)
-![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-2f80ed?style=flat-square)
 
 <br>
 
@@ -109,12 +109,22 @@ curl -fsSL https://raw.githubusercontent.com/danielaufnahme-cmd/hyprland-mod/mai
 
 Then open **Hyprland Mod** from your app launcher.
 
-Or manually:
+### Build from source (Rust)
 
 ```bash
 git clone https://github.com/danielaufnahme-cmd/hyprland-mod
 cd hyprland-mod
-./install.sh
+cargo build --release
+cargo install --path .
+```
+
+To run the CLI directly:
+
+```bash
+hyprland-mod status
+hyprland-mod preset list
+hyprland-mod preset apply tokyo-night
+hyprland-mod bar start
 ```
 
 Requirements: Python 3.11+, PyGObject, GTK 4, libadwaita 1.5+. The installer checks these and prints the exact command for your distribution if something is missing:
