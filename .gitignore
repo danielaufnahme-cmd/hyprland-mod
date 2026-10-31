@@ -6,3 +6,6 @@ __pycache__/
 build/
 dist/
 docs/dev-screens/
+
+# Rust build output
+target/

@@ -1,0 +1,3466 @@
+[
+ {
+  "id": "caelestia-general",
+  "title": "General",
+  "icon": "preferences-system-symbolic",
+  "order": 0,
+  "groups": [
+   {
+    "title": "Shell",
+    "options": [
+     {
+      "key": "enabled",
+      "label": "Shell config enabled",
+      "description": "Master switch for this config file",
+      "type": "bool",
+      "default": true,
+      "advanced": true
+     },
+     {
+      "key": "general.logo",
+      "label": "Bar logo",
+      "description": "\"caelestia\" = built-in logo, an icon name, or an image path; empty = distro logo",
+      "type": "string",
+      "default": ""
+     },
+     {
+      "key": "general.language",
+      "label": "Language",
+      "description": "Interface language code; empty follows the system",
+      "type": "string",
+      "default": ""
+     },
+     {
+      "key": "general.showOverFullscreen",
+      "label": "Show over fullscreen",
+      "description": "Keep shell panels above fullscreen windows",
+      "type": "bool",
+      "default": false,
+      "default_uncertain": true
+     },
+     {
+      "key": "general.mediaGifSpeedAdjustment",
+      "label": "Media gif speed adjustment",
+      "description": "",
+      "type": "float",
+      "default": 300,
+      "default_uncertain": true,
+      "min": 0,
+      "max": 1000,
+      "digits": 2,
+      "advanced": true
+     },
+     {
+      "key": "general.sessionGifSpeed",
+      "label": "Session gif speed",
+      "description": "",
+      "type": "float",
+      "default": 0.7,
+      "default_uncertain": true,
+      "min": 0,
+      "max": 1000,
+      "digits": 2,
+      "advanced": true
+     }
+    ]
+   },
+   {
+    "title": "Default apps",
+    "options": [
+     {
+      "key": "general.apps.terminal",
+      "label": "Terminal",
+      "description": "",
+      "type": "string_list",
+      "default": [
+       "foot"
+      ]
+     },
+     {
+      "key": "general.apps.audio",
+      "label": "Audio",
+      "description": "",
+      "type": "string_list",
+      "default": [
+       "pwvucontrol"
+      ]
+     },
+     {
+      "key": "general.apps.playback",
+      "label": "Media playback",
+      "description": "",
+      "type": "string_list",
+      "default": [
+       "mpv"
+      ]
+     },
+     {
+      "key": "general.apps.explorer",
+      "label": "File manager",
+      "description": "",
+      "type": "string_list",
+      "default": [
+       "thunar"
+      ]
+     }
+    ]
+   },
+   {
+    "title": "Paths",
+    "options": [
+     {
+      "key": "paths.wallpaperDir",
+      "label": "Wallpaper folder",
+      "description": "Where the shell looks for wallpapers",
+      "type": "string",
+      "default": "~/Pictures/Wallpapers"
+     },
+     {
+      "key": "paths.lyricsDir",
+      "label": "Lyrics dir",
+      "description": "",
+      "type": "string",
+      "default": "~/Music/Lyrics",
+      "default_uncertain": true,
+      "advanced": true
+     },
+     {
+      "key": "paths.sessionGif",
+      "label": "Session gif",
+      "description": "",
+      "type": "string",
+      "default": "root:/assets/kurukuru.gif",
+      "advanced": true
+     },
+     {
+      "key": "paths.mediaGif",
+      "label": "Media gif",
+      "description": "",
+      "type": "string",
+      "default": "root:/assets/bongocat.gif",
+      "advanced": true
+     },
+     {
+      "key": "paths.noNotifsPic",
+      "label": "No notifs pic",
+      "description": "",
+      "type": "string",
+      "default": "root:/assets/dino.png",
+      "advanced": true
+     },
+     {
+      "key": "paths.lockNoNotifsPic",
+      "label": "Lock no notifs pic",
+      "description": "",
+      "type": "string",
+      "default": "root:/assets/dino.png",
+      "advanced": true
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "caelestia-bar",
+  "title": "Bar",
+  "icon": "view-app-grid-symbolic",
+  "order": 1,
+  "groups": [
+   {
+    "title": "Behaviour",
+    "options": [
+     {
+      "key": "bar.persistent",
+      "label": "Persistent",
+      "description": "Keep the bar visible at all times",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "bar.showOnHover",
+      "label": "Show on hover",
+      "description": "Reveal the bar when the cursor reaches the screen edge",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "bar.dragThreshold",
+      "label": "Drag threshold",
+      "description": "Pixels dragged before the bar reveals",
+      "type": "int",
+      "default": 20,
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px"
+     },
+     {
+      "key": "bar.statusIcons",
+      "label": "Status icons",
+      "description": "Which status icons appear on the bar",
+      "type": "json",
+      "default": null
+     },
+     {
+      "key": "bar.entries",
+      "label": "Bar layout",
+      "description": "Order and visibility of bar items",
+      "type": "json",
+      "default": null
+     },
+     {
+      "key": "bar.excludedScreens",
+      "label": "Hide bar on screens",
+      "description": "Monitor names without a bar",
+      "type": "string_list",
+      "default": []
+     }
+    ]
+   },
+   {
+    "title": "Scroll actions",
+    "options": [
+     {
+      "key": "bar.scrollActions.workspaces",
+      "label": "Workspaces",
+      "description": "Scroll over the workspace indicator to switch workspaces",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "bar.scrollActions.volume",
+      "label": "Volume",
+      "description": "Scroll on the top half of the bar to adjust volume",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "bar.scrollActions.brightness",
+      "label": "Brightness",
+      "description": "Scroll on the bottom half of the bar to adjust brightness",
+      "type": "bool",
+      "default": true
+     }
+    ]
+   },
+   {
+    "title": "Popouts",
+    "options": [
+     {
+      "key": "bar.popouts.activeWindow",
+      "label": "Popout on hover",
+      "description": "Show a window details popout when hovering",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "bar.popouts.tray",
+      "label": "Popout on hover",
+      "description": "Show the tray menu popout when hovering",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "bar.popouts.statusIcons",
+      "label": "Popout on hover",
+      "description": "Show a details popout when hovering the status icons",
+      "type": "bool",
+      "default": true
+     }
+    ]
+   },
+   {
+    "title": "Workspaces",
+    "options": [
+     {
+      "key": "bar.workspaces.shown",
+      "label": "Shown",
+      "description": "Number of workspaces displayed",
+      "type": "int",
+      "default": 5,
+      "min": 1,
+      "max": 20,
+      "step": 1
+     },
+     {
+      "key": "bar.workspaces.activeIndicator",
+      "label": "Active indicator",
+      "description": "",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "bar.workspaces.occupiedBg",
+      "label": "Occupied background",
+      "description": "",
+      "type": "bool",
+      "default": false
+     },
+     {
+      "key": "bar.workspaces.showUnoccupied",
+      "label": "Show unoccupied",
+      "description": "Show workspaces that are inactive and empty",
+      "type": "bool",
+      "default": true,
+      "default_uncertain": true
+     },
+     {
+      "key": "bar.workspaces.perMonitor",
+      "label": "Per monitor",
+      "description": "Hide workspaces not on the current monitor",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "bar.workspaces.showWindows",
+      "label": "Show windows",
+      "description": "Show icons of open windows on each workspace",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "bar.workspaces.showWindowsOnSpecialWorkspaces",
+      "label": "Windows on special workspaces",
+      "description": "",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "bar.workspaces.maxWindowIcons",
+      "label": "Max window icons",
+      "description": "",
+      "type": "int",
+      "default": 0,
+      "default_uncertain": true,
+      "min": 0.0,
+      "max": 20.0,
+      "step": 1.0
+     },
+     {
+      "key": "bar.workspaces.activeTrail",
+      "label": "Active trail",
+      "description": "",
+      "type": "bool",
+      "default": false
+     },
+     {
+      "key": "bar.workspaces.displayType",
+      "label": "Display type",
+      "description": "",
+      "choices": [
+       {
+        "value": "Shapes",
+        "label": "Shapes"
+       },
+       {
+        "value": "Text",
+        "label": "Text"
+       },
+       {
+        "value": "Icons",
+        "label": "Icons"
+       }
+      ],
+      "type": "enum",
+      "default": "Shapes",
+      "default_uncertain": true
+     },
+     {
+      "key": "bar.workspaces.specialDisplayType",
+      "label": "Special display type",
+      "description": "",
+      "choices": [
+       {
+        "value": "Shapes",
+        "label": "Shapes"
+       },
+       {
+        "value": "Text",
+        "label": "Text"
+       },
+       {
+        "value": "Icons",
+        "label": "Icons"
+       }
+      ],
+      "type": "enum",
+      "default": "Icons",
+      "default_uncertain": true
+     },
+     {
+      "key": "bar.workspaces.label",
+      "label": "Label",
+      "description": "",
+      "type": "string",
+      "default": "  ",
+      "default_uncertain": true
+     },
+     {
+      "key": "bar.workspaces.occupiedLabel",
+      "label": "Occupied label",
+      "description": "",
+      "type": "string",
+      "default": "󰮯",
+      "default_uncertain": true
+     },
+     {
+      "key": "bar.workspaces.activeLabel",
+      "label": "Active label",
+      "description": "",
+      "type": "string",
+      "default": "󰮯",
+      "default_uncertain": true
+     },
+     {
+      "key": "bar.workspaces.capitalisation",
+      "label": "Capitalisation",
+      "description": "",
+      "choices": [
+       {
+        "value": "Preserve",
+        "label": "Preserve"
+       },
+       {
+        "value": "Upper",
+        "label": "Upper"
+       },
+       {
+        "value": "Lower",
+        "label": "Lower"
+       }
+      ],
+      "type": "enum",
+      "default": "Preserve"
+     },
+     {
+      "key": "bar.workspaces.workspaceIcons",
+      "label": "Workspace icons",
+      "description": "",
+      "type": "json",
+      "default": null
+     },
+     {
+      "key": "bar.workspaces.specialWorkspaceIcons",
+      "label": "Special workspace icons",
+      "description": "",
+      "type": "json",
+      "default": null
+     },
+     {
+      "key": "bar.workspaces.ignoredTags",
+      "label": "Ignored tags",
+      "description": "",
+      "type": "string_list",
+      "default": []
+     },
+     {
+      "key": "bar.workspaces.windowIcons",
+      "label": "Window icons",
+      "description": "",
+      "type": "json",
+      "default": []
+     }
+    ]
+   },
+   {
+    "title": "Active window",
+    "options": [
+     {
+      "key": "bar.activeWindow.compact",
+      "label": "Compact",
+      "description": "",
+      "type": "bool",
+      "default": false
+     },
+     {
+      "key": "bar.activeWindow.inverted",
+      "label": "Inverted",
+      "description": "",
+      "type": "bool",
+      "default": false
+     },
+     {
+      "key": "bar.activeWindow.showOnHover",
+      "label": "Show on hover",
+      "description": "Only show the active window title while hovering",
+      "type": "bool",
+      "default": false,
+      "default_uncertain": true
+     }
+    ]
+   },
+   {
+    "title": "Tray",
+    "options": [
+     {
+      "key": "bar.tray.background",
+      "label": "Background",
+      "description": "",
+      "type": "bool",
+      "default": false
+     },
+     {
+      "key": "bar.tray.recolour",
+      "label": "Recolour icons",
+      "description": "",
+      "type": "bool",
+      "default": false
+     },
+     {
+      "key": "bar.tray.compact",
+      "label": "Compact",
+      "description": "",
+      "type": "bool",
+      "default": false
+     },
+     {
+      "key": "bar.tray.iconSubs",
+      "label": "Icon subs",
+      "description": "",
+      "type": "json",
+      "default": []
+     },
+     {
+      "key": "bar.tray.hiddenIcons",
+      "label": "Hidden icons",
+      "description": "",
+      "type": "string_list",
+      "default": []
+     }
+    ]
+   },
+   {
+    "title": "Clock",
+    "options": [
+     {
+      "key": "bar.clock.background",
+      "label": "Background",
+      "description": "",
+      "type": "bool",
+      "default": false
+     },
+     {
+      "key": "bar.clock.showDate",
+      "label": "Show date",
+      "description": "",
+      "type": "bool",
+      "default": false
+     },
+     {
+      "key": "bar.clock.showIcon",
+      "label": "Show icon",
+      "description": "",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "bar.clock.showSeconds",
+      "label": "Show seconds",
+      "description": "",
+      "type": "bool",
+      "default": false
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "caelestia-dashboard",
+  "title": "Dashboard",
+  "icon": "view-grid-symbolic",
+  "order": 2,
+  "groups": [
+   {
+    "title": "Dashboard",
+    "options": [
+     {
+      "key": "dashboard.enabled",
+      "label": "Enabled",
+      "description": "",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "dashboard.showOnHover",
+      "label": "Show on hover",
+      "description": "Reveal when the cursor reaches the screen edge",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "dashboard.showDashboard",
+      "label": "Dashboard",
+      "description": "",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "dashboard.showMedia",
+      "label": "Media",
+      "description": "",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "dashboard.showPerformance",
+      "label": "Performance",
+      "description": "",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "dashboard.showWeather",
+      "label": "Weather",
+      "description": "",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "dashboard.showClockSeconds",
+      "label": "Show clock seconds",
+      "description": "Display seconds for the clock in the main panel",
+      "type": "bool",
+      "default": false,
+      "default_uncertain": true
+     },
+     {
+      "key": "dashboard.dragThreshold",
+      "label": "Drag threshold",
+      "description": "Pixels dragged before the dashboard opens",
+      "type": "int",
+      "default": 50,
+      "min": 0.0,
+      "max": 200.0,
+      "step": 5.0
+     }
+    ]
+   },
+   {
+    "title": "Refresh rates",
+    "options": [
+     {
+      "key": "dashboard.mediaUpdateInterval",
+      "label": "Media refresh",
+      "description": "How often the media position updates (ms)",
+      "type": "int",
+      "default": 500,
+      "min": 100.0,
+      "max": 2000.0,
+      "step": 50.0,
+      "unit": "ms"
+     },
+     {
+      "key": "dashboard.resourceUpdateInterval",
+      "label": "System stats refresh",
+      "description": "CPU, memory and GPU update interval (seconds)",
+      "type": "int",
+      "default": 1000,
+      "min": 500,
+      "max": 10000,
+      "step": 500,
+      "unit": "ms"
+     }
+    ]
+   },
+   {
+    "title": "Performance",
+    "options": [
+     {
+      "key": "dashboard.performance.showBattery",
+      "label": "Battery",
+      "description": "",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "dashboard.performance.showGpu",
+      "label": "GPU",
+      "description": "",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "dashboard.performance.showCpu",
+      "label": "CPU",
+      "description": "",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "dashboard.performance.showMemory",
+      "label": "Memory",
+      "description": "",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "dashboard.performance.showStorage",
+      "label": "Storage",
+      "description": "",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "dashboard.performance.showNetwork",
+      "label": "Network",
+      "description": "",
+      "type": "bool",
+      "default": true
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "caelestia-launcher",
+  "title": "Launcher",
+  "icon": "system-search-symbolic",
+  "order": 3,
+  "groups": [
+   {
+    "title": "Launcher",
+    "options": [
+     {
+      "key": "launcher.enabled",
+      "label": "Enabled",
+      "description": "",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "launcher.showOnHover",
+      "label": "Show on hover",
+      "description": "Reveal when the cursor reaches the screen edge",
+      "type": "bool",
+      "default": false
+     },
+     {
+      "key": "launcher.maxShown",
+      "label": "Max items shown",
+      "description": "",
+      "type": "int",
+      "default": 7,
+      "min": 1.0,
+      "max": 20.0,
+      "step": 1.0
+     },
+     {
+      "key": "launcher.maxWallpapers",
+      "label": "Max wallpapers",
+      "description": "",
+      "type": "int",
+      "default": 9,
+      "min": 1.0,
+      "max": 30.0,
+      "step": 1.0
+     },
+     {
+      "key": "launcher.dragThreshold",
+      "label": "Drag threshold",
+      "description": "Pixels dragged before the launcher opens",
+      "type": "int",
+      "default": 50,
+      "min": 0.0,
+      "max": 200.0,
+      "step": 5.0
+     },
+     {
+      "key": "launcher.vimKeybinds",
+      "label": "Vim keybinds",
+      "description": "Navigate results with Ctrl+hjkl",
+      "type": "bool",
+      "default": false
+     }
+    ]
+   },
+   {
+    "title": "Prefixes and actions",
+    "options": [
+     {
+      "key": "launcher.specialPrefix",
+      "label": "Special prefix",
+      "description": "Prefix for special launcher modes",
+      "type": "string",
+      "default": "@"
+     },
+     {
+      "key": "launcher.actionPrefix",
+      "label": "Action prefix",
+      "description": "Prefix used to run actions in the launcher",
+      "type": "string",
+      "default": ">"
+     },
+     {
+      "key": "launcher.enableDangerousActions",
+      "label": "Enable dangerous actions",
+      "description": "Allow actions that shut down or log out",
+      "type": "bool",
+      "default": false
+     },
+     {
+      "key": "launcher.actions",
+      "label": "Launcher actions",
+      "description": "Commands available with the action prefix",
+      "type": "json",
+      "default": null
+     }
+    ]
+   },
+   {
+    "title": "Apps",
+    "options": [
+     {
+      "key": "launcher.favouriteApps",
+      "label": "Favourite",
+      "description": "",
+      "type": "string_list",
+      "default": []
+     },
+     {
+      "key": "launcher.hiddenApps",
+      "label": "Hidden",
+      "description": "",
+      "type": "string_list",
+      "default": []
+     }
+    ]
+   },
+   {
+    "title": "Fuzzy search",
+    "options": [
+     {
+      "key": "launcher.useFuzzy.apps",
+      "label": "Apps",
+      "description": "",
+      "type": "bool",
+      "default": false
+     },
+     {
+      "key": "launcher.useFuzzy.actions",
+      "label": "Actions",
+      "description": "",
+      "type": "bool",
+      "default": false
+     },
+     {
+      "key": "launcher.useFuzzy.schemes",
+      "label": "Schemes",
+      "description": "",
+      "type": "bool",
+      "default": false
+     },
+     {
+      "key": "launcher.useFuzzy.variants",
+      "label": "Variants",
+      "description": "",
+      "type": "bool",
+      "default": false
+     },
+     {
+      "key": "launcher.useFuzzy.wallpapers",
+      "label": "Wallpapers",
+      "description": "",
+      "type": "bool",
+      "default": false
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "caelestia-notifications",
+  "title": "Notifications",
+  "icon": "preferences-system-notifications-symbolic",
+  "order": 4,
+  "groups": [
+   {
+    "title": "Notifications",
+    "options": [
+     {
+      "key": "notifs.expire",
+      "label": "Expire automatically",
+      "description": "Dismiss notifications after their timeout",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "notifs.fullscreen",
+      "label": "Show in fullscreen",
+      "description": "Whether notifications appear over fullscreen apps",
+      "choices": [
+       {
+        "value": "On",
+        "label": "On"
+       },
+       {
+        "value": "Off",
+        "label": "Off"
+       }
+      ],
+      "type": "enum",
+      "default": "Off",
+      "default_uncertain": true
+     },
+     {
+      "key": "notifs.defaultExpireTimeout",
+      "label": "Default timeout",
+      "description": "Time before a notification dismisses (ms)",
+      "type": "int",
+      "default": 5000,
+      "min": 1000.0,
+      "max": 60000.0,
+      "step": 500.0,
+      "unit": "ms"
+     },
+     {
+      "key": "notifs.fullscreenExpireTimeout",
+      "label": "Fullscreen expire timeout",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "unit": "ms"
+     },
+     {
+      "key": "notifs.clearThreshold",
+      "label": "Clear threshold",
+      "description": "",
+      "type": "float",
+      "default": 0.3,
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "digits": 2
+     },
+     {
+      "key": "notifs.expandThreshold",
+      "label": "Expand threshold",
+      "description": "",
+      "type": "int",
+      "default": 20,
+      "min": 0,
+      "max": 100000
+     },
+     {
+      "key": "notifs.actionOnClick",
+      "label": "Action on click",
+      "description": "",
+      "type": "bool",
+      "default": false
+     },
+     {
+      "key": "notifs.groupPreviewNum",
+      "label": "Group preview count",
+      "description": "Notifications shown per group before collapsing",
+      "type": "int",
+      "default": 3,
+      "min": 1.0,
+      "max": 10.0,
+      "step": 1.0
+     },
+     {
+      "key": "notifs.openExpanded",
+      "label": "Open expanded",
+      "description": "Show notifications expanded by default",
+      "type": "bool",
+      "default": false
+     }
+    ]
+   },
+   {
+    "title": "On-screen display",
+    "options": [
+     {
+      "key": "osd.enabled",
+      "label": "Enabled",
+      "description": "",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "osd.hideDelay",
+      "label": "OSD hide delay",
+      "description": "Milliseconds before the volume/brightness OSD hides",
+      "type": "int",
+      "default": 2000,
+      "min": 100,
+      "max": 10000,
+      "step": 100,
+      "unit": "ms"
+     },
+     {
+      "key": "osd.enableBrightness",
+      "label": "Enable brightness",
+      "description": "",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "osd.enableMicrophone",
+      "label": "Enable microphone",
+      "description": "",
+      "type": "bool",
+      "default": false
+     }
+    ]
+   },
+   {
+    "title": "Toasts",
+    "options": [
+     {
+      "key": "utilities.maxToasts",
+      "label": "Visible toasts",
+      "description": "Maximum number of toasts shown at once",
+      "type": "int",
+      "default": 4,
+      "min": 1.0,
+      "max": 10.0,
+      "step": 1.0
+     },
+     {
+      "key": "utilities.toasts.fullscreen",
+      "label": "Show in fullscreen",
+      "description": "Whether toasts appear over fullscreen apps",
+      "choices": [
+       {
+        "value": "off",
+        "label": "Off"
+       },
+       {
+        "value": "important",
+        "label": "Important only"
+       },
+       {
+        "value": "all",
+        "label": "All"
+       }
+      ],
+      "type": "enum",
+      "default": "important",
+      "default_uncertain": true
+     },
+     {
+      "key": "utilities.toasts.configLoaded",
+      "label": "Config loaded",
+      "description": "",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "utilities.toasts.chargingChanged",
+      "label": "Charging changes",
+      "description": "",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "utilities.toasts.gameModeChanged",
+      "label": "Game mode changes",
+      "description": "",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "utilities.toasts.dndChanged",
+      "label": "Do not disturb changes",
+      "description": "",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "utilities.toasts.audioOutputChanged",
+      "label": "Audio output changes",
+      "description": "",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "utilities.toasts.audioInputChanged",
+      "label": "Audio input changes",
+      "description": "",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "utilities.toasts.capsLockChanged",
+      "label": "Caps lock changes",
+      "description": "",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "utilities.toasts.numLockChanged",
+      "label": "Num lock changes",
+      "description": "",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "utilities.toasts.kbLayoutChanged",
+      "label": "Keyboard layout changes",
+      "description": "",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "utilities.toasts.kbLimit",
+      "label": "Keyboard limit",
+      "description": "",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "utilities.toasts.vpnChanged",
+      "label": "VPN changes",
+      "description": "",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "utilities.toasts.nowPlaying",
+      "label": "Now playing",
+      "description": "",
+      "type": "bool",
+      "default": true
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "caelestia-panels",
+  "title": "Sidebar & Utilities",
+  "icon": "sidebar-show-symbolic",
+  "order": 5,
+  "groups": [
+   {
+    "title": "Sidebar",
+    "options": [
+     {
+      "key": "sidebar.enabled",
+      "label": "Enabled",
+      "description": "",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "sidebar.showOnHover",
+      "label": "Show on hover",
+      "description": "",
+      "type": "bool",
+      "default": null
+     },
+     {
+      "key": "sidebar.minHoverThreshold",
+      "label": "Min hover threshold",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000
+     },
+     {
+      "key": "sidebar.dragThreshold",
+      "label": "Drag threshold",
+      "description": "Pixels dragged before the sidebar opens",
+      "type": "int",
+      "default": 80,
+      "min": 0.0,
+      "max": 200.0,
+      "step": 5.0
+     }
+    ]
+   },
+   {
+    "title": "Utilities",
+    "options": [
+     {
+      "key": "utilities.enabled",
+      "label": "Enabled",
+      "description": "Show the utilities panel",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "utilities.cards.keepAwake",
+      "label": "Keep awake",
+      "description": "Show the idle inhibitor card",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "utilities.cards.recorder",
+      "label": "Screen recorder",
+      "description": "Show the screen recorder card",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "utilities.cards.quickToggles",
+      "label": "Quick toggles",
+      "description": "Show the quick toggles card",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "utilities.quickToggles",
+      "label": "Quick toggles",
+      "description": "Toggles shown in the utilities card",
+      "type": "json",
+      "default": null
+     }
+    ]
+   },
+   {
+    "title": "VPN",
+    "options": [
+     {
+      "key": "utilities.vpn.enabled",
+      "label": "Enabled",
+      "description": "",
+      "type": "bool",
+      "default": false
+     },
+     {
+      "key": "utilities.vpn.provider",
+      "label": "Provider",
+      "description": "",
+      "type": "json",
+      "default": []
+     },
+     {
+      "key": "utilities.vpn.selectedProvider",
+      "label": "Selected provider",
+      "description": "",
+      "type": "string",
+      "default": ""
+     }
+    ]
+   },
+   {
+    "title": "Session menu",
+    "options": [
+     {
+      "key": "session.enabled",
+      "label": "Session menu",
+      "description": "Power/logout menu",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "session.dragThreshold",
+      "label": "Drag threshold",
+      "description": "",
+      "type": "int",
+      "default": 30,
+      "min": 0,
+      "max": 100000
+     },
+     {
+      "key": "session.vimKeybinds",
+      "label": "Vim keybinds",
+      "description": "",
+      "type": "bool",
+      "default": false
+     },
+     {
+      "key": "session.icons.logout",
+      "label": "Logout",
+      "description": "",
+      "type": "string",
+      "default": "logout",
+      "advanced": true
+     },
+     {
+      "key": "session.icons.shutdown",
+      "label": "Shutdown",
+      "description": "",
+      "type": "string",
+      "default": "power_settings_new",
+      "advanced": true
+     },
+     {
+      "key": "session.icons.hibernate",
+      "label": "Hibernate",
+      "description": "",
+      "type": "string",
+      "default": "downloading",
+      "advanced": true
+     },
+     {
+      "key": "session.icons.reboot",
+      "label": "Reboot",
+      "description": "",
+      "type": "string",
+      "default": "cached",
+      "advanced": true
+     },
+     {
+      "key": "session.commands.logout",
+      "label": "Logout",
+      "description": "",
+      "type": "string_list",
+      "default": [
+       "loginctl",
+       "terminate-user",
+       ""
+      ],
+      "advanced": true
+     },
+     {
+      "key": "session.commands.shutdown",
+      "label": "Shutdown",
+      "description": "",
+      "type": "string_list",
+      "default": [
+       "systemctl",
+       "poweroff"
+      ],
+      "advanced": true
+     },
+     {
+      "key": "session.commands.hibernate",
+      "label": "Hibernate",
+      "description": "",
+      "type": "string_list",
+      "default": [
+       "systemctl",
+       "hibernate"
+      ],
+      "advanced": true
+     },
+     {
+      "key": "session.commands.reboot",
+      "label": "Reboot",
+      "description": "",
+      "type": "string_list",
+      "default": [
+       "systemctl",
+       "reboot"
+      ],
+      "advanced": true
+     }
+    ]
+   },
+   {
+    "title": "Settings window",
+    "options": [
+     {
+      "key": "nexus.wallpapersPerRow",
+      "label": "Wallpapers per row",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "nexus.maxNetworksShown",
+      "label": "Max networks shown",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "nexus.networkRescanInterval",
+      "label": "Wi-Fi rescan",
+      "description": "How often available networks are rescanned (seconds)",
+      "type": "int",
+      "default": null,
+      "min": 5000,
+      "max": 120000,
+      "step": 5000,
+      "unit": "ms",
+      "advanced": true
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "caelestia-lock",
+  "title": "Lock & Idle",
+  "icon": "system-lock-screen-symbolic",
+  "order": 6,
+  "groups": [
+   {
+    "title": "Lock screen",
+    "options": [
+     {
+      "key": "lock.enabled",
+      "label": "Shell lock screen",
+      "description": "Use Caelestia's own lock screen",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "lock.useWallpaper",
+      "label": "Wallpaper on lock screen",
+      "description": "",
+      "type": "bool",
+      "default": true,
+      "default_uncertain": true
+     },
+     {
+      "key": "lock.recolourLogo",
+      "label": "Recolour logo",
+      "description": "Tint the lock screen logo with the colour scheme",
+      "type": "bool",
+      "default": false
+     },
+     {
+      "key": "lock.enableFprint",
+      "label": "Fingerprint unlock",
+      "description": "Use fprintd when available",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "lock.maxFprintTries",
+      "label": "Max fingerprint tries",
+      "description": "",
+      "type": "int",
+      "default": 3,
+      "min": 1,
+      "max": 20,
+      "step": 1
+     },
+     {
+      "key": "lock.enableHowdy",
+      "label": "Face unlock (Howdy)",
+      "description": "",
+      "type": "bool",
+      "default": false,
+      "default_uncertain": true
+     },
+     {
+      "key": "lock.maxHowdyTries",
+      "label": "Max howdy tries",
+      "description": "",
+      "type": "int",
+      "default": 3,
+      "default_uncertain": true,
+      "min": 1,
+      "max": 20,
+      "step": 1
+     },
+     {
+      "key": "lock.triggerHowdyOnWake",
+      "label": "Trigger howdy on wake",
+      "description": "",
+      "type": "bool",
+      "default": false,
+      "default_uncertain": true
+     },
+     {
+      "key": "lock.hideNotifs",
+      "label": "Hide notifications",
+      "description": "Don't show notifications on the lock screen",
+      "type": "bool",
+      "default": false
+     }
+    ]
+   },
+   {
+    "title": "Idle",
+    "options": [
+     {
+      "key": "general.idle.lockBeforeSleep",
+      "label": "Lock before sleep",
+      "description": "Lock the session before the system suspends",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "general.idle.inhibitWhenAudio",
+      "label": "Stay awake while audio plays",
+      "description": "",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "general.idle.inhibitWhenCharging",
+      "label": "Stay awake while charging",
+      "description": "",
+      "type": "bool",
+      "default": false,
+      "default_uncertain": true
+     },
+     {
+      "key": "general.idle.timeouts",
+      "label": "Idle timeouts",
+      "description": "List of {timeout (s), idleAction, returnAction} steps, e.g. lock, dpms off, suspend",
+      "type": "json",
+      "default": [
+       {
+        "timeout": 180,
+        "idleAction": "lock"
+       },
+       {
+        "timeout": 300,
+        "idleAction": "dpms off",
+        "returnAction": "dpms on"
+       },
+       {
+        "timeout": 600,
+        "idleAction": [
+         "systemctl",
+         "suspend-then-hibernate"
+        ]
+       }
+      ],
+      "default_uncertain": true
+     }
+    ]
+   },
+   {
+    "title": "Battery",
+    "options": [
+     {
+      "key": "general.battery.warnLevels",
+      "label": "Battery warnings",
+      "description": "Notifications shown at each battery level",
+      "type": "json",
+      "default": [
+       {
+        "level": 20,
+        "title": "Low battery",
+        "message": "You might want to plug in a charger",
+        "icon": "battery_android_frame_2"
+       },
+       {
+        "level": 10,
+        "title": "Did you see the previous message?",
+        "message": "You should probably plug in a charger <b>now</b>",
+        "icon": "battery_android_frame_1"
+       },
+       {
+        "level": 5,
+        "title": "Critical battery level",
+        "message": "PLUG THE CHARGER RIGHT NOW!!",
+        "icon": "battery_android_alert",
+        "critical": true
+       }
+      ],
+      "default_uncertain": true
+     },
+     {
+      "key": "general.battery.criticalLevel",
+      "label": "Critical battery level",
+      "description": "Percentage at which the critical action happens",
+      "type": "int",
+      "default": 3,
+      "min": 0,
+      "max": 100,
+      "step": 1
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "caelestia-background",
+  "title": "Background",
+  "icon": "preferences-desktop-wallpaper-symbolic",
+  "order": 7,
+  "groups": [
+   {
+    "title": "Wallpaper",
+    "options": [
+     {
+      "key": "background.enabled",
+      "label": "Background layer",
+      "description": "Draw the shell's desktop background layer",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "background.wallpaperEnabled",
+      "label": "Display wallpaper",
+      "description": "",
+      "type": "bool",
+      "default": true
+     }
+    ]
+   },
+   {
+    "title": "Desktop clock",
+    "options": [
+     {
+      "key": "background.desktopClock.enabled",
+      "label": "Desktop clock",
+      "description": "Show a large clock on the desktop",
+      "type": "bool",
+      "default": false
+     },
+     {
+      "key": "background.desktopClock.scale",
+      "label": "Scale",
+      "description": "",
+      "type": "float",
+      "default": 1.0,
+      "min": 0.25,
+      "max": 4,
+      "step": 0.05,
+      "digits": 2
+     },
+     {
+      "key": "background.desktopClock.position",
+      "label": "Clock position",
+      "description": "e.g. top-left, center, bottom-right",
+      "type": "string",
+      "default": "bottom-right"
+     },
+     {
+      "key": "background.desktopClock.invertColors",
+      "label": "Invert colors",
+      "description": "",
+      "type": "bool",
+      "default": false
+     },
+     {
+      "key": "background.desktopClock.background.enabled",
+      "label": "Enabled",
+      "description": "",
+      "type": "bool",
+      "default": false
+     },
+     {
+      "key": "background.desktopClock.background.opacity",
+      "label": "Opacity",
+      "description": "",
+      "type": "float",
+      "default": 0.7,
+      "default_uncertain": true,
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "digits": 2
+     },
+     {
+      "key": "background.desktopClock.background.blur",
+      "label": "Blur",
+      "description": "",
+      "type": "bool",
+      "default": true,
+      "default_uncertain": true
+     },
+     {
+      "key": "background.desktopClock.shadow.enabled",
+      "label": "Enabled",
+      "description": "",
+      "type": "bool",
+      "default": true,
+      "default_uncertain": true
+     },
+     {
+      "key": "background.desktopClock.shadow.opacity",
+      "label": "Opacity",
+      "description": "",
+      "type": "float",
+      "default": 0.7,
+      "default_uncertain": true,
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "digits": 2
+     },
+     {
+      "key": "background.desktopClock.shadow.blur",
+      "label": "Blur",
+      "description": "",
+      "type": "float",
+      "default": 0.4,
+      "default_uncertain": true,
+      "min": 0,
+      "max": 1000,
+      "digits": 2
+     }
+    ]
+   },
+   {
+    "title": "Visualiser",
+    "options": [
+     {
+      "key": "background.visualiser.enabled",
+      "label": "Desktop visualiser",
+      "description": "Audio visualiser drawn on the wallpaper",
+      "type": "bool",
+      "default": false
+     },
+     {
+      "key": "background.visualiser.autoHide",
+      "label": "Auto hide",
+      "description": "",
+      "type": "bool",
+      "default": true
+     },
+     {
+      "key": "background.visualiser.blur",
+      "label": "Blur",
+      "description": "",
+      "type": "bool",
+      "default": false
+     },
+     {
+      "key": "background.visualiser.rounding",
+      "label": "Rounding",
+      "description": "",
+      "type": "float",
+      "default": 1.0,
+      "min": 0,
+      "max": 1000,
+      "digits": 2
+     },
+     {
+      "key": "background.visualiser.spacing",
+      "label": "Spacing",
+      "description": "",
+      "type": "float",
+      "default": 1.0,
+      "min": 0,
+      "max": 1000,
+      "digits": 2
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "caelestia-appearance",
+  "title": "Appearance",
+  "icon": "applications-graphics-symbolic",
+  "order": 8,
+  "groups": [
+   {
+    "title": "Scale",
+    "options": [
+     {
+      "key": "appearance.deformScale",
+      "label": "Deform scale",
+      "description": "",
+      "type": "float",
+      "default": 1.0,
+      "min": 0,
+      "max": 1000,
+      "digits": 2,
+      "advanced": true
+     },
+     {
+      "key": "appearance.rounding.scale",
+      "label": "Scale",
+      "description": "",
+      "type": "float",
+      "default": 1.0,
+      "min": 0,
+      "max": 1000,
+      "digits": 2
+     },
+     {
+      "key": "appearance.spacing.scale",
+      "label": "Scale",
+      "description": "",
+      "type": "float",
+      "default": 1.0,
+      "min": 0,
+      "max": 1000,
+      "digits": 2
+     },
+     {
+      "key": "appearance.padding.scale",
+      "label": "Scale",
+      "description": "",
+      "type": "float",
+      "default": 1.0,
+      "min": 0,
+      "max": 1000,
+      "digits": 2
+     },
+     {
+      "key": "appearance.font.scale",
+      "label": "Scale",
+      "description": "",
+      "type": "float",
+      "default": 1.0,
+      "min": 0,
+      "max": 1000,
+      "digits": 2
+     },
+     {
+      "key": "appearance.anim.durations.scale",
+      "label": "Scale",
+      "description": "",
+      "type": "float",
+      "default": 1.0,
+      "min": 0,
+      "max": 1000,
+      "digits": 2
+     }
+    ]
+   },
+   {
+    "title": "Transparency",
+    "options": [
+     {
+      "key": "appearance.transparency.enabled",
+      "label": "Transparency",
+      "description": "",
+      "type": "bool",
+      "default": false
+     },
+     {
+      "key": "appearance.transparency.base",
+      "label": "Base",
+      "description": "",
+      "type": "float",
+      "default": 0.85,
+      "default_uncertain": true,
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "digits": 2
+     },
+     {
+      "key": "appearance.transparency.layers",
+      "label": "Layers",
+      "description": "",
+      "type": "float",
+      "default": 0.4,
+      "default_uncertain": true,
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "digits": 2
+     }
+    ]
+   },
+   {
+    "title": "Border",
+    "options": [
+     {
+      "key": "border.thickness",
+      "label": "Border thickness",
+      "description": "Width of the frame drawn around the screen (px)",
+      "type": "int",
+      "default": 10,
+      "default_uncertain": true,
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px"
+     },
+     {
+      "key": "border.rounding",
+      "label": "Border rounding",
+      "description": "Corner radius of the screen frame (px)",
+      "type": "int",
+      "default": 25,
+      "default_uncertain": true,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px"
+     },
+     {
+      "key": "border.smoothing",
+      "label": "Smoothing",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000
+     },
+     {
+      "key": "border.minThickness",
+      "label": "Min thickness",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000
+     },
+     {
+      "key": "border.clampedThickness",
+      "label": "Clamped thickness",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000
+     }
+    ]
+   },
+   {
+    "title": "Fonts",
+    "options": [
+     {
+      "key": "appearance.font.clock",
+      "label": "Clock",
+      "description": "",
+      "type": "string",
+      "default": "Rubik",
+      "default_uncertain": true
+     },
+     {
+      "key": "appearance.font.workspaces",
+      "label": "Workspaces",
+      "description": "",
+      "type": "string",
+      "default": "Rubik",
+      "default_uncertain": true
+     }
+    ]
+   },
+   {
+    "title": "Rounding",
+    "options": [
+     {
+      "key": "appearance.rounding.extraSmall",
+      "label": "Extra small",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.rounding.small",
+      "label": "Small",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.rounding.medium",
+      "label": "Medium",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.rounding.large",
+      "label": "Large",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.rounding.largeIncreased",
+      "label": "Large increased",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.rounding.extraLarge",
+      "label": "Extra large",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.rounding.extraLargeIncreased",
+      "label": "Extra large increased",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.rounding.extraExtraLarge",
+      "label": "Extra extra large",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.rounding.full",
+      "label": "Full",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     }
+    ]
+   },
+   {
+    "title": "Spacing",
+    "options": [
+     {
+      "key": "appearance.spacing.extraSmall",
+      "label": "Extra small",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.spacing.small",
+      "label": "Small",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.spacing.medium",
+      "label": "Medium",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.spacing.large",
+      "label": "Large",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.spacing.largeIncreased",
+      "label": "Large increased",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.spacing.extraLarge",
+      "label": "Extra large",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.spacing.extraLargeIncreased",
+      "label": "Extra large increased",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.spacing.extraExtraLarge",
+      "label": "Extra extra large",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     }
+    ]
+   },
+   {
+    "title": "Padding",
+    "options": [
+     {
+      "key": "appearance.padding.extraSmall",
+      "label": "Extra small",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.padding.small",
+      "label": "Small",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.padding.medium",
+      "label": "Medium",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.padding.large",
+      "label": "Large",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.padding.largeIncreased",
+      "label": "Large increased",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.padding.extraLarge",
+      "label": "Extra large",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.padding.extraLargeIncreased",
+      "label": "Extra large increased",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.padding.extraExtraLarge",
+      "label": "Extra extra large",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     }
+    ]
+   },
+   {
+    "title": "Animation durations",
+    "options": [
+     {
+      "key": "appearance.anim.durations.small",
+      "label": "Small",
+      "description": "",
+      "type": "int",
+      "default": 200,
+      "default_uncertain": true,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.anim.durations.normal",
+      "label": "Normal",
+      "description": "",
+      "type": "int",
+      "default": 400,
+      "default_uncertain": true,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.anim.durations.large",
+      "label": "Large",
+      "description": "",
+      "type": "int",
+      "default": 600,
+      "default_uncertain": true,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.anim.durations.extraLarge",
+      "label": "Extra large",
+      "description": "",
+      "type": "int",
+      "default": 1000,
+      "default_uncertain": true,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.anim.durations.expressiveFastSpatial",
+      "label": "Expressive fast spatial",
+      "description": "",
+      "type": "int",
+      "default": 350,
+      "default_uncertain": true,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.anim.durations.expressiveDefaultSpatial",
+      "label": "Expressive default spatial",
+      "description": "",
+      "type": "int",
+      "default": 500,
+      "default_uncertain": true,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.anim.durations.expressiveSlowSpatial",
+      "label": "Expressive slow spatial",
+      "description": "",
+      "type": "int",
+      "default": 650,
+      "default_uncertain": true,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.anim.durations.expressiveFastEffects",
+      "label": "Expressive fast effects",
+      "description": "",
+      "type": "int",
+      "default": 150,
+      "default_uncertain": true,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.anim.durations.expressiveDefaultEffects",
+      "label": "Expressive default effects",
+      "description": "",
+      "type": "int",
+      "default": 200,
+      "default_uncertain": true,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.anim.durations.expressiveSlowEffects",
+      "label": "Expressive slow effects",
+      "description": "",
+      "type": "int",
+      "default": 300,
+      "default_uncertain": true,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "caelestia-fonts",
+  "title": "Fonts",
+  "icon": "preferences-desktop-font-symbolic",
+  "order": 9,
+  "groups": [
+   {
+    "title": "Headline",
+    "options": [
+     {
+      "key": "appearance.font.headline.family",
+      "label": "Family",
+      "description": "Empty = theme default",
+      "type": "string",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.headline.large.family",
+      "label": "Large family",
+      "description": "",
+      "type": "string",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.headline.large.size",
+      "label": "Large size",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.headline.large.weight",
+      "label": "Large weight",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.headline.large.italic",
+      "label": "Large italic",
+      "description": "",
+      "type": "bool",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.headline.large.vaxes",
+      "label": "Large variable axes",
+      "description": "Variable font axes, e.g. {\"wght\": 450}",
+      "type": "json",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.headline.medium.family",
+      "label": "Medium family",
+      "description": "",
+      "type": "string",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.headline.medium.size",
+      "label": "Medium size",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.headline.medium.weight",
+      "label": "Medium weight",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.headline.medium.italic",
+      "label": "Medium italic",
+      "description": "",
+      "type": "bool",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.headline.medium.vaxes",
+      "label": "Medium variable axes",
+      "description": "Variable font axes, e.g. {\"wght\": 450}",
+      "type": "json",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.headline.small.family",
+      "label": "Small family",
+      "description": "",
+      "type": "string",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.headline.small.size",
+      "label": "Small size",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.headline.small.weight",
+      "label": "Small weight",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.headline.small.italic",
+      "label": "Small italic",
+      "description": "",
+      "type": "bool",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.headline.small.vaxes",
+      "label": "Small variable axes",
+      "description": "Variable font axes, e.g. {\"wght\": 450}",
+      "type": "json",
+      "default": null,
+      "advanced": true
+     }
+    ]
+   },
+   {
+    "title": "Title",
+    "options": [
+     {
+      "key": "appearance.font.title.family",
+      "label": "Family",
+      "description": "Empty = theme default",
+      "type": "string",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.title.large.family",
+      "label": "Large family",
+      "description": "",
+      "type": "string",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.title.large.size",
+      "label": "Large size",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.title.large.weight",
+      "label": "Large weight",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.title.large.italic",
+      "label": "Large italic",
+      "description": "",
+      "type": "bool",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.title.large.vaxes",
+      "label": "Large variable axes",
+      "description": "Variable font axes, e.g. {\"wght\": 450}",
+      "type": "json",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.title.medium.family",
+      "label": "Medium family",
+      "description": "",
+      "type": "string",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.title.medium.size",
+      "label": "Medium size",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.title.medium.weight",
+      "label": "Medium weight",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.title.medium.italic",
+      "label": "Medium italic",
+      "description": "",
+      "type": "bool",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.title.medium.vaxes",
+      "label": "Medium variable axes",
+      "description": "Variable font axes, e.g. {\"wght\": 450}",
+      "type": "json",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.title.small.family",
+      "label": "Small family",
+      "description": "",
+      "type": "string",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.title.small.size",
+      "label": "Small size",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.title.small.weight",
+      "label": "Small weight",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.title.small.italic",
+      "label": "Small italic",
+      "description": "",
+      "type": "bool",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.title.small.vaxes",
+      "label": "Small variable axes",
+      "description": "Variable font axes, e.g. {\"wght\": 450}",
+      "type": "json",
+      "default": null,
+      "advanced": true
+     }
+    ]
+   },
+   {
+    "title": "Body",
+    "options": [
+     {
+      "key": "appearance.font.body.family",
+      "label": "Family",
+      "description": "Empty = theme default",
+      "type": "string",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.body.large.family",
+      "label": "Large family",
+      "description": "",
+      "type": "string",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.body.large.size",
+      "label": "Large size",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.body.large.weight",
+      "label": "Large weight",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.body.large.italic",
+      "label": "Large italic",
+      "description": "",
+      "type": "bool",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.body.large.vaxes",
+      "label": "Large variable axes",
+      "description": "Variable font axes, e.g. {\"wght\": 450}",
+      "type": "json",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.body.medium.family",
+      "label": "Medium family",
+      "description": "",
+      "type": "string",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.body.medium.size",
+      "label": "Medium size",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.body.medium.weight",
+      "label": "Medium weight",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.body.medium.italic",
+      "label": "Medium italic",
+      "description": "",
+      "type": "bool",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.body.medium.vaxes",
+      "label": "Medium variable axes",
+      "description": "Variable font axes, e.g. {\"wght\": 450}",
+      "type": "json",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.body.small.family",
+      "label": "Small family",
+      "description": "",
+      "type": "string",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.body.small.size",
+      "label": "Small size",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.body.small.weight",
+      "label": "Small weight",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.body.small.italic",
+      "label": "Small italic",
+      "description": "",
+      "type": "bool",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.body.small.vaxes",
+      "label": "Small variable axes",
+      "description": "Variable font axes, e.g. {\"wght\": 450}",
+      "type": "json",
+      "default": null,
+      "advanced": true
+     }
+    ]
+   },
+   {
+    "title": "Label",
+    "options": [
+     {
+      "key": "appearance.font.label.family",
+      "label": "Family",
+      "description": "Empty = theme default",
+      "type": "string",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.label.large.family",
+      "label": "Large family",
+      "description": "",
+      "type": "string",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.label.large.size",
+      "label": "Large size",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.label.large.weight",
+      "label": "Large weight",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.label.large.italic",
+      "label": "Large italic",
+      "description": "",
+      "type": "bool",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.label.large.vaxes",
+      "label": "Large variable axes",
+      "description": "Variable font axes, e.g. {\"wght\": 450}",
+      "type": "json",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.label.medium.family",
+      "label": "Medium family",
+      "description": "",
+      "type": "string",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.label.medium.size",
+      "label": "Medium size",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.label.medium.weight",
+      "label": "Medium weight",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.label.medium.italic",
+      "label": "Medium italic",
+      "description": "",
+      "type": "bool",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.label.medium.vaxes",
+      "label": "Medium variable axes",
+      "description": "Variable font axes, e.g. {\"wght\": 450}",
+      "type": "json",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.label.small.family",
+      "label": "Small family",
+      "description": "",
+      "type": "string",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.label.small.size",
+      "label": "Small size",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.label.small.weight",
+      "label": "Small weight",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.label.small.italic",
+      "label": "Small italic",
+      "description": "",
+      "type": "bool",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.label.small.vaxes",
+      "label": "Small variable axes",
+      "description": "Variable font axes, e.g. {\"wght\": 450}",
+      "type": "json",
+      "default": null,
+      "advanced": true
+     }
+    ]
+   },
+   {
+    "title": "Mono",
+    "options": [
+     {
+      "key": "appearance.font.mono.family",
+      "label": "Family",
+      "description": "Empty = theme default",
+      "type": "string",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.mono.large.family",
+      "label": "Large family",
+      "description": "",
+      "type": "string",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.mono.large.size",
+      "label": "Large size",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.mono.large.weight",
+      "label": "Large weight",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.mono.large.italic",
+      "label": "Large italic",
+      "description": "",
+      "type": "bool",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.mono.large.vaxes",
+      "label": "Large variable axes",
+      "description": "Variable font axes, e.g. {\"wght\": 450}",
+      "type": "json",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.mono.medium.family",
+      "label": "Medium family",
+      "description": "",
+      "type": "string",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.mono.medium.size",
+      "label": "Medium size",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.mono.medium.weight",
+      "label": "Medium weight",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.mono.medium.italic",
+      "label": "Medium italic",
+      "description": "",
+      "type": "bool",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.mono.medium.vaxes",
+      "label": "Medium variable axes",
+      "description": "Variable font axes, e.g. {\"wght\": 450}",
+      "type": "json",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.mono.small.family",
+      "label": "Small family",
+      "description": "",
+      "type": "string",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.mono.small.size",
+      "label": "Small size",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.mono.small.weight",
+      "label": "Small weight",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.mono.small.italic",
+      "label": "Small italic",
+      "description": "",
+      "type": "bool",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.mono.small.vaxes",
+      "label": "Small variable axes",
+      "description": "Variable font axes, e.g. {\"wght\": 450}",
+      "type": "json",
+      "default": null,
+      "advanced": true
+     }
+    ]
+   },
+   {
+    "title": "Icon",
+    "options": [
+     {
+      "key": "appearance.font.icon.family",
+      "label": "Family",
+      "description": "Empty = theme default",
+      "type": "string",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.icon.extraLarge.family",
+      "label": "Extra large family",
+      "description": "",
+      "type": "string",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.icon.extraLarge.size",
+      "label": "Extra large size",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.icon.extraLarge.weight",
+      "label": "Extra large weight",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.icon.extraLarge.italic",
+      "label": "Extra large italic",
+      "description": "",
+      "type": "bool",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.icon.extraLarge.vaxes",
+      "label": "Extra large variable axes",
+      "description": "Variable font axes, e.g. {\"wght\": 450}",
+      "type": "json",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.icon.large.family",
+      "label": "Large family",
+      "description": "",
+      "type": "string",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.icon.large.size",
+      "label": "Large size",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.icon.large.weight",
+      "label": "Large weight",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.icon.large.italic",
+      "label": "Large italic",
+      "description": "",
+      "type": "bool",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.icon.large.vaxes",
+      "label": "Large variable axes",
+      "description": "Variable font axes, e.g. {\"wght\": 450}",
+      "type": "json",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.icon.medium.family",
+      "label": "Medium family",
+      "description": "",
+      "type": "string",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.icon.medium.size",
+      "label": "Medium size",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.icon.medium.weight",
+      "label": "Medium weight",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.icon.medium.italic",
+      "label": "Medium italic",
+      "description": "",
+      "type": "bool",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.icon.medium.vaxes",
+      "label": "Medium variable axes",
+      "description": "Variable font axes, e.g. {\"wght\": 450}",
+      "type": "json",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.icon.small.family",
+      "label": "Small family",
+      "description": "",
+      "type": "string",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.icon.small.size",
+      "label": "Small size",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.icon.small.weight",
+      "label": "Small weight",
+      "description": "",
+      "type": "int",
+      "default": null,
+      "min": 0,
+      "max": 100000,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.icon.small.italic",
+      "label": "Small italic",
+      "description": "",
+      "type": "bool",
+      "default": null,
+      "advanced": true
+     },
+     {
+      "key": "appearance.font.icon.small.vaxes",
+      "label": "Small variable axes",
+      "description": "Variable font axes, e.g. {\"wght\": 450}",
+      "type": "json",
+      "default": null,
+      "advanced": true
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "caelestia-services",
+  "title": "Services",
+  "icon": "preferences-other-symbolic",
+  "order": 10,
+  "groups": [
+   {
+    "title": "Units and region",
+    "options": [
+     {
+      "key": "services.weatherLocation",
+      "label": "Weather location",
+      "description": "City name or coordinates; empty = automatic",
+      "type": "string",
+      "default": ""
+     },
+     {
+      "key": "services.weatherUnits",
+      "label": "Temperature",
+      "description": "Units for weather temperatures",
+      "choices": [
+       {
+        "value": "Auto",
+        "label": "Auto"
+       },
+       {
+        "value": "Celsius",
+        "label": "Celsius"
+       },
+       {
+        "value": "Fahrenheit",
+        "label": "Fahrenheit"
+       },
+       {
+        "value": "Kelvin",
+        "label": "Kelvin"
+       }
+      ],
+      "type": "enum",
+      "default": "Auto"
+     },
+     {
+      "key": "services.sensorUnits",
+      "label": "System temperatures",
+      "description": "Units for CPU and GPU temperatures",
+      "choices": [
+       {
+        "value": "Auto",
+        "label": "Auto"
+       },
+       {
+        "value": "Celsius",
+        "label": "Celsius"
+       },
+       {
+        "value": "Fahrenheit",
+        "label": "Fahrenheit"
+       },
+       {
+        "value": "Kelvin",
+        "label": "Kelvin"
+       }
+      ],
+      "type": "enum",
+      "default": "Auto"
+     },
+     {
+      "key": "services.dataUnits",
+      "label": "Data sizes",
+      "description": "Units for data sizes and network speeds",
+      "choices": [
+       {
+        "value": "Binary",
+        "label": "Binary"
+       },
+       {
+        "value": "Decimal",
+        "label": "Decimal"
+       }
+      ],
+      "type": "enum",
+      "default": "Binary",
+      "default_uncertain": true
+     },
+     {
+      "key": "services.clockFormat",
+      "label": "Clock format",
+      "description": "How times are shown across the shell",
+      "choices": [
+       {
+        "value": "Auto",
+        "label": "Auto"
+       },
+       {
+        "value": "TwelveHour",
+        "label": "12-hour"
+       },
+       {
+        "value": "TwentyFourHour",
+        "label": "24-hour"
+       }
+      ],
+      "type": "enum",
+      "default": "Auto"
+     }
+    ]
+   },
+   {
+    "title": "Media",
+    "options": [
+     {
+      "key": "services.visualiserBars",
+      "label": "Visualiser bars",
+      "description": "Number of bars in the audio visualisers",
+      "type": "int",
+      "default": 45,
+      "min": 10.0,
+      "max": 120.0,
+      "step": 2.0
+     },
+     {
+      "key": "services.defaultPlayer",
+      "label": "Default player",
+      "description": "Preferred media player when several are open",
+      "type": "string",
+      "default": "Spotify"
+     },
+     {
+      "key": "services.playerAliases",
+      "label": "Player aliases",
+      "description": "",
+      "type": "json",
+      "default": [
+       {
+        "from": "com.github.th_ch.youtube_music",
+        "to": "YT Music"
+       }
+      ]
+     },
+     {
+      "key": "services.lyricsBackend",
+      "label": "Lyrics source",
+      "description": "",
+      "choices": [
+       {
+        "value": "Auto",
+        "label": "Auto"
+       },
+       {
+        "value": "Local",
+        "label": "Local"
+       },
+       {
+        "value": "LRCLIB",
+        "label": "LRCLIB"
+       },
+       {
+        "value": "NetEase",
+        "label": "NetEase"
+       }
+      ],
+      "type": "enum",
+      "default": "Auto"
+     }
+    ]
+   },
+   {
+    "title": "Steps and limits",
+    "options": [
+     {
+      "key": "services.audioIncrement",
+      "label": "Volume step",
+      "description": "Amount the volume changes per scroll (%)",
+      "type": "float",
+      "default": 0.1,
+      "min": 0.01,
+      "max": 0.5,
+      "step": 0.01,
+      "digits": 2
+     },
+     {
+      "key": "services.brightnessIncrement",
+      "label": "Brightness step",
+      "description": "Amount the brightness changes per scroll (%)",
+      "type": "float",
+      "default": 0.1,
+      "min": 0.01,
+      "max": 0.5,
+      "step": 0.01,
+      "digits": 2
+     },
+     {
+      "key": "services.maxVolume",
+      "label": "Max volume",
+      "description": "Upper limit for output volume (%)",
+      "type": "float",
+      "default": 1.0,
+      "min": 0.5,
+      "max": 2.0,
+      "step": 0.05,
+      "digits": 2
+     }
+    ]
+   },
+   {
+    "title": "System",
+    "options": [
+     {
+      "key": "services.gpuType",
+      "label": "GPU",
+      "description": "",
+      "choices": [
+       {
+        "value": "Auto",
+        "label": "Auto"
+       },
+       {
+        "value": "Nvidia",
+        "label": "Nvidia"
+       },
+       {
+        "value": "Generic",
+        "label": "Generic"
+       },
+       {
+        "value": "None",
+        "label": "None"
+       }
+      ],
+      "type": "enum",
+      "default": "Auto"
+     },
+     {
+      "key": "services.smartScheme",
+      "label": "Smart colour scheme",
+      "description": "Derive theme mode and variant from the wallpaper",
+      "type": "bool",
+      "default": true
+     }
+    ]
+   }
+  ]
+ }
+]

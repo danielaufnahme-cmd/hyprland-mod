@@ -1,0 +1,16 @@
+[package]
+name = "hyprland-mod"
+description = "Friendly settings for Hyprland (GTK4/libadwaita UI)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "hyprland-mod"
+path = "src/main.rs"
+
+[dependencies]
+hyprmod-core.workspace = true
+serde_json.workspace = true
+gtk = { package = "gtk4", version = "0.11", features = ["v4_20"] }
+adw = { package = "libadwaita", version = "0.9", features = ["v1_8"] }

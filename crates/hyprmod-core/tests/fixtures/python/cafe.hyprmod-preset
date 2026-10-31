@@ -1,0 +1,32 @@
+{
+  "format": "hyprland-mod-preset",
+  "version": 1,
+  "id": "caf-look",
+  "name": "Café ✓ Look",
+  "author": "me",
+  "description": "Ünïcode",
+  "tags": [
+    "dark",
+    "warm"
+  ],
+  "settings": {
+    "general:gaps_in": "4",
+    "decoration:blur:enabled": "true",
+    "decoration:active_opacity": "0.9",
+    "general:col.active_border": "rgba(ff0000ff) rgba(00ff00ff) 45deg"
+  },
+  "lists": {
+    "bezier": [
+      "snappy, 0.2, 1, 0.3, 1"
+    ],
+    "animation": [
+      "windows, 1, 3, snappy, popin 80%"
+    ]
+  },
+  "preview": {
+    "wallpaper": [
+      "#112233"
+    ],
+    "window": "#445566"
+  }
+}
