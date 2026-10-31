@@ -4,7 +4,7 @@ Run from anywhere: python3 gen_compat.py lua && python3 gen_compat.py conf (dry-
 """
 import json, os, shutil, sys, tempfile
 sys.dont_write_bytecode = True
-ROOT = "/home/daniel/hyprland-mod-rust"
+ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), *[".."] * 5))
 sys.path.insert(0, ROOT)
 FIX = os.path.join(ROOT, "tests", "fixtures")
 OUT = os.path.join(ROOT, "crates", "hyprmod-core", "tests", "fixtures", "python")
